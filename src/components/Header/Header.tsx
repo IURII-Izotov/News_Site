@@ -8,12 +8,12 @@ export const Header:FC = () => {
     return (
         <header className={style.header}>
             <div className={style.wrap}>
-                <img className="logo" src={logo} alt=""/>
+                <img className="logo" src={logo} alt="logo"/>
                 <h1 className={style.heading}>Новости</h1>
                 <div className={style.menuWrap}>
-                    <img className={style.icon} src={searchIcon} alt=""/>
-                    <img className={style.icon} src={userIcon} alt=""/>
-                    <img className={style.icon} src={burgerMenu} alt=""/>
+                    <img className={style.icon} src={searchIcon} alt="search"/>
+                    <img className={style.icon} src={userIcon} alt="user"/>
+                    <img className={style.icon} src={burgerMenu} alt="menu"/>
                 </div>
             </div>
 
