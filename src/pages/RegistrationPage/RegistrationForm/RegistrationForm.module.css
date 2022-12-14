@@ -1,0 +1,22 @@
+.formFieldWrap{
+
+}
+.formWrap{
+    display: flex;
+    flex-direction: column;
+}
+.MuiTextField-root.inputStyle{
+    border: 1px solid #E4DFDC;
+    border-radius: 100px;
+    width: 231px;
+    height: 10px !important;
+}
+/*.inputStyle:hover{*/
+/*    border: 1px solid #b6b3b3;*/
+/*}*/
+/*.inputStyle:focus{*/
+/*    border: 1px solid #b6b3b3;*/
+/*}*/
+/*.inputStyle{*/
+/*    border: 1px solid #b6b3b3;*/
+/*}*/
