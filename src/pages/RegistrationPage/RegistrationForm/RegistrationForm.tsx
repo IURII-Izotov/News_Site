@@ -1,35 +1,46 @@
-import style from './RegistrationForm.module.css'
-import Grid from '@mui/material/Grid';
-import Checkbox from '@mui/material/Checkbox';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import FormLabel from '@mui/material/FormLabel';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
+import React, { useState } from 'react';
+import {
+    Button,
+    Cascader,
+    DatePicker,
+    Form,
+    Input,
+    InputNumber,
+    Radio,
+    Select,
+    Switch,
+    TreeSelect,
+} from 'antd';
+type SizeType = Parameters<typeof Form>[0]['size'];
 
 export const RegistrationForm = () => {
+    const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
 
-    return <Grid container justifyContent={'center'}>
-        <Grid item justifyContent={'center'}>
-            <FormControl>
-                <FormGroup>
-                    <div className={style.formFieldWrap}>
-                        <span>Фамилия</span>
+    const onFormLayoutChange = ({ size }: { size: SizeType }) => {
+        setComponentSize(size);
+    };
 
-                    </div>
-                    <TextField className={style.inputStyle} />
-                    {/*<TextField type="password"/>*/}
-                    <Button type={'submit'} variant={'contained'} color={'primary'}>
-                        Login
-                    </Button>
-                </FormGroup>
-            </FormControl>
-        </Grid>
-    </Grid>
+    return (
+        <Form
+            labelCol={{ span: 4 }}
+            wrapperCol={{ span: 14 }}
+            layout="horizontal"
+            initialValues={{ size: componentSize }}
+            onValuesChange={onFormLayoutChange}
+            size={componentSize as SizeType}
+        >
+            <Form.Item label="Фамилия">
+                <Input />
+            </Form.Item>
+            <Form.Item >
+                <Button>Button</Button>
+            </Form.Item>
+        </Form>
+    );
+};
 
 
-        // <form className={style.formWrap} name="registration" method="POST" action="">
+// <form className={style.formWrap} name="registration" method="POST" action="">
         //     <div className={style.formFieldWrap}>
         //         <span>Фамилия</span>
         //         <input className={style.inputStyle} type='text' name="last_name" required={true}/>
@@ -55,4 +66,3 @@ export const RegistrationForm = () => {
         //     <button type={'submit'}>Регистрация</button>
         // </form>
 
-};
