@@ -1,0 +1,70 @@
+.contentContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: calc((845%/1440)*100);
+
+}
+.imgContainer{
+    position: relative;
+    width: 255px;
+    max-width: 100%;
+    min-width: 211px;;
+    height: 211px;
+    padding-top: 0;
+    overflow: hidden;
+    margin-right: calc((40%/845)*100);
+}
+.imgNews{
+    position: absolute;
+    width: auto;
+    min-width: 100%;
+    height:100%;
+    top:0;
+    right:-60px;
+}
+.contentWrap{
+    display: flex;
+    flex-direction: column;
+    width: calc((550%/845)*100);
+}
+.headerInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.mainContent{
+    display: flex;
+    flex-direction: column;
+}
+.imgShare{
+    width: 24px;
+    height: 24px;
+}
+.headerInfo{
+    margin-bottom:8px ;
+}
+.headerNews{
+    margin-bottom:8px;
+    font-family: 'Ubuntu';
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+}
+.textNews{
+    margin-bottom:8px;
+    font-family: Ubuntu;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #858080;
+}
+.linkNews{
+    margin-bottom: 15px;
+}
+.contentContainer{
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid #D9D9D9;
+}
