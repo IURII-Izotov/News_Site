@@ -1,0 +1,55 @@
+.formContainer{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 527px;
+    height: 496px;
+    padding-right: 59px;
+    padding-left: 39px;
+    padding-top: 24px;
+    padding-bottom: 19px;
+    margin: 10px;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.14);
+    border-radius: 15px;
+
+}
+.logo{
+    align-self: center;
+    margin-bottom: 21px;
+}
+.formButton {
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 34.5px 6px 34.5px;
+    background: #7E5BC2;
+    border-radius: 10px;
+    border: 1px solid #7E5BC2;
+    width: max-content;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 33px;
+}
+.formButton:hover{
+    color: #FFFFFF;
+    border: 1px solid #6939c6;
+}
+.formWrap{
+    display: flex;
+    flex-direction: column;
+}
+.textLogin{
+    align-self: center;
+    font-family: 'Ubuntu';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 16px;
+    color: #5A5A5A;
+}
+.textLogin>a{
+    color:#2D4EC2;
+}
