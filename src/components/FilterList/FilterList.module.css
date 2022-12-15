@@ -21,3 +21,7 @@
 .headerFilter{
     margin-bottom: 18.5px;
 }
+.filterWrap{
+    max-width: 170px;
+    width: 100%;
+}
