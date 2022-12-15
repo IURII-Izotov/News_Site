@@ -2,8 +2,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    width: 527px;
-    height: 496px;
+    width: max-content;
+    height: max-content;
     padding-right: 59px;
     padding-left: 39px;
     padding-top: 24px;
@@ -40,6 +40,9 @@
 .formWrap{
     display: flex;
     flex-direction: column;
+
+   width: 429px;
+    max-width: 100%;
 }
 .textLogin{
     align-self: center;

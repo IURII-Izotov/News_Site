@@ -1,4 +1,4 @@
-import style from './RegistrationForm.module.css'
+import style from './LoginForm.module.css'
 import logo from "../../../assets/img/logo-purple.svg";
 import {Formik,Form} from 'formik';
 import {InputComponent} from "../../../components/Input/Input";
@@ -27,7 +27,7 @@ export const LoginForm = () => {
                     <img className={style.logo} src={logo} alt=""/>
                     <Form className={style.formWrap}>
                         <InputComponent type="text" nameField="nickname" label='Никнейм' errors={errors} touched ={touched}/>
-                        <InputComponent type="password" nameField="password" label='Пароль' notification="Лимит на символы" errors={errors} touched ={touched}/>
+                        <InputComponent type="password" nameField="password" label='Пароль' errors={errors} touched ={touched}/>
                         <button className={style.formButton} type="submit" disabled={isSubmitting} >
                             Войти
                         </button>
