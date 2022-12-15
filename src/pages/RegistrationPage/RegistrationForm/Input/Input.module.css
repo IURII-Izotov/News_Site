@@ -1,0 +1,39 @@
+.formFieldWrap{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.inputWrap{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputWrap > span{
+    align-self: start;
+}
+.inputStyle {
+    box-sizing: border-box;
+    width: 231px;
+    height: 39px;
+    border: 1px solid #E4DFDC;
+    border-radius: 10px;
+    outline: none;
+}
+.inputStyleError {
+    border: 1px solid #ff3131;
+}
+input.inputStyle:focus {
+    border: 1.5px solid #7b7a7a;
+}
+label{
+    font-family: 'Ubuntu';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    align-self: center;
+}
+.subSpan{
+    font-size: 12px;
+    color: #5A5A5A;
+}

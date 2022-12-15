@@ -1,68 +1,43 @@
-import React, { useState } from 'react';
-import {
-    Button,
-    Cascader,
-    DatePicker,
-    Form,
-    Input,
-    InputNumber,
-    Radio,
-    Select,
-    Switch,
-    TreeSelect,
-} from 'antd';
-type SizeType = Parameters<typeof Form>[0]['size'];
+import style from './RegistrationForm.module.css'
+import logo from "../../../assets/img/logo-purple.svg";
+import {Formik,Form} from 'formik';
+import {InputComponent} from "./Input/Input";
 
 export const RegistrationForm = () => {
-    const [componentSize, setComponentSize] = useState<SizeType | 'default'>('default');
-
-    const onFormLayoutChange = ({ size }: { size: SizeType }) => {
-        setComponentSize(size);
-    };
-
     return (
-        <Form
-            labelCol={{ span: 4 }}
-            wrapperCol={{ span: 14 }}
-            layout="horizontal"
-            initialValues={{ size: componentSize }}
-            onValuesChange={onFormLayoutChange}
-            size={componentSize as SizeType}
+        <Formik
+            initialValues={
+                {
+                    last_name: '',
+                    name: '',
+                    nickname: '',
+                    password: '',
+                    password2: ''
+                }
+            }
+            onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                    console.log(JSON.stringify(values, null, 2));
+                    setSubmitting(false);
+                }, 400);
+            }}
         >
-            <Form.Item label="Фамилия">
-                <Input />
-            </Form.Item>
-            <Form.Item >
-                <Button>Button</Button>
-            </Form.Item>
-        </Form>
+            {({ isSubmitting,errors,touched }) => (
+                <div className={style.formContainer}>
+                    <img className={style.logo} src={logo} alt=""/>
+                    <Form className={style.formWrap}>
+                        <InputComponent type="text" nameField="last_name" label='Фамилия' errors={errors} touched ={touched} isSubmitting={isSubmitting} />
+                        <InputComponent type="text" nameField="name" label='Имя' errors={errors} touched ={touched}/>
+                        <InputComponent type="text" nameField="nickname" label='Никнейм' errors={errors} touched ={touched}/>
+                        <InputComponent type="password" nameField="password" label='Пароль' notification="Лимит на символы" errors={errors} touched ={touched}/>
+                        <InputComponent type="password" nameField="password2" label='Имя' errors={errors} touched ={touched}/>
+                        <button className={style.formButton} type="submit" disabled={isSubmitting} >
+                            Регистрация
+                        </button>
+                    </Form>
+                    <span className={style.textLogin}>Уже есть логин? <a href='#'>Войти</a></span>
+                </div>
+            )}
+        </Formik>
     );
 };
-
-
-// <form className={style.formWrap} name="registration" method="POST" action="">
-        //     <div className={style.formFieldWrap}>
-        //         <span>Фамилия</span>
-        //         <input className={style.inputStyle} type='text' name="last_name" required={true}/>
-        //     </div>
-        //     <div className={style.formFieldWrap}>
-        //         <span>Имя</span>
-        //         <input className={style.inputStyle} type='text' name="name" required={true}/>
-        //     </div>
-        //     <div className={style.formFieldWrap}>
-        //         <span>Никнейм</span>
-        //         <input className={style.inputStyle} type='text' name="nickName" required={true}/>
-        //     </div>
-        //     <div className={style.formFieldWrap}>
-        //         <span>Пароль</span>
-        //         <input className={style.inputStyle} type="password" name="Password" required={true}/>
-        //
-        //     </div>
-        //     <span>Лимит на символы</span>
-        //     <div className={style.formFieldWrap}>
-        //         <span>Подстверждение пароля</span>
-        //         <input className={style.inputStyle} type="password" name="Password2" required={true}/>
-        //     </div>
-        //     <button type={'submit'}>Регистрация</button>
-        // </form>
-
