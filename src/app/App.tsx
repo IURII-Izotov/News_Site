@@ -4,6 +4,7 @@ import {Footer} from "../components/Footer/Footer";
 import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
+import {FilterList} from "../components/FilterList/FilterList";
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
         {/*<RegistrationPage/>*/}
         {/*<LoginPage/>*/}
         <div className='wrapper'>
-            <Header/>
-            <NewsPage/>
-            <Footer/>
+            <FilterList/>
+            {/*<Header/>*/}
+            {/*<NewsPage/>*/}
+            {/*<Footer/>*/}
         </div>
 
     </div>
