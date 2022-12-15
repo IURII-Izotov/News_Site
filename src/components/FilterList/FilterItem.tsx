@@ -1,15 +1,14 @@
 import style from './FilterItem.module.css'
 import {useState} from "react";
 
-export const FilterItem = (name:any) => {
+export const FilterItem = (props:any) => {
     let [checked,setChecked] = useState(false)
 
     return (
-        <>
-            <label className={style.container}>{name}
+            <label className={style.container}>{props.name}
                 <input type="checkbox" onClick={()=>setChecked(!checked)} checked={checked}/>
                 <span className={style.checkmark}></span>
             </label>
-        </>
+
     );
 };

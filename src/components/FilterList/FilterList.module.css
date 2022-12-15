@@ -1,0 +1,23 @@
+.formButton {
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 40px 6px 40px;
+    background: #7E5BC2;
+    border-radius: 10px;
+    border: 1px solid #7E5BC2;
+    width: max-content;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+    align-self: center;
+    margin-top: 14px;
+}
+.formButton:hover{
+    color: #FFFFFF;
+    border: 1px solid #6939c6;
+}
+.headerFilter{
+    margin-bottom: 18.5px;
+}
