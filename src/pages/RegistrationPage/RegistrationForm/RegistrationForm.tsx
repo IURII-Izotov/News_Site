@@ -1,7 +1,7 @@
 import style from './RegistrationForm.module.css'
 import logo from "../../../assets/img/logo-purple.svg";
 import {Formik,Form} from 'formik';
-import {InputComponent} from "./Input/Input";
+import {InputComponent} from "../../../components/Input/Input";
 
 export const RegistrationForm = () => {
     return (
