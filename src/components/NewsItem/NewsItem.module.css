@@ -3,8 +3,8 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 0 auto;
-    width: calc((845%/1440)*100);
-
+    /*width: calc((845%/1440)*100);*/
+    width: 100%;
 }
 .imgContainer{
     position: relative;
