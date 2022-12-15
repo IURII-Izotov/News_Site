@@ -3,17 +3,17 @@ import {Header} from "../components/Header/Header";
 import {Footer} from "../components/Footer/Footer";
 import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
-import {NewsItem} from "../components/NewsItem/NewsItem";
+import {NewsPage} from "../pages/NewsPage/NewsPage";
 
 function App() {
   return (
     <div className="App">
 
-        <RegistrationPage/>
-        <LoginPage/>
+        {/*<RegistrationPage/>*/}
+        {/*<LoginPage/>*/}
         <div className='wrapper'>
-            <NewsItem/>
             <Header/>
+            <NewsPage/>
             <Footer/>
         </div>
 

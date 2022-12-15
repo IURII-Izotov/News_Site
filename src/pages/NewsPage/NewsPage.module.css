@@ -1,0 +1,6 @@
+.newsContentWrap{
+    padding-left: calc((150%/1440)*100);
+    padding-right: calc((150%/1440)*100);
+    padding-top: 34px;
+    padding-bottom: 124px;
+}
