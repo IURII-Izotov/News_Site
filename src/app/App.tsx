@@ -2,6 +2,7 @@ import './App.css';
 import {Header} from "../components/Header/Header";
 import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
+import {FullNews} from "../components/FullNews/FullNews";
 
 
 function App() {
@@ -12,7 +13,10 @@ function App() {
         {/*<LoginPage/>*/}
         <div className='wrapper'>
             <Header/>
-            <NewsPage/>
+            <div className='contentWrap'>
+                <FullNews/>
+            </div>
+
             <Footer/>
         </div>
 
