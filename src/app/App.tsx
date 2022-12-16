@@ -14,7 +14,8 @@ function App() {
         <div className='wrapper'>
             <Header/>
             <div className='contentWrap'>
-                <FullNews/>
+                <FullNews />
+                {/*<NewsPage />*/}
             </div>
 
             <Footer/>

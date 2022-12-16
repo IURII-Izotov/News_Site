@@ -17,6 +17,11 @@
     overflow: hidden;
     margin-right: calc((40%/845)*100);
 }
+.arrowLeft{
+    width: 41px;
+    height: 30px;
+    margin-bottom: 24px;
+}
 .imgNews{
     position: absolute;
     width: auto;
@@ -29,6 +34,18 @@
     display: flex;
     flex-direction: column;
     width: calc((550%/845)*100);
+}
+.contentFullWrapper{
+    width: calc((864%/1140)*100);
+}
+.fullContentWrap{
+    width: 100%;
+}
+.imgNewsFull{
+    width: 100%;
+    max-height: 555px;
+    margin-top: 16px;
+    margin-bottom: 24px;
 }
 .headerInfo{
     display: flex;
@@ -76,6 +93,8 @@
 .wrapper{
     display: flex;
     flex-direction: column;
+    padding-top: 24px;
+    margin-bottom: 104px;
 }
 .contentContainerFull{
     display: flex;
