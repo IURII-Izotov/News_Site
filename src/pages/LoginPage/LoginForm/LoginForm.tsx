@@ -8,11 +8,8 @@ export const LoginForm = () => {
         <Formik
             initialValues={
                 {
-                    last_name: '',
-                    name: '',
                     nickname: '',
                     password: '',
-                    password2: ''
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
@@ -26,8 +23,19 @@ export const LoginForm = () => {
                 <div className={style.formContainer}>
                     <img className={style.logo} src={logo} alt=""/>
                     <Form className={style.formWrap}>
-                        <InputComponent type="text" nameField="nickname" label='Никнейм' errors={errors} touched ={touched}/>
-                        <InputComponent type="password" nameField="password" label='Пароль' errors={errors} touched ={touched}/>
+                        <div className='formFieldWrap'>
+                            <label htmlFor="nickname">Никнейм</label>
+                            <div className='inputContainer'>
+                                <InputComponent type="text" nameField="nickname"  errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className='formFieldWrap'>
+                            <label htmlFor="password">Пароль</label>
+                            <div className='inputContainer'>
+                                <InputComponent type="password" nameField="password" errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+
                         <button className={style.formButton} type="submit" disabled={isSubmitting} >
                             Войти
                         </button>

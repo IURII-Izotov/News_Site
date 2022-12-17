@@ -26,11 +26,36 @@ export const RegistrationForm = () => {
                 <div className={style.formContainer}>
                     <img className={style.logo} src={logo} alt=""/>
                     <Form className={style.formWrap}>
-                        <InputComponent type="text" nameField="last_name" label='Фамилия' errors={errors} touched ={touched} isSubmitting={isSubmitting} />
-                        <InputComponent type="text" nameField="name" label='Имя' errors={errors} touched ={touched}/>
-                        <InputComponent type="text" nameField="nickname" label='Никнейм' errors={errors} touched ={touched}/>
-                        <InputComponent type="password" nameField="password" label='Пароль' notification="Лимит на символы" errors={errors} touched ={touched}/>
-                        <InputComponent type="password" nameField="password2" label='Имя' errors={errors} touched ={touched}/>
+                        <div className="formFieldWrap">
+                            <label htmlFor="last_name">Фамилия</label>
+                            <div className="inputContainer">
+                                <InputComponent type="text" nameField="last_name" errors={errors} touched ={touched} isSubmitting={isSubmitting} />
+                            </div>
+                        </div>
+                        <div className="formFieldWrap">
+                            <label htmlFor="name">Имя</label>
+                            <div className="inputContainer">
+                                <InputComponent type="text" nameField="name"  errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className="formFieldWrap">
+                            <label htmlFor="nickname">Никнейм</label>
+                            <div className="inputContainer">
+                                <InputComponent type="text" nameField="nickname" errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className="formFieldWrap">
+                            <label htmlFor="password">Пароль</label>
+                            <div className="inputContainer">
+                                <InputComponent type="password" nameField="password" notification="Лимит на символы" errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className="formFieldWrap">
+                            <label htmlFor="password2">Подтверждение пароля</label>
+                            <div className="inputContainer">
+                                <InputComponent type="password" nameField="password2"  errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
                         <button className={style.formButton} type="submit" disabled={isSubmitting} >
                             Регистрация
                         </button>

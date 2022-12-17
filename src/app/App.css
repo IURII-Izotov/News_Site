@@ -19,3 +19,14 @@
 .bigButton{
     height: 38px;
 }
+.formFieldWrap{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.inputContainer{
+    width: 100%;
+    max-width: 231px;
+}
