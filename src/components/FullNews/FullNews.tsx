@@ -5,7 +5,12 @@ export const FullNews = () => {
     return (
         <>
         <NewsItem fullItem={true}/>
-        <Comment/>
+            <Comment/>
+            <Comment isReplay={true}/>
+            <Comment/>
+            <Comment isReplay={true}/>
+            <Comment isReplay={true}/>
+            <Comment isReplay={true}/>
         </>
     );
 };

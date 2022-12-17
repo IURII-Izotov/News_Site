@@ -7,10 +7,10 @@ import {Button} from "../Button/Button";
 type commentProps={
     isReplay?:boolean
 }
-export const Comment:FC<commentProps> = ({isReplay=true}) => {
+export const Comment:FC<commentProps> = ({isReplay=false}) => {
 
     return (
-        <>
+        <div className={isReplay? `${style.replayContainer} ${style.commenContainer}`: style.commenContainer}>
             <h3 className={style.nickName}>Олег Петров</h3>
             <p className={style.textComment}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A animi at, consectetur deserunt eius esse laudantium minima, molestias neque nobis obcaecati perspiciatis veniam!</p>
             <div className={style.footerComment}>
@@ -59,7 +59,7 @@ export const Comment:FC<commentProps> = ({isReplay=true}) => {
                         </Form>
                 )}
             </Formik>
-        </>
+        </div>
 
     );
 };

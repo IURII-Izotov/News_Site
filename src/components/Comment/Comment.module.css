@@ -78,3 +78,11 @@
     width: 100%;
     max-width: 128px;
 }
+.replayContainer{
+    margin-left: 56px;
+}
+.commenContainer{
+    width: 100%;
+    max-width: 845px;
+    margin-bottom: 24px;
+}
