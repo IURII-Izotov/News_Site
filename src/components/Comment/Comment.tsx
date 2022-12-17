@@ -2,8 +2,12 @@ import {FC} from "react";
 import style from './Comment.module.css'
 import {InputComponent} from "../Input/Input";
 import {Form, Formik} from "formik";
+import {Button} from "../Button/Button";
 
-export const Comment:FC = () => {
+type commentProps={
+    isReplay?:boolean
+}
+export const Comment:FC<commentProps> = ({isReplay=true}) => {
 
     return (
         <>
@@ -28,15 +32,30 @@ export const Comment:FC = () => {
                 }}
             >
                 {({ isSubmitting,errors,touched }) => (
-
                         <Form className={style.formComment} action='#'>
-                            <div className={style.commentInput}>
-                                <InputComponent type="text" nameField="text" errors={errors} touched ={touched}/>
-                            </div>
+                            {
+                                isReplay
+                                    ? <>
+                                        <label className={style.labelStyle} htmlFor="text">Вы</label>
+                                        <div className={`${style.commentInput} ${style.replayInput}`}>
+                                            <InputComponent type="text" nameField="text"  errors={errors} touched ={touched}/>
+                                        </div>
+                                    <div className={style.buttonContainer}>
+                                        <Button type={'submit'} text={'Ответить'} disabled={isSubmitting}/>
+                                    </div>
 
-                            <button className={ `bigButton ${style.commentButton}`} type="submit" disabled={isSubmitting} >
-                                Ответить
-                            </button>
+
+                                    </>
+                                    :<>
+                                        <div className={style.commentInput}>
+                                            <InputComponent type="text" nameField="text" placeholder='Напишите комментарий' errors={errors} touched ={touched}/>
+                                        </div>
+                                        <button className={ `bigButton ${style.commentButton}`} type="submit" disabled={isSubmitting} >
+                                            Ответить
+                                        </button>
+                                    </>
+                            }
+
                         </Form>
                 )}
             </Formik>

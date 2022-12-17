@@ -2,6 +2,7 @@ import style from './RegistrationForm.module.css'
 import logo from "../../../assets/img/logo-purple.svg";
 import {Formik,Form} from 'formik';
 import {InputComponent} from "../../../components/Input/Input";
+import {Button} from "../../../components/Button/Button";
 
 export const RegistrationForm = () => {
     return (
@@ -53,12 +54,12 @@ export const RegistrationForm = () => {
                         <div className="formFieldWrap">
                             <label htmlFor="password2">Подтверждение пароля</label>
                             <div className="inputContainer">
-                                <InputComponent type="password" nameField="password2"  errors={errors} touched ={touched}/>
+                                <InputComponent type="password" nameField="password2"  errors={errors} touched ={touched} />
                             </div>
                         </div>
-                        <button className={style.formButton} type="submit" disabled={isSubmitting} >
-                            Регистрация
-                        </button>
+                        <div className={style.buttonContainer}>
+                            <Button type="submit" text="Регистрация" disabled={isSubmitting}/>
+                        </div>
                     </Form>
                     <span className={style.textLogin}>Уже есть логин? <a href='#'>Войти</a></span>
                 </div>

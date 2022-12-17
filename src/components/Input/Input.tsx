@@ -11,10 +11,11 @@ type InputPropsType = {
     errors?: {}
     touched?: initialValuesFormType
     isSubmitting?:boolean
+    placeholder?:string
 }
 
 
-export const InputComponent = ({type, nameField,notification, errors,touched,isSubmitting }: InputPropsType) => {
+export const InputComponent = ({type, nameField,placeholder,notification, errors,touched,isSubmitting }: InputPropsType) => {
     let [error, setError] = useState(false);
 
     function validateTextField(value?: string) {
@@ -30,7 +31,9 @@ export const InputComponent = ({type, nameField,notification, errors,touched,isS
                 : style.inputStyle}
                    type={type}
                    name={nameField}
-                   validate={validateTextField}/>
+                   validate={validateTextField}
+                   placeholder={placeholder}
+            />
             {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
         </div>
 

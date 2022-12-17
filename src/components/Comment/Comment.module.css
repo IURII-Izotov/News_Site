@@ -60,3 +60,21 @@
     display: flex;
     flex-direction: row;
 }
+.labelStyle{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-right: 14px;
+    align-self: center;
+}
+.replayInput{
+    height: 27px;
+    align-self: center;
+}
+.buttonContainer{
+    height: 27px;
+    width: 100%;
+    max-width: 128px;
+}

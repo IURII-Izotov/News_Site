@@ -24,25 +24,12 @@
     align-self: center;
     margin-bottom: 21px;
 }
-.formButton {
-    font-family: Ubuntu;
-    font-size: 16px;
-    font-weight: 500;
-    color: #FFFFFF;
-    padding: 6px 34.5px 6px 34.5px;
-    background: #7E5BC2;
-    border-radius: 10px;
-    border: 1px solid #7E5BC2;
-    width: max-content;
-    height: auto;
-    outline: none;
-    cursor: pointer;
-    align-self: center;
+.buttonContainer{
+    width: 100%;
+    max-width: 168px;
+    height: 30px;
     margin-top: 33px;
-}
-.formButton:hover{
-    color: #FFFFFF;
-    border: 1px solid #6939c6;
+    align-self: center;
 }
 .formWrap{
     display: flex;

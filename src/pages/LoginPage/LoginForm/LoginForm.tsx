@@ -2,6 +2,7 @@ import style from './LoginForm.module.css'
 import logo from "../../../assets/img/logo-purple.svg";
 import {Formik,Form} from 'formik';
 import {InputComponent} from "../../../components/Input/Input";
+import {Button} from "../../../components/Button/Button";
 
 export const LoginForm = () => {
     return (
@@ -35,10 +36,10 @@ export const LoginForm = () => {
                                 <InputComponent type="password" nameField="password" errors={errors} touched ={touched}/>
                             </div>
                         </div>
+                        <div className={style.buttonContainer}>
+                            <Button type="submit" text="Войти" disabled={isSubmitting}/>
+                        </div>
 
-                        <button className={style.formButton} type="submit" disabled={isSubmitting} >
-                            Войти
-                        </button>
                     </Form>
                 </div>
             )}
