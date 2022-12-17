@@ -1,0 +1,58 @@
+.nickName{
+    font-family: 'Ubuntu';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    margin-bottom: 7px;
+}
+.textComment{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #858080;
+    margin-bottom: 7px;
+}
+.dateComment{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #858080;
+    margin-right:30px;
+}
+.replyComment{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #7E5BC2;
+}
+.footerComment{
+    margin-bottom: 24px;
+}
+.commentInput{
+    margin-right: 25px;
+}
+.commentButton {
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 34.5px 6px 34.5px;
+    background: #7E5BC2;
+    border-radius: 10px;
+    border: 1px solid #7E5BC2;
+    width: max-content;
+    height: auto;
+    outline: none;
+    cursor: pointer;
+    align-self: center;
+}
+.commentButton:hover{
+    color: #FFFFFF;
+    border: 1px solid #6939c6;
+}
