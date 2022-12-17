@@ -1,5 +1,7 @@
 import {FC} from "react";
 import style from './Comment.module.css'
+import {InputComponent} from "../Input/Input";
+import {Form, Formik} from "formik";
 
 export const Comment:FC = () => {
 
@@ -11,10 +13,33 @@ export const Comment:FC = () => {
                 <span className={style.dateComment}>30.11.2022</span>
                 <a className={style.replyComment} href="">Ответить</a>
             </div>
-            <form className={style.formComment}>
-                <input className={style.commentInput} type="text"/>
-                <button className={style.commentButton} type='submit'>Ответить</button>
-            </form>
+
+            <Formik
+                initialValues={
+                    {
+                        text:''
+                    }
+                }
+                onSubmit={(values, { setSubmitting }) => {
+                    setTimeout(() => {
+                        console.log(JSON.stringify(values, null, 2));
+                        setSubmitting(false);
+                    }, 400);
+                }}
+            >
+                {({ isSubmitting,errors,touched }) => (
+
+                        <Form className={style.formComment} action='#'>
+                            <div className={style.commentInput}>
+                                <InputComponent type="text" nameField="text" errors={errors} touched ={touched}/>
+                            </div>
+
+                            <button className={ `bigButton ${style.commentButton}`} type="submit" disabled={isSubmitting} >
+                                Ответить
+                            </button>
+                        </Form>
+                )}
+            </Formik>
         </>
 
     );

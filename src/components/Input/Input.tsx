@@ -7,7 +7,7 @@ type initialValuesFormType = {
 type InputPropsType = {
     type: string
     nameField: string
-    label: string,
+    label?: string,
     notification?: string
     errors?: {}
     touched?: initialValuesFormType
@@ -17,7 +17,6 @@ type InputPropsType = {
 
 export const InputComponent = ({type, nameField, label, notification, errors,touched,isSubmitting }: InputPropsType) => {
     let [error, setError] = useState(false);
-    console.log(touched)
     function validateTextField(value?: string) {
         !value
             ? setError(true)

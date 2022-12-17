@@ -16,3 +16,6 @@
     padding-left: calc((150%/1440)*100);
     padding-right: calc((150%/1440)*100);
 }
+.bigButton{
+    height: 38px;
+}

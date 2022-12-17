@@ -36,6 +36,7 @@
 }
 .commentInput{
     margin-right: 25px;
+    width: 346px;
 }
 .commentButton {
     font-family: Ubuntu;
@@ -47,7 +48,6 @@
     border-radius: 10px;
     border: 1px solid #7E5BC2;
     width: max-content;
-    height: auto;
     outline: none;
     cursor: pointer;
     align-self: center;
@@ -55,4 +55,8 @@
 .commentButton:hover{
     color: #FFFFFF;
     border: 1px solid #6939c6;
+}
+.formComment{
+    display: flex;
+    flex-direction: row;
 }
