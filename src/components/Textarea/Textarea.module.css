@@ -16,6 +16,11 @@
     overflow-y: auto;
     padding-top: 7px;
     padding-bottom: 7px;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
 }
 
 .textarea::-webkit-scrollbar {

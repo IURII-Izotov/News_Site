@@ -24,8 +24,11 @@ export const Textarea = ({type, nameField,placeholder,notification, errors,touch
     let onChangeTextarea =(event:any)=>{
         setValue(event.target.value);
         let el=ref.current;
+        if(!value){
+            el.style.height = el.style.height;
+        }
         if(el){
-            el.style.height = 'auto';
+
             el.style.height = el.scrollHeight - 0 + 'px';
         }
 
