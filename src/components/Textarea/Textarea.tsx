@@ -1,5 +1,5 @@
 import style from './Textarea.module.css'
-import { useState} from "react";
+import {useRef, useState} from "react";
 import {Field} from "formik";
 type initialValuesFormType = {
     [key: string]: boolean
@@ -12,34 +12,53 @@ type InputPropsType = {
     touched?: initialValuesFormType
     isSubmitting?:boolean
     placeholder?:string
+    isReplay?:boolean
 }
 
 
-export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting }: InputPropsType) => {
+export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,isReplay=false }: InputPropsType) => {
     let [error, setError] = useState(false);
+    let [value, setValue] = useState('');
+    const ref = useRef<any>();
 
+    let onChangeTextarea =(event:any)=>{
+        setValue(event.target.value);
+        let el=ref.current;
+        if(el){
+            el.style.height = 'auto';
+            el.style.height = el.scrollHeight - 0 + 'px';
+        }
+
+    }
     function validateTextField(value?: string) {
         !value
             ? setError(true)
             : setError(false)
     }
 
+    let styleReplay =  `${style.textarea} ${style.textareaReplay}`
+    let textareaStyle= `${style.textarea}`
     return (
-        <div className={`${style.inputWrap}`}>
-            <Field  as={CustomTextarea} className={error && touched?.[nameField]
-                ? `${style.inputStyle} ${style.inputStyleError}`
-                : style.inputStyle}
+        <>
+            <Field as={CustomTextarea} className={
+              `${isReplay ? styleReplay : textareaStyle} ${error && touched?.[nameField]
+                  ? `${style.textarea} ${style.inputStyleError}`
+                  : `${style.textarea}`}`
+            }
+                   onChange={onChangeTextarea}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
+                   value={value}
+                   innerref={ref}
             />
             {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
-        </div>
+        </>
 
     );
 };
 let CustomTextarea=(props:any)=>{
-   return <textarea placeholder={props.placeholder} {...props}/>
+   return <textarea ref={props.innerref} placeholder={props.placeholder} {...props}/>
 }
 
 

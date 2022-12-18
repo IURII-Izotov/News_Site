@@ -61,6 +61,7 @@
 .formComment{
     display: flex;
     flex-direction: row;
+    height: max-content;
 }
 .labelStyle{
     font-family: 'Ubuntu';
@@ -72,7 +73,8 @@
     align-self: center;
 }
 .replayInput{
-    height: 27px;
+    main-height: 27px;
+    max-height: 500px;
     align-self: center;
 }
 .buttonContainer{

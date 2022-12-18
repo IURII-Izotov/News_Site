@@ -1,6 +1,6 @@
 import style from './Input.module.css'
 import {Field} from 'formik';
-import {useRef, useState} from "react";
+import {useState} from "react";
 type initialValuesFormType = {
     [key: string]: boolean
 }
@@ -15,41 +15,36 @@ type InputPropsType = {
     typeTextarea?:boolean
 }
 
-
 export const InputComponent = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,typeTextarea=false}: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [value, setValue] = useState('');
-    const ref = useRef(null);
-    let onChangeTextarea =(event:any)=>{
-        console.log('s')
-        setValue(event.target.value);
-    }
+    let [valueInput,setValue] = useState('')
     function validateTextField(value?: string) {
-        !value
+        !valueInput
             ? setError(true)
             : setError(false)
     }
-
+    let onChangeValue=(event:any)=>{
+        setValue(event.target.value)
+    }
     return (
+        <>
         <div className={`${style.inputWrap}`}>
-            <Field as={typeTextarea ? CustomTextarea : ''} className={
+            <Field className={
                 `${error && touched?.[nameField]
                 ? `${style.inputStyle} ${style.inputStyleError}`
-                : style.inputStyle}`+" "+`${typeTextarea ? style.textarea : ''}`
+                : style.inputStyle}`
                 }
+                   onChange={onChangeValue}
                    type={type}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
+                   value={valueInput}
             />
-            {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
-        </div>
 
+        </div>
+            {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
+        </>
     );
 };
-
-let CustomTextarea=(props:any)=>{
-
-    return <textarea {...props} />
-}
 
