@@ -1,0 +1,11 @@
+.selectedNewsContainer{
+
+}
+.selectedNewsHeader{
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 55px;
+    margin-bottom: 24px;
+}

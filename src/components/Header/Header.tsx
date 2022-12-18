@@ -12,7 +12,7 @@ import searchIconPurple  from '../../assets/icons/search-purple.svg'
 type headerPropsType={
     subMenu?:boolean
 }
-    export const Header:FC<headerPropsType> = ({subMenu=true}) => {
+    export const Header:FC<headerPropsType> = ({subMenu=false}) => {
     return (
         <header className={subMenu? style.subMenu:style.header}>
             <div className={style.wrap}>

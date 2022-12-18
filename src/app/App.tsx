@@ -6,18 +6,20 @@ import React from "react";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
+import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
 
 
 function App() {
   return (
     <div className="App">
-        <RegistrationPage/>
-        <LoginPage/>
+        {/*<RegistrationPage/>*/}
+        {/*<LoginPage/>*/}
         <div className='wrapper'>
-            <Header/>
+            <Header subMenu={true}/>
             <div className='contentWrap'>
-                <FullNews />
-                <NewsPage />
+                {/*<FullNews />*/}
+                {/*<NewsPage />*/}
+                <SelectedNews/>
             </div>
 
             <Footer/>
