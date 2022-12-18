@@ -1,4 +1,4 @@
-import style from './FullNews.module.css'
+
 import {NewsItem} from "../NewsItem/NewsItem";
 import {Comment} from "../Comment/Comment";
 export const FullNews = () => {

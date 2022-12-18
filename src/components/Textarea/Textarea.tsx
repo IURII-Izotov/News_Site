@@ -1,6 +1,6 @@
-import style from './Input.module.css'
-import {Field} from 'formik';
-import {useRef, useState} from "react";
+import style from './Textarea.module.css'
+import { useState} from "react";
+import {Field} from "formik";
 type initialValuesFormType = {
     [key: string]: boolean
 }
@@ -12,18 +12,12 @@ type InputPropsType = {
     touched?: initialValuesFormType
     isSubmitting?:boolean
     placeholder?:string
-    typeTextarea?:boolean
 }
 
 
-export const InputComponent = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,typeTextarea=false}: InputPropsType) => {
+export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting }: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [value, setValue] = useState('');
-    const ref = useRef(null);
-    let onChangeTextarea =(event:any)=>{
-        console.log('s')
-        setValue(event.target.value);
-    }
+
     function validateTextField(value?: string) {
         !value
             ? setError(true)
@@ -32,12 +26,9 @@ export const InputComponent = ({type, nameField,placeholder,notification, errors
 
     return (
         <div className={`${style.inputWrap}`}>
-            <Field as={typeTextarea ? CustomTextarea : ''} className={
-                `${error && touched?.[nameField]
+            <Field  as={CustomTextarea} className={error && touched?.[nameField]
                 ? `${style.inputStyle} ${style.inputStyleError}`
-                : style.inputStyle}`+" "+`${typeTextarea ? style.textarea : ''}`
-                }
-                   type={type}
+                : style.inputStyle}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
@@ -47,9 +38,9 @@ export const InputComponent = ({type, nameField,placeholder,notification, errors
 
     );
 };
-
 let CustomTextarea=(props:any)=>{
-
-    return <textarea {...props} />
+   return <textarea placeholder={props.placeholder} {...props}/>
 }
+
+
 

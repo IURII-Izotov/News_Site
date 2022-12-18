@@ -37,6 +37,8 @@
 .commentInput{
     margin-right: 25px;
     width: 346px;
+    min-height: 39px;
+    max-height: 100%;
 }
 .commentButton {
     font-family: Ubuntu;
