@@ -5,6 +5,7 @@ import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 import React from "react";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {Footer} from "../components/Footer/Footer";
+import {NewsPage} from "../pages/NewsPage/NewsPage";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
             <Header/>
             <div className='contentWrap'>
                 <FullNews />
-                {/*<NewsPage />*/}
+                <NewsPage />
             </div>
 
             <Footer/>
