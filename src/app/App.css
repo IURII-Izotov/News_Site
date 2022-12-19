@@ -28,6 +28,9 @@
     width: 100%;
 }
 .inputContainer{
+    display: flex;
+    flex-direction: row;
+    position: relative;
     width: 100%;
     max-width: 231px;
     min-height: 39px;

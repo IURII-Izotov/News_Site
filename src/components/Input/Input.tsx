@@ -28,7 +28,7 @@ export const InputComponent = ({type, nameField,placeholder,notification, errors
     }
     return (
 
-        <div className={`${style.inputWrap}`}>
+        <div className={`${ style.inputWrap}`}>
             <Field className={
                 `${error && touched?.[nameField]
                 ? `${style.inputStyle} ${style.inputStyleError}`

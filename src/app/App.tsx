@@ -18,7 +18,7 @@ function App() {
         <div className='wrapper'>
             <Header subMenu={true}/>
             <div className='contentWrap'>
-                <FullNews />
+                {/*<FullNews />*/}
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
                 <PersonalData/>
