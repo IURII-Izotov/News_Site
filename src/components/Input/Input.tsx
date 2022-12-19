@@ -27,12 +27,12 @@ export const InputComponent = ({type, nameField,placeholder,notification, errors
         setValue(event.target.value)
     }
     return (
-        <>
+
         <div className={`${style.inputWrap}`}>
             <Field className={
                 `${error && touched?.[nameField]
                 ? `${style.inputStyle} ${style.inputStyleError}`
-                : style.inputStyle}`
+                : style.inputStyle }`
                 }
                    onChange={onChangeValue}
                    type={type}
@@ -41,10 +41,9 @@ export const InputComponent = ({type, nameField,placeholder,notification, errors
                    placeholder={placeholder}
                    value={valueInput}
             />
-
         </div>
-            {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
-        </>
+
+
     );
 };
 

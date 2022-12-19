@@ -47,9 +47,13 @@ export const RegistrationForm = () => {
                         </div>
                         <div className="formFieldWrap">
                             <label htmlFor="password">Пароль</label>
-                            <div className="inputContainer">
-                                <InputComponent type="password" nameField="password" notification="Лимит на символы" errors={errors} touched ={touched}/>
+                            <div className="formFieldWrapNotification">
+                                <div className="inputContainer">
+                                    <InputComponent type="password" nameField="password" notification="Лимит на символы" errors={errors} touched ={touched}/>
+                                </div>
+                                <span className={style.subSpan}>Лимит на символы</span>
                             </div>
+
                         </div>
                         <div className="formFieldWrap">
                             <label htmlFor="password2">Подтверждение пароля</label>

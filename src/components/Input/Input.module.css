@@ -30,7 +30,13 @@ label{
     line-height: 18px;
     align-self: center;
 }
-.subSpan{
-    font-size: 12px;
-    color: #5A5A5A;
+
+.inputContainer{
+   height: 100%;
+}
+.inputWrapNotification{
+    height: content-box;
+}
+.inputStyleNotification{
+    height: 39px;
 }
