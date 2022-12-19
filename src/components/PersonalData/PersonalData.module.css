@@ -2,8 +2,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    width: 527px;
-    height: 496px;
+    width: max-content;
+    height: max-content;
     padding-right: 59px;
     padding-left: 39px;
     padding-top: 24px;
@@ -48,6 +48,6 @@
     color:#2D4EC2;
 }
 .inputContainer{
-    width: 100%;
-    max-width: 231px;
+    /*width: 100%;*/
+    /*max-width: 231px;*/
 }

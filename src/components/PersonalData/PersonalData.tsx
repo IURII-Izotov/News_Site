@@ -26,7 +26,7 @@ export const PersonalData = () => {
                     <Form className={style.formWrap}>
                         <div className="formFieldWrap">
                             <label htmlFor="last_name">Фамилия</label>
-                            <div className="inputContainer">
+                            <div className={style.inputContainer}>
                                 <InputComponent type="text" nameField="last_name" errors={errors} touched ={touched} isSubmitting={isSubmitting} />
                             </div>
                         </div>

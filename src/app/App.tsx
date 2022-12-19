@@ -7,19 +7,21 @@ import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
+import {PersonalData} from "../components/PersonalData/PersonalData";
 
 
 function App() {
   return (
     <div className="App">
-        {/*<RegistrationPage/>*/}
-        {/*<LoginPage/>*/}
+        <RegistrationPage/>
+        <LoginPage/>
         <div className='wrapper'>
             <Header subMenu={true}/>
             <div className='contentWrap'>
                 {/*<FullNews />*/}
                 {/*<NewsPage />*/}
-                <SelectedNews/>
+                {/*<SelectedNews/>*/}
+                <PersonalData/>
             </div>
 
             <Footer/>

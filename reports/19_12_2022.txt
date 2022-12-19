@@ -1,0 +1,9 @@
+yesterday:
+-Верстка textarea
+-Верстка header в цвете purple
+-Начало верстки компонента PersonalData
+today:
+-Продолжить верстку компонента PersonalData
+-Сверстать компонент Add News(Добавления новости)
+problems:
+-нет
