@@ -43,10 +43,9 @@ export const PersonalData = () => {
                             </div>
                         </div>
                         <div className={style.buttonContainer}>
-                            <Button type="submit" text="Регистрация" disabled={isSubmitting}/>
+                            <Button bigButton={true} type="submit" text="Сохранить" disabled={isSubmitting}/>
                         </div>
                     </Form>
-                    <span className={style.textLogin}>Уже есть логин? <a href='#'>Войти</a></span>
                 </div>
             )}
         </Formik>

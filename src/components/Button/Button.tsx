@@ -5,10 +5,11 @@ type buttonPropsType={
     type:buttonType
     disabled?:boolean
     text:string
+    bigButton?:boolean
 }
 export const Button = (props:buttonPropsType) => {
     return (
-        <button className={style.button} type={props.type} disabled={props.disabled} >
+        <button className={props.bigButton ? `${style.button} bigButton` : style.button} type={props.type} disabled={props.disabled} >
             {props.text}
         </button>
     );
