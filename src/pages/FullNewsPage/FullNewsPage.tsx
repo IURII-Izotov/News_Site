@@ -1,7 +1,7 @@
 
-import {NewsItem} from "../NewsItem/NewsItem";
-import {Comment} from "../Comment/Comment";
-export const FullNews = () => {
+import {NewsItem} from "../../components/NewsItem/NewsItem";
+import {Comment} from "../../components/Comment/Comment";
+export const FullNewsPage = () => {
     return (
         <>
         <NewsItem fullItem={true}/>

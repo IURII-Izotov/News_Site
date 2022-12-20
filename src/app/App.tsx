@@ -1,6 +1,6 @@
 import './App.css';
 import {Header} from "../components/Header/Header";
-import {FullNews} from "../components/FullNews/FullNews";
+import {FullNewsPage} from "../pages/FullNewsPage/FullNewsPage";
 import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 import React from "react";
 import {LoginPage} from "../pages/LoginPage/LoginPage";
@@ -20,10 +20,10 @@ function App() {
         <div className='wrapper'>
             <Header subMenu={true}/>
             <div className='contentWrap'>
-                {/*<FullNews />*/}
+                <FullNewsPage />
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
-                <PersonalPage/>
+                {/*<PersonalPage/>*/}
                 <PopUpAddNews/>
             </div>
 

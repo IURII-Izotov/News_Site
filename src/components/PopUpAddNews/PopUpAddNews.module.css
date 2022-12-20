@@ -65,7 +65,13 @@
 }
 .inputContainer{
     width: 100%;
-    max-width: 231px;
+    max-width: 263px;
+    height: 35px;
+}
+.textareaContainer{
+    width: 100%;
+    max-width: 263px;
+    height: 95px;
 }
 .buttonContainer{
     width: 100%;

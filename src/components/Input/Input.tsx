@@ -1,6 +1,8 @@
 import style from './Input.module.css'
 import {Field} from 'formik';
 import {useState} from "react";
+
+
 type initialValuesFormType = {
     [key: string]: boolean
 }
@@ -10,40 +12,40 @@ type InputPropsType = {
     notification?: string
     errors?: {}
     touched?: initialValuesFormType
-    isSubmitting?:boolean
-    placeholder?:string
-    typeTextarea?:boolean
+    isSubmitting?: boolean
+    placeholder?: string
+    typeTextarea?: boolean
+    options?: string[]
 }
 
-export const InputComponent = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,typeTextarea=false}: InputPropsType) => {
+export const InputComponent = ({type, nameField, placeholder, notification, errors, touched, isSubmitting, typeTextarea = false, options}: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [valueInput,setValue] = useState('')
+    let [valueInput, setValue] = useState('')
+
     function validateTextField(value?: string) {
         !valueInput
             ? setError(true)
             : setError(false)
     }
-    let onChangeValue=(event:any)=>{
+
+    let onChangeValue = (event: any) => {
         setValue(event.target.value)
     }
     return (
-
-        <div className={`${ style.inputWrap}`}>
-            <Field className={
-                `${error && touched?.[nameField]
-                ? `${style.inputStyle} ${style.inputStyleError}`
-                : style.inputStyle }`
+            <div className={`${style.inputWrap}`}>
+                <Field className={
+                    `${error && touched?.[nameField]
+                        ? `${style.inputStyle} ${style.inputStyleError}`
+                        : style.inputStyle}`
                 }
-                   onChange={onChangeValue}
-                   type={type}
-                   name={nameField}
-                   validate={validateTextField}
-                   placeholder={placeholder}
-                   value={valueInput}
-            />
-        </div>
-
-
+                       onChange={onChangeValue}
+                       type={type}
+                       name={nameField}
+                       validate={validateTextField}
+                       placeholder={placeholder}
+                       value={valueInput}
+                />
+            </div>
     );
 };
 

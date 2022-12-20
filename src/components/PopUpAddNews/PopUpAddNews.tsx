@@ -3,9 +3,17 @@ import {Form, Formik} from "formik";
 import logo from "../../assets/img/logo-purple.svg";
 import {InputComponent} from "../Input/Input";
 import {Button} from "../Button/Button";
+import {Textarea} from "../Textarea/Textarea";
+import {Select} from "../Select/Select";
 
 
 export const PopUpAddNews = () => {
+    let arrOptions=[
+        'Спорт',
+        'Кулинария',
+        'Автомобили'
+    ]
+
     return (
         <Formik
             initialValues={
@@ -23,18 +31,29 @@ export const PopUpAddNews = () => {
         >
             {({ isSubmitting,errors,touched }) => (
                 <div className={style.formContainer}>
-                    <img className={style.logo} src={logo} alt=""/>
                     <Form className={style.formWrap}>
                         <div className='formFieldWrap'>
-                            <label htmlFor="nickname">Никнейм</label>
-                            <div className='inputContainer'>
-                                <InputComponent type="text" nameField="nickname"  errors={errors} touched ={touched}/>
+                            <label htmlFor="header">Заголовок</label>
+                            <div className={style.inputContainer}>
+                                <InputComponent type="text" nameField="header"  errors={errors} touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
-                            <label htmlFor="password">Пароль</label>
-                            <div className='inputContainer'>
-                                <InputComponent type="password" nameField="password" errors={errors} touched ={touched}/>
+                            <label htmlFor="description">Краткое описание</label>
+                            <div className={style.inputContainer}>
+                                <InputComponent type="text" nameField="description" errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className='formFieldWrap'>
+                            <label htmlFor="description">Краткое описание</label>
+                            <div className={style.textareaContainer}>
+                                <Textarea type="text" nameField="description" errors={errors} touched ={touched}/>
+                            </div>
+                        </div>
+                        <div className='formFieldWrap'>
+                            <label htmlFor="category">Выбрать категорию</label>
+                            <div className={style.inputContainer}>
+                                <Select options={arrOptions} />
                             </div>
                         </div>
                         <div className={style.buttonContainer}>

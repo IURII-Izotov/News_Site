@@ -1,0 +1,41 @@
+.selectWrap{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 263px;
+    height: 100%;
+    max-height: 39px;
+}
+
+.select {
+    box-sizing: border-box;
+    width: auto;
+    height: inherit;
+    border: 1px solid #E4DFDC;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 18px;
+}
+.inputStyleError {
+    border: 1px solid #ff3131;
+}
+input.inputStyle:focus {
+    border: 1.5px solid #7b7a7a;
+}
+label{
+    font-family: 'Ubuntu';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    align-self: center;
+}
+
+.inputContainer{
+   height: 100%;
+}
+.inputWrapNotification{
+    height: content-box;
+}
+.inputStyleNotification{
+    height: 39px;
+}
