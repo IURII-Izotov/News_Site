@@ -7,7 +7,6 @@ import {NewsItem} from "../../components/NewsItem/NewsItem";
 
 export const PersonalPage = () => {
     return (
-
             <div className={style.pageContainer}>
                 <PersonalData/>
                 <div className={style.headerWrapper}>
@@ -16,13 +15,13 @@ export const PersonalPage = () => {
                         <Button type={'button'} text={'Новая публикация'} />
                     </div>
                 </div>
-                <NewsItem/>
-                <NewsItem/>
-                <NewsItem/>
-                <NewsItem/>
-                <NewsItem/>
-                <NewsItem/>
-                <NewsItem/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
+                <NewsItem selfPublication={true}/>
             </div>
 
 
