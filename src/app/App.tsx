@@ -9,6 +9,7 @@ import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
 import {PersonalData} from "../components/PersonalData/PersonalData";
 import {PersonalPage} from "../pages/PersonalPage/PersonalPage";
+import {PopUpAddNews} from "../components/PopUpAddNews/PopUpAddNews";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
                 <PersonalPage/>
+                <PopUpAddNews/>
             </div>
 
             <Footer/>
