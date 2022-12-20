@@ -42,19 +42,7 @@
 .textLogin>a{
     color:#2D4EC2;
 }
-.img{
-    margin-left: 8px;
-}
-.button{
-    background-color: transparent;
-    border: transparent;
-    cursor: pointer;
-    font-family: 'Ubuntu';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-}
+
 .avatarContainer{
     display: flex;
     justify-content: center;

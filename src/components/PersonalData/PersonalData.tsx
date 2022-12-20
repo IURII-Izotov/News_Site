@@ -6,6 +6,7 @@ import download from "../../assets/icons/download.svg"
 import trash from "../../assets/icons/trash.svg"
 import image from "../../assets/icons/image.svg"
 import edit from "../../assets/icons/edit.svg"
+import {ButtonIcon} from "../Button/ButtonIcon/ButtonIcon";
 
 export const PersonalData = () => {
     return (
@@ -33,8 +34,8 @@ export const PersonalData = () => {
                             </div>
 
                             <div className={style.avatarMenu}>
-                                <button type={"button"} className={style.button}>Добавить фото<img className={style.img} src={download} alt=""/></button>
-                                <button type={"button"} className={style.button}>Удалить<img className={style.img} src={trash} alt=""/></button>
+                                <ButtonIcon type={"button"} text={'Добавить фото'} icon={download}/>
+                                <ButtonIcon type={"button"} text={'Удалить'} icon={trash} />
                             </div>
                         </div>
 

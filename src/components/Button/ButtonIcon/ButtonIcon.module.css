@@ -1,0 +1,19 @@
+.img{
+    margin-left: 8px;
+}
+.button{
+    background-color: transparent;
+    border: transparent;
+    cursor: pointer;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.fullButton{
+    padding: 8px 15px;
+    border: 1px solid #DEDCE4;
+    border-radius: 5px;
+    background: #FFFFFF;
+}
