@@ -1,0 +1,14 @@
+.pageContainer{
+
+}
+.headerWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 70px;
+    margin-bottom: 48px;
+}
+.buttonContainer{
+    width: 100%;
+    max-width: 191px;
+}

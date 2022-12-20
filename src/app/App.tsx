@@ -8,6 +8,7 @@ import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
 import {PersonalData} from "../components/PersonalData/PersonalData";
+import {PersonalPage} from "../pages/PersonalPage/PersonalPage";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                 {/*<FullNews />*/}
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
-                <PersonalData/>
+                <PersonalPage/>
             </div>
 
             <Footer/>
