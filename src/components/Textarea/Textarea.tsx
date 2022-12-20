@@ -28,8 +28,10 @@ export const Textarea = ({type, nameField,placeholder,notification, errors,touch
             el.style.height = el.style.height;
         }
         if(el){
+            el.style.paddingTop = "7px";
+            el.style.lineHeight = "150%";
+            el.style.height = el.scrollHeight - 24 + 'px';
 
-            el.style.height = el.scrollHeight - 0 + 'px';
         }
 
     }

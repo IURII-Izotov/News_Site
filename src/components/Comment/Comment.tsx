@@ -49,6 +49,7 @@ export const Comment: FC<commentProps> = ({isReplay = false}) => {
                                 : <>
                                     <Textarea type="text" nameField="text" placeholder='Напишите комментарий'
                                               errors={errors} touched={touched}/>
+
                                     <button className={`bigButton ${style.commentButton}`} type="submit"
                                             disabled={isSubmitting}>
                                         Ответить

@@ -61,7 +61,7 @@
 .formComment{
     display: flex;
     flex-direction: row;
-    height: max-content;
+    height: min-content;
 }
 .labelStyle{
     font-family: 'Ubuntu';
