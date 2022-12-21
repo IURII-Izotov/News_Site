@@ -6,10 +6,11 @@ type buttonPropsType={
     disabled?:boolean
     text:string
     bigButton?:boolean
+    onClickHandler?:any
 }
 export const Button = (props:buttonPropsType) => {
     return (
-        <button className={props.bigButton ? `${style.button} bigButton` : style.button} type={props.type} disabled={props.disabled} >
+        <button onClick={()=>props.onClickHandler(true)} className={props.bigButton ? `${style.button} bigButton` : style.button} type={props.type} disabled={props.disabled} >
             {props.text}
         </button>
     );

@@ -7,9 +7,13 @@ import {Button} from "../../Button/Button";
 import {Textarea} from "../../Textarea/Textarea";
 import {Select} from "../../Select/Select";
 import {ButtonIcon} from "../../Button/ButtonIcon/ButtonIcon";
+import {FC} from "react";
 
+type AddNewsType={
+    setActive:any
+}
 
-export const AddNews = () => {
+export const AddNews:FC<AddNewsType> = ({setActive}) => {
     let arrOptions=[
         'Спорт',
         'Кулинария',
@@ -32,9 +36,9 @@ export const AddNews = () => {
             }}
         >
             {({ isSubmitting,errors,touched }) => (
-                <div className={style.formContainer}>
+                <div className={style.formContainer} onClick={(e)=>e.stopPropagation()}>
+                    <img onClick={()=>setActive(false)} className={style.closeButton} src={closeButton} alt=""/>
                     <Form className={style.formWrap}>
-                        <img className={style.closeButton} src={closeButton} alt=""/>
                         <div className='formFieldWrap'>
                             <span >Обложка новости</span>
                             <div className={style.btnDownloadWrap}>

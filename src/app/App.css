@@ -1,5 +1,7 @@
 @import '../Normalize.css';
-
+.App{
+    position: relative;
+}
 .wrapper{
     margin: 0 auto;
     max-width: 1440px;

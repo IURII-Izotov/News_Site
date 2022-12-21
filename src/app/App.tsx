@@ -15,8 +15,8 @@ import {AddNews} from "../components/PopUpAddNews/AddNews/AddNews";
 function App() {
   return (
     <div className="App">
-        <RegistrationPage/>
-        <LoginPage/>
+        {/*<RegistrationPage/>*/}
+        {/*<LoginPage/>*/}
         <div className='wrapper'>
             <Header subMenu={true}/>
             <div className='contentWrap'>
@@ -24,7 +24,7 @@ function App() {
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
                 <PersonalPage/>
-                <AddNews/>
+                {/*<AddNews/>*/}
             </div>
 
             <Footer/>
