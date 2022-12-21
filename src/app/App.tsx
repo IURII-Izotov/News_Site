@@ -10,28 +10,28 @@ import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
 import {PersonalData} from "../components/PersonalData/PersonalData";
 import {PersonalPage} from "../pages/PersonalPage/PersonalPage";
 import {AddNews} from "../components/PopUpAddNews/AddNews/AddNews";
-
+import {
+    Routes,
+    Route,
+} from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-        {/*<RegistrationPage/>*/}
-        {/*<LoginPage/>*/}
-        <div className='wrapper'>
-            <Header subMenu={true}/>
-            <div className='contentWrap'>
-                {/*<FullNewsPage />*/}
-                {/*<NewsPage />*/}
-                {/*<SelectedNews/>*/}
-                <PersonalPage/>
-                {/*<AddNews/>*/}
+    return (
+        <div className="App">
+            <div className='wrapper'>
+                <Header subMenu={true}/>
+                <div className='contentWrap'>
+                    <Routes>
+                        <Route path="/" element={<NewsPage/>}/>
+                        <Route path="/fullnews" element={<FullNewsPage/>}/>
+                        <Route path="/selected" element={<SelectedNews/>}/>
+                    </Routes>
+                </div>
+                <Footer/>
             </div>
 
-            <Footer/>
         </div>
-
-    </div>
-  );
+    );
 }
 
 export default App;
