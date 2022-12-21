@@ -3,6 +3,7 @@ import React from "react";
 import {Button} from "../../components/Button/Button";
 import {PersonalData} from "../../components/PersonalData/PersonalData";
 import {NewsItem} from "../../components/NewsItem/NewsItem";
+import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 
 
 export const PersonalPage = () => {
@@ -14,7 +15,9 @@ export const PersonalPage = () => {
                     <div className={style.buttonContainer}>
                         <Button type={'button'} text={'Новая публикация'} />
                     </div>
+
                 </div>
+                <PopUpAddNews/>
                 <NewsItem selfPublication={true}/>
                 <NewsItem selfPublication={true}/>
                 <NewsItem selfPublication={true}/>

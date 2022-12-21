@@ -9,7 +9,7 @@ import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
 import {PersonalData} from "../components/PersonalData/PersonalData";
 import {PersonalPage} from "../pages/PersonalPage/PersonalPage";
-import {PopUpAddNews} from "../components/PopUpAddNews/PopUpAddNews";
+import {AddNews} from "../components/PopUpAddNews/AddNews/AddNews";
 
 
 function App() {
@@ -20,11 +20,11 @@ function App() {
         <div className='wrapper'>
             <Header subMenu={true}/>
             <div className='contentWrap'>
-                <FullNewsPage />
+                {/*<FullNewsPage />*/}
                 {/*<NewsPage />*/}
                 {/*<SelectedNews/>*/}
-                {/*<PersonalPage/>*/}
-                <PopUpAddNews/>
+                <PersonalPage/>
+                <AddNews/>
             </div>
 
             <Footer/>
