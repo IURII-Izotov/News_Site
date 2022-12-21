@@ -1,10 +1,11 @@
 import style from './PopUpAddNews.module.css'
 import {Form, Formik} from "formik";
-import logo from "../../assets/img/logo-purple.svg";
+import download from "../../assets/icons/download.svg";
 import {InputComponent} from "../Input/Input";
 import {Button} from "../Button/Button";
 import {Textarea} from "../Textarea/Textarea";
 import {Select} from "../Select/Select";
+import {ButtonIcon} from "../Button/ButtonIcon/ButtonIcon";
 
 
 export const PopUpAddNews = () => {
@@ -33,6 +34,13 @@ export const PopUpAddNews = () => {
                 <div className={style.formContainer}>
                     <Form className={style.formWrap}>
                         <div className='formFieldWrap'>
+                            <span >Обложка новости</span>
+                            <div className={style.btnDownloadWrap}>
+                                <ButtonIcon text={'Загрузить'} type={'button'} icon={download} isFullButton={true}/>
+                            </div>
+
+                        </div>
+                        <div className='formFieldWrap'>
                             <label htmlFor="header">Заголовок</label>
                             <div className={style.inputContainer}>
                                 <InputComponent type="text" nameField="header"  errors={errors} touched ={touched}/>
@@ -45,9 +53,9 @@ export const PopUpAddNews = () => {
                             </div>
                         </div>
                         <div className='formFieldWrap'>
-                            <label htmlFor="description">Краткое описание</label>
+                            <label htmlFor="text">Текст новости</label>
                             <div className={style.textareaContainer}>
-                                <Textarea type="text" nameField="description" errors={errors} touched ={touched}/>
+                                <Textarea type="text" nameField="text" isChangeHeight={false} errors={errors} touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>

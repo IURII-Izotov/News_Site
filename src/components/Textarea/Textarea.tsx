@@ -13,16 +13,18 @@ type InputPropsType = {
     isSubmitting?:boolean
     placeholder?:string
     isReplay?:boolean
+    isChangeHeight?:boolean
 }
 
 
-export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,isReplay=false }: InputPropsType) => {
+export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,isReplay=false,isChangeHeight=true }: InputPropsType) => {
     let [error, setError] = useState(false);
     let [value, setValue] = useState('');
     const ref = useRef<any>();
 
     let onChangeTextarea =(event:any)=>{
         setValue(event.target.value);
+
         let el=ref.current;
         if(!value){
             el.style.height = el.style.height;
@@ -34,6 +36,12 @@ export const Textarea = ({type, nameField,placeholder,notification, errors,touch
 
         }
 
+    }
+    let onChangeValueTextArea = (event:any)=>{
+        setValue(event.target.value);
+        let el=ref.current;
+        el.style.paddingTop = "7px";
+        el.style.lineHeight = "150%";
     }
     function validateTextField(value?: string) {
         !value
@@ -50,7 +58,7 @@ export const Textarea = ({type, nameField,placeholder,notification, errors,touch
                   ? `${style.textarea} ${style.inputStyleError}`
                   : `${style.textarea}`}`
             }
-                   onChange={onChangeTextarea}
+                   onChange={!isChangeHeight? onChangeValueTextArea:onChangeTextarea}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
