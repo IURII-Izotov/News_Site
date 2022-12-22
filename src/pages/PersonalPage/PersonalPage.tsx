@@ -9,9 +9,17 @@ import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 export const PersonalPage = () => {
     let [active,setActive] = useState(false);
     if (active){
-        document.body.style.overflowY = "hidden";
+        document.body.style.position ="sticky"
+        // document.body.style ="position: sticky;margin: 0 auto;height: 100vh;width: 100%;top: 0;"
+        // document.body.style ="position: sticky;margin: 0 auto;height: 100vh;width: 100%;top: 0;"
+        // document.body.style ="position: sticky;margin: 0 auto;height: 100vh;width: 100%;top: 0;"
+        // document.body.style.overflowY = "hidden";
+
     } else{
-        document.body.style.overflowY = "";
+        // document.body.style.overflowY = "";
+        // document.body.style.width = "";
+
+
     }
     return (
             <div className={style.pageContainer}>

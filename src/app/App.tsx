@@ -25,6 +25,7 @@ function App() {
                         <Route path="/" element={<NewsPage/>}/>
                         <Route path="/fullnews" element={<FullNewsPage/>}/>
                         <Route path="/selected" element={<SelectedNews/>}/>
+                        <Route path="/account" element={<PersonalPage/>}/>
                     </Routes>
                 </div>
                 <Footer/>

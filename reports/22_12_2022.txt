@@ -1,0 +1,7 @@
+yesterday:
+-Доделать Pop Up Add News
+-Настроить роутинг
+today:
+-Настроить redux toolkit
+problems:
+-нет
