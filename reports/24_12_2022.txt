@@ -1,0 +1,7 @@
+yesterday:
+-Настроить redux toolkit
+-Настройка получения данных из api
+today:
+-Продолжить настройку redux toolkit
+problems:
+-нет
