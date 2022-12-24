@@ -14,8 +14,12 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import {newsApi} from "../api/newsApi";
 
 function App() {
+    console.log(newsApi.getPostList().then((res)=>{
+        console.log(res.data);
+    }))
     return (
         <div className="App">
             <div className='wrapper'>

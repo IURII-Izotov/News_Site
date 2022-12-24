@@ -2,7 +2,6 @@ import axios from "axios";
 
 //API
 const settings ={
-    withCredentials:true,
     headers: {
         "Authorization": "Token 4636db43fb079c6778743830cccdb72bfe1aebae",
     }
@@ -10,9 +9,10 @@ const settings ={
 const instance=axios.create({
     baseURL:'https://megalab.pythonanywhere.com/',
     ...settings
+
 })
 
-export const todolistsApi={
+export const newsApi={
     getUserData(){
        return  instance.get('user')
     },
@@ -39,5 +39,11 @@ export const todolistsApi={
     },
     getLike(){
         return  instance.get('like')
-    }
+    },
+    createComment(id:number,commentText:string){
+        return  instance.post(`comment`,{post:id,text:commentText})
+    },
+    createReplyComment(id:number,commentText:string,parent:number){
+        return  instance.post(`comment`,{post:id,text:commentText,parent})
+    },
 }

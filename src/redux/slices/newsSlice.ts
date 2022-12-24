@@ -1,20 +1,21 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 interface Interface {
 
 }
 
-const initialState:Interface={
 
-}
+
+const initialState:Interface=[];
 
 export const newsSlice=createSlice({
     name:'news',
     initialState,
     reducers:{
-
+        setNewsArr(state,action){
+           return state
+        },
     }
 })
-export const {}=newsSlice.actions
+export const {setNewsArr}=newsSlice.actions
 
-export default newsSlice.reducer
