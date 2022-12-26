@@ -20,6 +20,7 @@ export const newsApi={
         return instance.post('post',{title,text,image,tag})
     },
     getPostList(){
+        console.log(111)
         return  instance.get('post')
     },
     getPostDetail(id:number){

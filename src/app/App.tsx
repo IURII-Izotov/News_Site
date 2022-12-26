@@ -17,9 +17,9 @@ import {
 import {newsApi} from "../api/newsApi";
 
 function App() {
-    console.log(newsApi.getPostList().then((res)=>{
-        console.log(res.data);
-    }))
+    // console.log(newsApi.getPostList().then((res)=>{
+    //     console.log(res.data);
+    // }))
     return (
         <div className="App">
             <div className='wrapper'>

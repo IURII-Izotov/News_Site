@@ -8,17 +8,21 @@ import {
 } from "react-router-dom";
 import {RegistrationPage} from "./pages/RegistrationPage/RegistrationPage";
 import {LoginPage} from "./pages/LoginPage/LoginPage";
+import {store} from './redux/store'
+import {Provider} from "react-redux";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
     <BrowserRouter>
+        <Provider store={store}>
         <Routes>
             <Route path="/registration" element={<RegistrationPage/>}/>
             <Route path="/login" element={<LoginPage/>}/>
+
             <Route path="/*" element={<App />}/>
         </Routes>
-
+        </Provider>
     </BrowserRouter>
 
 );
