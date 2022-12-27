@@ -1,29 +1,26 @@
 import style from './NewsPage.module.css'
-import React, {useEffect} from "react";
+
 import {NewsItem} from "../../components/NewsItem/NewsItem";
-import {FilterList} from "../../components/FilterList/FilterList";
-import {useSelector} from "react-redux";
-import {fetchNews} from "../../redux/slices/newsSlice";
+
+import {useGetNewsQuery} from '../../api/newsApi'
+import {useEffect} from "react";
 
 export const NewsPage = () => {
+    let {data}=useGetNewsQuery('');
     useEffect(()=>{
-        fetchNews();
-    },[])
-
-    const {items,status} = useSelector((state:any) => state.news)
-    console.log(items);
+        console.log(data);
+    },[data])
     return (
         <>
             <div className={style.wrapper}>
                 {/*<FilterList/>*/}
                 <div className={style.newsContentWrap}>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
-                    <NewsItem/>
+                    {
+                        data?.map((item)=>{
+                            return <NewsItem key={item.id} data={item}/>
+                        })
+                    }
+
                 </div>
             </div>
 

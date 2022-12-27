@@ -1,25 +1,21 @@
 import './App.css';
 import {Header} from "../components/Header/Header";
 import {FullNewsPage} from "../pages/FullNewsPage/FullNewsPage";
-import {RegistrationPage} from "../pages/RegistrationPage/RegistrationPage";
 import React from "react";
-import {LoginPage} from "../pages/LoginPage/LoginPage";
 import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
-import {PersonalData} from "../components/PersonalData/PersonalData";
 import {PersonalPage} from "../pages/PersonalPage/PersonalPage";
-import {AddNews} from "../components/PopUpAddNews/AddNews/AddNews";
+
 import {
     Routes,
     Route,
 } from "react-router-dom";
-import {newsApi} from "../api/newsApi";
+import {store} from "../redux/store";
+
 
 function App() {
-    // console.log(newsApi.getPostList().then((res)=>{
-    //     console.log(res.data);
-    // }))
+console.log(store.getState())
     return (
         <div className="App">
             <div className='wrapper'>

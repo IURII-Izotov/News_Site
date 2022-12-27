@@ -1,19 +1,10 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {newsApi} from "../../api/newsApi";
-
+import {useDispatch} from "react-redux";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 interface Interface {
     items:any[]
     status:string
 }
-
-export const fetchNews = createAsyncThunk(
-    'news/fetchNews',async (params,thunkAPI)=>{
-
-        const {data} = await newsApi.getPostList();
-        console.log(data)
-        setNewsArr(data);
-    }
-)
 
 const initialState:Interface={
     items:[],
@@ -25,6 +16,7 @@ export const newsSlice=createSlice({
     initialState,
     reducers:{
         setNewsArr(state,action){
+            console.log(action.payload)
             state.items = action.payload;
         },
     }
