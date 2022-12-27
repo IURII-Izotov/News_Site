@@ -1,5 +1,5 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {fetchNewsApi} from "../api/newsApi";
+import {fetchNewsApi} from "../api/news.api";
 
 
 export const store = configureStore({

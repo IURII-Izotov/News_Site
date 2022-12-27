@@ -6,7 +6,7 @@ export const FilterItem = (props:any) => {
 
     return (
             <label className={style.container}>{props.name}
-                <input type="checkbox" onClick={()=>setChecked(!checked)} checked={checked}/>
+                <input type="checkbox" onChange={()=>setChecked(!checked)} checked={checked}/>
                 <span className={style.checkmark}></span>
             </label>
 

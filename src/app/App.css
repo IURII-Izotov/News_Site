@@ -43,3 +43,6 @@
     width: 100%;
     max-width: 231px;
 }
+.noData{
+    height: 100vh;
+}

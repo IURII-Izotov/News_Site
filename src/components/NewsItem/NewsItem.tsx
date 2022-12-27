@@ -6,22 +6,23 @@ import heartRed from '../../assets/icons/heart-red.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
-import {baseUrl, NewsType} from "../../api/newsApi";
+import {baseUrl, FullNewsType, NewsType} from "../../api/news.api";
 import {Link} from "react-router-dom";
-
 
 type NewsItemType = {
     fullItem?: boolean
     selectedItems?: boolean
     selfPublication?: boolean
     data?: NewsType
+    fullData?:FullNewsType
 }
 export const NewsItem: FC<NewsItemType> = ({
                                                fullItem = false,
                                                selfPublication = false,
-                                               data
+                                               data,
+                                               fullData
                                            }) => {
-    let text = data?.text;
+    let text = fullData?.text;
     let firsSentence: string | undefined = '';
     let restText: string | undefined = ''
     if (fullItem) {
@@ -39,13 +40,10 @@ export const NewsItem: FC<NewsItemType> = ({
             <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
                 {
                     fullItem
-                        ? <>
-
-                            <div className={style.headerInfo}>
+                        ?   <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
-                                <img className={style.like} src={data?.is_liked ? heartRed : heart} alt="like"/>
+                                <img className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
                             </div>
-                        </>
                         : <div className={style.imgContainer}>
                             {
                                 data?.image
@@ -75,17 +73,25 @@ export const NewsItem: FC<NewsItemType> = ({
                     }
 
                     <div className={fullItem ? style.contentFullWrapper : style.mainContent}>
-                        <h2 className={style.headerNews}>{data?.title}</h2>
+
+
                         {
                             fullItem
                                 ? <>
+                                    <h2 className={style.headerNews}>{fullData?.title}</h2>
+
                                     <p className={style.textNews}>{firsSentence}</p>
                                     <img className={style.imgNewsFull}
                                          src={data?.image}
                                          alt="img news"/>
                                     <p className={style.textNews}>{restText}</p>
                                 </>
-                                : <p className={style.textNews}>{data?.short_desc}</p>
+
+                                : <>
+                                    <h2 className={style.headerNews}>{data?.title}</h2>
+                                    <p className={style.textNews}>{data?.short_desc}</p>
+                                </>
+
                         }
 
                         {

@@ -1,5 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 
+
 export const baseUrl='https://megalab.pythonanywhere.com/';
 export interface NewsType {
     id: number;
@@ -12,6 +13,33 @@ export interface NewsType {
     short_desc?: any;
     author: string;
 }
+export interface User {
+    id: number;
+    nickname: string;
+    name: string;
+    last_name: string;
+    profile_image?: any;
+}
+
+export interface Comment {
+    id: number;
+    user: User;
+    text: string;
+    child: any[];
+}
+
+export interface FullNewsType {
+    id: number;
+    tag: string;
+    title: string;
+    text: string;
+    image?: any;
+    is_liked: boolean;
+    comment?: Comment[];
+    short_desc?: any;
+    author: string;
+}
+
 export const fetchNewsApi = createApi({
     reducerPath: 'api/post',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
@@ -21,6 +49,9 @@ export const fetchNewsApi = createApi({
         getNews: builder.query<NewsType[], string>({
             query: (a:string) => `post`,
         }),
+        getFullNews: builder.query<FullNewsType, string>({
+            query: (id) => `post/${id}`,
+        })
     }),
 })
-export const {useGetNewsQuery}=fetchNewsApi
+export const {useGetNewsQuery,useGetFullNewsQuery}=fetchNewsApi
