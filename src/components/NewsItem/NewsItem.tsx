@@ -17,7 +17,6 @@ type NewsItemType = {
 }
 export const NewsItem: FC<NewsItemType> = ({
                                                fullItem = false,
-                                               selectedItems = false,
                                                selfPublication = false,
                                                data
                                            }) => {

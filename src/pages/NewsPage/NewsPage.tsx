@@ -6,7 +6,7 @@ import {useGetNewsQuery} from '../../api/newsApi'
 import {useEffect} from "react";
 
 export const NewsPage = () => {
-    let {data}=useGetNewsQuery('');
+    let {data,isLoading}=useGetNewsQuery('');
     useEffect(()=>{
         console.log(data);
     },[data])
@@ -15,10 +15,12 @@ export const NewsPage = () => {
             <div className={style.wrapper}>
                 {/*<FilterList/>*/}
                 <div className={style.newsContentWrap}>
-                    {
-                        data?.map((item)=>{
+                    {isLoading
+                        ? <div className={style.loadingBlock}>Loading...</div>
+                        : data?.map((item)=>{
                             return <NewsItem key={item.id} data={item}/>
                         })
+
                     }
 
                 </div>
