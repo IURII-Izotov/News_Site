@@ -5,6 +5,7 @@ import heart from '../../assets/icons/heart.svg'
 import heartRed from '../../assets/icons/heart-red.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
+import image from '../../assets/icons/image.svg'
 import {baseUrl, NewsType} from "../../api/newsApi";
 
 
@@ -46,9 +47,16 @@ export const NewsItem: FC<NewsItemType> = ({
                             </div>
                         </>
                         : <div className={style.imgContainer}>
-                            <img className={style.imgNews}
-                                 src={`${baseUrl}${data?.image}`}
-                                 alt="img news"/>
+                            {
+                                data?.image
+                                    ? <img className={style.imgNews}
+                                           src={`${baseUrl}${data?.image}`}
+                                           alt="img news"/>
+                                    : <div className={style.noImg}>
+                                        <img src={image} alt=""/>
+                                    </div>
+                            }
+
                         </div>
 
                 }
