@@ -1,5 +1,5 @@
 import style from './Header.module.css'
-import {FC} from "react";
+import {FC, useEffect, useState} from "react";
 import logo  from '../../assets/img/logo.svg'
 import burgerMenu  from '../../assets/icons/burger-menu.svg'
 import userIcon  from '../../assets/icons/user-icon.svg'
@@ -8,11 +8,18 @@ import logoPurple  from '../../assets/img/logo-purple.svg'
 import burgerMenuPurple  from '../../assets/icons/burger-menu-purple.svg'
 import userIconPurple  from '../../assets/icons/user-icon-purple.svg'
 import searchIconPurple  from '../../assets/icons/search-purple.svg'
+import {useLocation} from 'react-router-dom'
 
-type headerPropsType={
-    subMenu?:boolean
-}
-    export const Header:FC<headerPropsType> = ({subMenu=false}) => {
+    export const Header:FC = () => {
+    let [subMenu,setSubMenu] = useState(false)
+    let {pathname}=useLocation();
+    useEffect(()=>{
+        if(pathname === '/like' || pathname === '/user'){
+            setSubMenu(true)
+        }
+    },[])
+
+
     return (
         <header className={subMenu? style.subMenu:style.header}>
             <div className={style.wrap}>

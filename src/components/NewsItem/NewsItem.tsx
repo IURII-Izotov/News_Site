@@ -7,6 +7,7 @@ import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
 import {baseUrl, NewsType} from "../../api/newsApi";
+import {Link} from "react-router-dom";
 
 
 type NewsItemType = {
@@ -90,7 +91,8 @@ export const NewsItem: FC<NewsItemType> = ({
                         {
                             fullItem
                                 ? <></>
-                                : <a href="#" className={style.linkNews}>Читать дальше</a>}
+
+                                :<Link  to={`post/${data?.id}`} className={style.linkNews}>Читать дальше</Link>}
                         <img className={style.imgShare} src={share} alt="share"/>
                     </div>
 

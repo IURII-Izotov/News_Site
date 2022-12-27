@@ -19,13 +19,13 @@ console.log(store.getState())
     return (
         <div className="App">
             <div className='wrapper'>
-                <Header subMenu={true}/>
+                <Header/>
                 <div className='contentWrap'>
                     <Routes>
                         <Route path="/" element={<NewsPage/>}/>
-                        <Route path="/fullnews" element={<FullNewsPage/>}/>
-                        <Route path="/selected" element={<SelectedNews/>}/>
-                        <Route path="/account" element={<PersonalPage/>}/>
+                        <Route path="/post/:id" element={<FullNewsPage/>}/>
+                        <Route path="/like" element={<SelectedNews/>}/>
+                        <Route path="/user" element={<PersonalPage/>}/>
                     </Routes>
                 </div>
                 <Footer/>
