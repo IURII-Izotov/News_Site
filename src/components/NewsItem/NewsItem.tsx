@@ -81,10 +81,17 @@ export const NewsItem: FC<NewsItemType> = ({
                                     <h2 className={style.headerNews}>{fullData?.title}</h2>
 
                                     <p className={style.textNews}>{firsSentence}</p>
-                                    <img className={style.imgNewsFull}
-                                         src={data?.image}
-                                         alt="img news"/>
-                                    <p className={style.textNews}>{restText}</p>
+                                    {
+                                        fullData?.image
+                                            ? <>
+                                                <img className={style.imgNewsFull}
+                                                     src={`${baseUrl}/${fullData?.image}`}
+                                                     alt="img news"/>
+                                                <p className={style.textNews}>{restText}</p>
+                                            </>
+                                            :<></>
+                                    }
+
                                 </>
 
                                 : <>

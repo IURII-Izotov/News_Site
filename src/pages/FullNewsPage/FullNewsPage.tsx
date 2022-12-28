@@ -15,12 +15,29 @@ export const FullNewsPage = () => {
     return (
         <>
         <NewsItem fullData={data} fullItem={true}/>
-            <Comment/>
-            <Comment isReplay={true}/>
-            <Comment/>
-            <Comment isReplay={true}/>
-            <Comment isReplay={true}/>
-            <Comment isReplay={true}/>
+            {
+                data?.comment?.length
+                    ? data?.comment?.map((comment)=>{
+                        return <>
+                            <Comment key={comment.id} comment={comment}/>
+                            {
+                                comment.child.length ?
+                                    comment.child.map((replay)=>{
+                                        return <Comment replay = {replay} isReplay={true}/>
+                                    })
+                                    :<></>
+                            }
+                            </>
+                    })
+                    : <></>
+
+            }
+            {/*<Comment/>*/}
+            {/*<Comment isReplay={true}/>*/}
+            {/*<Comment/>*/}
+            {/*<Comment isReplay={true}/>*/}
+            {/*<Comment isReplay={true}/>*/}
+            {/*<Comment isReplay={true}/>*/}
         </>
     );
 };

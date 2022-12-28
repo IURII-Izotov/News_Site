@@ -2,6 +2,12 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 
 
 export const baseUrl='https://megalab.pythonanywhere.com/';
+export interface ReplayType {
+    id: number;
+    user: User;
+    text: string;
+}
+
 export interface NewsType {
     id: number;
     tag: string;
@@ -21,7 +27,7 @@ export interface User {
     profile_image?: any;
 }
 
-export interface Comment {
+export interface CommentType {
     id: number;
     user: User;
     text: string;
@@ -35,7 +41,7 @@ export interface FullNewsType {
     text: string;
     image?: any;
     is_liked: boolean;
-    comment?: Comment[];
+    comment?: CommentType[];
     short_desc?: any;
     author: string;
 }
