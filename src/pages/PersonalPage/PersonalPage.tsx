@@ -33,6 +33,8 @@ export const PersonalPage = () => {
                     </div>
                 </div>
                 <PopUpAddNews active={active} setActive={setActive}/>
+
+
                 <NewsItem selfPublication={true}/>
                 <NewsItem selfPublication={true}/>
                 <NewsItem selfPublication={true}/>

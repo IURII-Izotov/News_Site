@@ -52,12 +52,16 @@ export const fetchNewsApi = createApi({
         headers:{ "Authorization": "Token 4636db43fb079c6778743830cccdb72bfe1aebae"
     } }),
     endpoints: (builder) => ({
-        getNews: builder.query<NewsType[], string>({
-            query: (a:string) => `post`,
+        getNews: builder.query<NewsType[], void>({
+            query: () => `post`,
         }),
         getFullNews: builder.query<FullNewsType, string>({
             query: (id) => `post/${id}`,
+        }),
+        getSelectNews: builder.query<NewsType[], void>({
+            query: () => `like`,
         })
+
     }),
 })
-export const {useGetNewsQuery,useGetFullNewsQuery}=fetchNewsApi
+export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery}=fetchNewsApi

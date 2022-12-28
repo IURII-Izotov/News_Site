@@ -17,7 +17,7 @@ export const LoginForm = () => {
                 setTimeout(() => {
                     console.log(JSON.stringify(values, null, 2));
                     setSubmitting(false);
-                }, 400);
+                }, 0);
             }}
         >
             {({ isSubmitting,errors,touched }) => (

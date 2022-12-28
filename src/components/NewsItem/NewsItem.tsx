@@ -20,7 +20,8 @@ export const NewsItem: FC<NewsItemType> = ({
                                                fullItem = false,
                                                selfPublication = false,
                                                data,
-                                               fullData
+                                               fullData,
+                                               selectedItems
                                            }) => {
     let text = fullData?.text;
     let firsSentence: string | undefined = '';
@@ -104,8 +105,9 @@ export const NewsItem: FC<NewsItemType> = ({
                         {
                             fullItem
                                 ? <></>
-
-                                :<Link  to={`post/${data?.id}`} className={style.linkNews}>Читать дальше</Link>}
+                                : <Link to={
+                                    `/post/${data?.id}`
+                                } className={style.linkNews}>Читать дальше</Link>}
                         <img className={style.imgShare} src={share} alt="share"/>
                     </div>
 

@@ -23,6 +23,7 @@ console.log(store.getState())
                 <div className='contentWrap'>
                     <Routes>
                         <Route path="/" element={<NewsPage/>}/>
+                        <Route path="/post" element={<NewsPage/>}/>
                         <Route path="/post/:id" element={<FullNewsPage/>}/>
                         <Route path="/like" element={<SelectedNews/>}/>
                         <Route path="/user" element={<PersonalPage/>}/>

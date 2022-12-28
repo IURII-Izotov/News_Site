@@ -6,7 +6,7 @@ import {useGetNewsQuery} from '../../api/news.api'
 import {FilterList} from "../../components/FilterList/FilterList";
 
 export const NewsPage = () => {
-    let {data,isLoading}=useGetNewsQuery('');
+    let {data,isLoading}=useGetNewsQuery();
 
     return (
         <>
