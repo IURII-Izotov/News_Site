@@ -1,4 +1,4 @@
-import {FC} from "react";
+import {FC, useState} from "react";
 import style from './Comment.module.css'
 
 import {Form, Formik} from "formik";
@@ -12,6 +12,7 @@ type commentProps = {
     replay?:ReplayType
 }
 export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => {
+    let [inputVisible,setInputVisible]=useState(false);
 
     return (
         <div className={isReplay ? `${style.replayContainer} ${style.commenContainer}` : style.commenContainer}>
@@ -19,7 +20,7 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
             <p className={style.textComment}>{isReplay ? replay?.text :comment?.text}</p>
             <div className={style.footerComment}>
                 <span className={style.dateComment}>30.11.2022</span>
-                <a className={style.replyComment} href="">Ответить</a>
+                <button type={'button'}  className={style.replyComment} onClick={()=>setInputVisible(!inputVisible)}  >Ответить</button>
             </div>
 
             <Formik
@@ -37,8 +38,8 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
             >
                 {({isSubmitting, errors, touched}) => (
                     <Form className={style.formComment} action='#'>
-                        {
-                            isReplay
+                        {inputVisible
+                            ? (isReplay
                                 ? <>
                                     <label className={style.labelStyle} htmlFor="text">Вы</label>
                                     <Textarea isReplay={true} type="text" nameField="text" errors={errors} touched={touched}/>
@@ -55,7 +56,9 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
                                             disabled={isSubmitting}>
                                         Ответить
                                     </button>
-                                </>
+                                </>)
+
+                            :<></>
                         }
 
                     </Form>
