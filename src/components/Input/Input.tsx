@@ -16,21 +16,19 @@ type InputPropsType = {
     placeholder?: string
     typeTextarea?: boolean
     options?: string[]
+    value?:string
+    handleChange?:any
 }
 
-export const InputComponent = ({type, nameField, placeholder, notification, errors, touched, isSubmitting, typeTextarea = false, options}: InputPropsType) => {
+export const InputComponent = ({value,type, nameField, placeholder,handleChange, notification, errors, touched, isSubmitting, typeTextarea = false, options}: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [valueInput, setValue] = useState('')
-
     function validateTextField(value?: string) {
-        !valueInput
+        !value
             ? setError(true)
             : setError(false)
     }
 
-    let onChangeValue = (event: any) => {
-        setValue(event.target.value)
-    }
+
     return (
             <div className={`${style.inputWrap}`}>
                 <Field className={
@@ -38,12 +36,12 @@ export const InputComponent = ({type, nameField, placeholder, notification, erro
                         ? `${style.inputStyle} ${style.inputStyleError}`
                         : style.inputStyle}`
                 }
-                       onChange={onChangeValue}
+                       onChange={handleChange}
                        type={type}
                        name={nameField}
                        validate={validateTextField}
                        placeholder={placeholder}
-                       value={valueInput}
+                       value={value}
                 />
             </div>
     );

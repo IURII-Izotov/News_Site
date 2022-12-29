@@ -14,7 +14,7 @@ export const fetchUserApi = createApi({
         getUser: builder.query<any, void>({
             query: () => `user`,
         }),
-
     }),
 })
-export const {}=fetchUserApi
+export const {useGetUserQuery}=fetchUserApi
+

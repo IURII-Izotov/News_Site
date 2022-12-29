@@ -10,7 +10,7 @@ type buttonPropsType={
 }
 export const Button = (props:buttonPropsType) => {
     return (
-        <button onClick={()=>props.onClickHandler(true)} className={props.bigButton ? `${style.button} bigButton` : style.button} type={props.type} disabled={props.disabled} >
+        <button onClick={ props.onClickHandler? ()=>props.onClickHandler():undefined} className={props.bigButton ? `${style.button} bigButton` : style.button} type={props.type} disabled={props.disabled} >
             {props.text}
         </button>
     );
