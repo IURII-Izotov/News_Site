@@ -1,9 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 
-
-
-export const baseUrl='https://megalab.pythonanywhere.com/';
-
 export const fetchLoginApi = createApi({
     reducerPath: 'api/login',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
@@ -18,7 +14,11 @@ export const fetchLoginApi = createApi({
                 method: 'POST',
                 body: payload,
             }),
-            
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                console.log(response);
+                return response
+            },
+            invalidatesTags: ['Login'],
         }),
     }),
 })

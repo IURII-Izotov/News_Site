@@ -5,11 +5,25 @@ import {InputComponent} from "../../../components/Input/Input";
 import {Button} from "../../../components/Button/Button";
 import {useEffect, useState} from "react";
 import {usePostLoginMutation} from '../../../api/login.api'
+import {useSignIn} from "react-auth-kit";
 export const LoginForm = () => {
     let [error, setError] = useState(false);
+    const signIn = useSignIn();
+    const [updatePost, res] = usePostLoginMutation();
+    console.log(res);
+    useEffect(()=>{
+        if(res.data){
+            signIn(
+                {
+                    token: res.data.token,
+                    expiresIn:525960,
+                    tokenType: "Bearer",
+                    authState: res.data.token,
+                }
+            )
+        }
 
-    const [updatePost, { isLoading: isUpdating }] = usePostLoginMutation();
-
+    },[res])
     return (
         <Formik
             initialValues={
@@ -20,6 +34,7 @@ export const LoginForm = () => {
             }
             onSubmit={(values, { setSubmitting }) => {
                 updatePost(values);
+                console.log(res);
                 setSubmitting(false);
             }}
         >

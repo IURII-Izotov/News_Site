@@ -12,10 +12,11 @@ import {
     Route,
 } from "react-router-dom";
 import {store} from "../redux/store";
+import {useSignIn} from "react-auth-kit";
+import {usePostLoginMutation} from "../api/login.api";
 
 
 function App() {
-console.log(store.getState())
     return (
         <div className="App">
             <div className='wrapper'>
