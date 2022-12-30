@@ -6,11 +6,13 @@ import {Button} from "../../../components/Button/Button";
 import {useEffect, useState} from "react";
 import {usePostLoginMutation} from '../../../api/login.api'
 import {useSignIn} from "react-auth-kit";
+import {QueryStatus} from "@reduxjs/toolkit/query";
+
 export const LoginForm = () => {
     let [error, setError] = useState(false);
     const signIn = useSignIn();
     const [updatePost, res] = usePostLoginMutation();
-    console.log(res);
+
     useEffect(()=>{
         if(res.data){
             signIn(
@@ -21,9 +23,14 @@ export const LoginForm = () => {
                     authState: res.data.token,
                 }
             )
+        if(res?.status == QueryStatus.fulfilled){
+            // @ts-ignore
+            window.location ='/';
+        }
         }
 
     },[res])
+
     return (
         <Formik
             initialValues={
@@ -34,7 +41,6 @@ export const LoginForm = () => {
             }
             onSubmit={(values, { setSubmitting }) => {
                 updatePost(values);
-                console.log(res);
                 setSubmitting(false);
             }}
         >
