@@ -9,12 +9,8 @@ import {useSignIn} from "react-auth-kit";
 import {QueryStatus} from "@reduxjs/toolkit/query";
 
 export const LoginForm = () => {
-    let [nickName,setNickName] = useState('');
     const signIn = useSignIn();
-
     const [updatePost, res] = usePostLoginMutation();
-
-
 
     useEffect(()=>{
         if(res.data){
@@ -27,7 +23,6 @@ export const LoginForm = () => {
                 }
             )
         if(res?.status == QueryStatus.fulfilled){
-            localStorage.setItem('nickname', nickName);
             if (typeof window !== 'undefined') {
                 const win: Window = window;
                 win.location = '/';
@@ -47,7 +42,6 @@ export const LoginForm = () => {
             }
             onSubmit={(values, { setSubmitting }) => {
                 updatePost(values);
-                setNickName(values.nickname);
                 setSubmitting(false);
             }}
         >
