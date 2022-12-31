@@ -21,7 +21,9 @@ export const LoginForm = () => {
                     tokenType: "Bearer",
                     authState: res.data.token,
                 }
+
             )
+            localStorage.setItem('token', res.data.token);
         if(res?.status == QueryStatus.fulfilled){
             if (typeof window !== 'undefined') {
                 const win: Window = window;
