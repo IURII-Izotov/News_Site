@@ -8,10 +8,13 @@ export const store = configureStore({
     reducer:{
         [fetchNewsApi.reducerPath]:fetchNewsApi.reducer,
         [fetchUserApi.reducerPath]:fetchUserApi.reducer,
-        [fetchLoginApi.reducerPath]:fetchLoginApi.reducer
+        [fetchLoginApi.reducerPath]:fetchLoginApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat([fetchNewsApi.middleware,fetchUserApi.middleware,fetchLoginApi.middleware]),
+        getDefaultMiddleware().concat([
+            fetchNewsApi.middleware,
+            fetchUserApi.middleware,
+            fetchLoginApi.middleware]),
 })
 
 // export const rootReducer= combineReducers({

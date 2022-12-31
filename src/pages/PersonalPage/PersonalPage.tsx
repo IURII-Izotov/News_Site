@@ -1,16 +1,29 @@
 import style from './PersonalPage.module.css'
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button} from "../../components/Button/Button";
 import {PersonalData} from "../../components/PersonalData/PersonalData";
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 import {useGetUserQuery} from "../../api/user.api";
+import {useGetAuthorPostsQuery} from "../../api/news.api";
+import {NewsType} from "../../api/news.api";
 
 
 export const PersonalPage = () => {
     let [active,setActive] = useState(false);
-    let {data,isLoading} = useGetUserQuery();
-    console.log(data);
+    let [author,setAuthor] = useState('');
+    let dataUser = useGetUserQuery();
+    async function awaitAuthorNickName(){
+        await useGetUserQuery();
+    }
+    awaitAuthorNickName();
+    // useEffect(()=>{
+    //     console.log(dataUser.data.nickname)
+    //         setAuthor(dataUser.data.nickname);
+    // },[dataUser.data])
+    // console.log(dataUser.data.nickname)
+    // let dataLike= useGetAuthorPostsQuery(author);
+
     if (active){
         document.body.style.position ="sticky"
         // document.body.style ="position: sticky;margin: 0 auto;height: 100vh;width: 100%;top: 0;"
@@ -37,14 +50,11 @@ export const PersonalPage = () => {
                 </div>
                 <PopUpAddNews active={active} setActive={setActive}/>
 
-
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
-                <NewsItem selfPublication={true}/>
+                {
+                    dataLike?.data?.map((likeNews:NewsType)=>{
+                        return <NewsItem data = {likeNews} selfPublication={true}/>
+                    })
+                }
             </div>
 
 

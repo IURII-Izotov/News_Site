@@ -49,7 +49,7 @@ export interface FullNewsType {
 export const fetchNewsApi = createApi({
     reducerPath: 'api/post',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
-        headers:{ "Authorization": "Token 4636db43fb079c6778743830cccdb72bfe1aebae"
+        headers:{ "Authorization": `Token ${localStorage.getItem('token')}`
     } }),
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], void>({
@@ -61,7 +61,16 @@ export const fetchNewsApi = createApi({
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
         })
+        ,
+        getAuthorPosts: builder.query<any, string>({
+            query: (author_nickname) => ({
+                    url: `post/?author=${author_nickname}`,
+                    method: 'GET',
+                }
+            ),
+
+        }),
 
     }),
 })
-export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery}=fetchNewsApi
+export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery,useGetAuthorPostsQuery}=fetchNewsApi

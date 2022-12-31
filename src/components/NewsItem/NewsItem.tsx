@@ -66,10 +66,15 @@ export const NewsItem: FC<NewsItemType> = ({
                             ? <></>
                             : <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
-                                <img src={data?.is_liked
-                                    ? heartRed
-                                    : selfPublication ? trash : heart} alt="like"
-                                     className={selfPublication ? style.iconStyle : ''}/>
+                                {!selfPublication ?
+                                    <img src={data?.is_liked
+                                        ? heartRed
+                                        : heart} alt="like"
+                                         className={selfPublication ? style.iconStyle : ''}/>
+                                         :
+                                    <img src={trash} alt="like"
+                                         className={selfPublication ? style.iconStyle : ''}/>
+                                }
                             </div>
                     }
 
