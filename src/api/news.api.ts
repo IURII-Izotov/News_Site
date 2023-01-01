@@ -62,9 +62,9 @@ export const fetchNewsApi = createApi({
             query: () => `like`,
         })
         ,
-        getAuthorPosts: builder.query<any, string>({
-            query: (author_nickname) => ({
-                    url: `post/?author=${author_nickname}`,
+        getAuthorPosts: builder.query<any, void>({
+            query: () => ({
+                    url: `post/?author=${localStorage.getItem('nickname')}`,
                     method: 'GET',
                 }
             ),

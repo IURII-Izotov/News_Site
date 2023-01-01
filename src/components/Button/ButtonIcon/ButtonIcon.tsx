@@ -7,9 +7,14 @@ type ButtonIconPropsType={
     type:buttonType
     icon:string
     isFullButton?:boolean
+    onClick?: ()=>void
 }
-export const ButtonIcon:FC<ButtonIconPropsType> = ({type,text,icon,isFullButton=false}) => {
+export const ButtonIcon:FC<ButtonIconPropsType> = ({type,onClick,text,icon,isFullButton=false}) => {
     return (
-        <button type={type} className={isFullButton? style.fullButton:style.button}>{text}<img className={style.img} src={icon} alt={text}/></button>
+        <button onClick={onClick}
+            type={type}
+                className={isFullButton? style.fullButton:style.button}>{text}
+                <img className={style.img} src={icon} alt={text}/>
+        </button>
     );
 };

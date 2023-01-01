@@ -24,6 +24,7 @@ export const LoginForm = () => {
 
             )
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('nickname', res.data.nickname);
         if(res?.status == QueryStatus.fulfilled){
             if (typeof window !== 'undefined') {
                 const win: Window = window;

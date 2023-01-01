@@ -13,16 +13,8 @@ export const PersonalPage = () => {
     let [active,setActive] = useState(false);
     let [author,setAuthor] = useState('');
     let dataUser = useGetUserQuery();
-    async function awaitAuthorNickName(){
-        await useGetUserQuery();
-    }
-    awaitAuthorNickName();
-    // useEffect(()=>{
-    //     console.log(dataUser.data.nickname)
-    //         setAuthor(dataUser.data.nickname);
-    // },[dataUser.data])
-    // console.log(dataUser.data.nickname)
-    // let dataLike= useGetAuthorPostsQuery(author);
+    console.log(dataUser)
+    let dataLike= useGetAuthorPostsQuery();
 
     if (active){
         document.body.style.position ="sticky"
@@ -39,7 +31,7 @@ export const PersonalPage = () => {
     }
     return (
             <div className={style.pageContainer}>
-                <PersonalData/>
+                <PersonalData data={dataUser?.data}/>
                 <div className={style.headerWrapper}>
                     <h1 className={style.selectedNewsHeader}>Избранные новости</h1>
                     <div  className={style.buttonContainer}>

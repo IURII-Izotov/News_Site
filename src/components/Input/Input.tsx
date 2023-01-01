@@ -1,6 +1,6 @@
 import style from './Input.module.css'
-import {Field} from 'formik';
-import {useState} from "react";
+import {Field, useFormik} from 'formik';
+import {useRef, useState} from "react";
 
 
 type initialValuesFormType = {
@@ -18,9 +18,17 @@ type InputPropsType = {
     options?: string[]
     value?:string
     handleChange?:any
+    hidden?:boolean
+    ref?:any
+    disabled?:boolean
 }
 
-export const InputComponent = ({value,type, nameField, placeholder,handleChange, notification, errors, touched, isSubmitting, typeTextarea = false, options}: InputPropsType) => {
+export const InputComponent = ({value,type, nameField, placeholder,
+                                   handleChange, notification, errors,
+                                   touched, isSubmitting,
+                                   typeTextarea = false, options,
+                                    hidden, ref, disabled
+                               }: InputPropsType) => {
     let [error, setError] = useState(false);
     function validateTextField(value?: string) {
         !value
@@ -30,7 +38,7 @@ export const InputComponent = ({value,type, nameField, placeholder,handleChange,
 
 
     return (
-            <div className={`${style.inputWrap}`}>
+            <div  className={`${style.inputWrap}`}>
                 <Field className={
                     `${error && touched?.[nameField]
                         ? `${style.inputStyle} ${style.inputStyleError}`
@@ -42,6 +50,10 @@ export const InputComponent = ({value,type, nameField, placeholder,handleChange,
                        validate={validateTextField}
                        placeholder={placeholder}
                        value={value}
+                       hidden={hidden}
+                       disabled = {disabled}
+                    // @ts-ignore
+                    //    innerRef={input => { input }}
                 />
             </div>
     );
