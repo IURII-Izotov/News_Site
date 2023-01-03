@@ -14,7 +14,6 @@ export const PersonalPage = () => {
     let [active,setActive] = useState(false);
     let [author,setAuthor] = useState('');
     let dataUser = useGetUserQuery();
-    console.log( dataUser)
     let dataLike= useGetAuthorPostsQuery();
 
     if (active){
@@ -31,6 +30,7 @@ export const PersonalPage = () => {
 
     }
     return (
+        <>
             <div className={style.pageContainer}>
                 {
                     dataUser.isLoading
@@ -46,13 +46,14 @@ export const PersonalPage = () => {
                         } } type={'button'} text={'Новая публикация'} />
                     </div>
                 </div>
-                {/*<PopUpAddNews active={active} setActive={setActive}/>*/}
+
                 {
                     dataLike?.data?.map((likeNews:NewsType)=>{
                         return <NewsItem key={likeNews.id} data = {likeNews} selfPublication={true}/>
                     })
                 }
             </div>
-
+            {/*<PopUpAddNews active={active} setActive={setActive}/>*/}
+            </>
     );
 };

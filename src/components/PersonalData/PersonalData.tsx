@@ -7,7 +7,7 @@ import trash from "../../assets/icons/trash.svg"
 import image from "../../assets/icons/image.svg"
 import edit from "../../assets/icons/edit.svg"
 import {ButtonIcon} from "../Button/ButtonIcon/ButtonIcon";
-import {FC, MutableRefObject, useEffect, useRef, useState} from "react";
+import {ChangeEvent, FC, MutableRefObject, useEffect, useRef, useState} from "react";
 import {baseUrl, PersonalDataType,useSetDataUserMutation} from "../../api/user.api"
 
 
@@ -24,12 +24,21 @@ type formData = {
 export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
     const inputRef = useRef<HTMLImageElement>();
     let [disabled, setDisabled] = useState(true);
-    let [setUserData,res]=useSetDataUserMutation();
+    let [setUserData,res] = useSetDataUserMutation();
+    console.log(res.data)
+    let [file,setFile] = useState<any>();
+
     const onDownloadClick = () => {
         inputRef?.current?.click();
     }
-    let [picture,setPicture] =useState();
-    useEffect(()=>{},[picture])
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+        }
+
+    };
+
     return (
         <Formik
             initialValues={
@@ -41,14 +50,12 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                 }
             }
             onSubmit={(values, {setSubmitting}) => {
-                console.log(values)
                 let formData = new FormData();
-                    formData.append('name',values.name!)
-                    formData.append('last_name',values.last_name!)
-                    formData.append('nickname',values.nickname!)
-                    formData.append('profile_image',values.profile_image!, picture)
+                formData.append('profile_image',file,file.name)
+                formData.append('name',values.name!)
+                formData.append('last_name',values.last_name!)
+                formData.append('nickname',values.nickname!)
                 setUserData(formData);
-
                 setSubmitting(false);
             }}
         >
@@ -58,22 +65,24 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                     <Form className={style.formContainer}>
                         <div className={style.formAvatar}>
                             <div className={style.avatarContainer}>
-                                <img className={style.avatar} src={data?.profile_image ? `${baseUrl}/${data?.profile_image}` : image}
+                                <img className={style.avatar} src={
+                                    res.data
+                                        ?`${baseUrl}/${res.data?.profile_image}`
+                                        : (
+                                            data?.profile_image
+                                            ? `${baseUrl}/${data?.profile_image}`
+                                            : image)
+                                        }
                                      alt="avatar"/>
                             </div>
 
                             <div className={style.avatarMenu}>
                                 <input
-                                    onChange={handleChange}
-                                    // handleChange={(e:any)=>{
-                                    //     console.log(e.target.files[0])
-                                    //     return e.target.files[0]}
-                                    // }
-                                    // ref={inputRef}
+                                    onChange={handleFileChange}
                                     name="profile_image"
                                     type="file"
-                                    // hidden={true}
                                     accept={'image/*,.png,.jpg,.gif,.web'}
+                                    className={style.inputHidden}
                                 />
                                 <ButtonIcon onClick={onDownloadClick} type={"button"} text={'Добавить фото'}
                                             icon={download}/>

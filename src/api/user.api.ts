@@ -16,8 +16,7 @@ export const fetchUserApi = createApi({
     reducerPath: 'api/user',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
         headers:{
-        "Authorization": `Token ${localStorage.getItem('token')}`,
-
+        "Authorization": `Token ${localStorage.getItem('token')}`
     } }),
 
     endpoints: (builder) => ({
@@ -31,15 +30,17 @@ export const fetchUserApi = createApi({
         }),
         setDataUser: builder.mutation<any,any>({
             query: (payload:any) => {
-                console.log(payload)
                 return {
-                    url: `user/`,
+                    url: `user/` ,
                     method: 'PUT',
-                    body: payload
+                    body:payload,
+                    headers:{
+                        "Authorization": `Token ${localStorage.getItem('token')}`,
+                    }
                 }
             },
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response.data)
+                console.log(response)
                 return response
             },
         }),
