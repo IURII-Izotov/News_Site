@@ -1,6 +1,7 @@
 import style from './Input.module.css'
 import {Field, useFormik} from 'formik';
 import {useRef, useState} from "react";
+import {LoginForm} from "../../pages/LoginPage/LoginForm/LoginForm";
 
 
 type initialValuesFormType = {
@@ -19,15 +20,17 @@ type InputPropsType = {
     value?:string
     handleChange?:any
     hidden?:boolean
-    ref?:any
+    innerRef?:any
     disabled?:boolean
+    accept?:string
 }
 
 export const InputComponent = ({value,type, nameField, placeholder,
                                    handleChange, notification, errors,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
-                                    hidden, ref, disabled
+                                    hidden, innerRef, disabled,
+                                   accept
                                }: InputPropsType) => {
     let [error, setError] = useState(false);
     function validateTextField(value?: string) {
@@ -36,7 +39,6 @@ export const InputComponent = ({value,type, nameField, placeholder,
             : setError(false)
     }
 
-
     return (
             <div  className={`${style.inputWrap}`}>
                 <Field className={
@@ -44,7 +46,6 @@ export const InputComponent = ({value,type, nameField, placeholder,
                         ? `${style.inputStyle} ${style.inputStyleError}`
                         : style.inputStyle}`
                 }
-                       onChange={handleChange}
                        type={type}
                        name={nameField}
                        validate={validateTextField}
@@ -52,8 +53,8 @@ export const InputComponent = ({value,type, nameField, placeholder,
                        value={value}
                        hidden={hidden}
                        disabled = {disabled}
-                    // @ts-ignore
-                    //    innerRef={input => { input }}
+                       innerRef={innerRef}
+                       accept={accept}
                 />
             </div>
     );

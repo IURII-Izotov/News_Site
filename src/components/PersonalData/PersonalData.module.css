@@ -54,6 +54,11 @@
     margin-bottom: 14px;
 
 }
+.avatar{
+    width: 100%;
+    max-width: 199px;
+    height: 199px;
+}
 .formAvatar{
     display: flex;
     flex-direction: column;

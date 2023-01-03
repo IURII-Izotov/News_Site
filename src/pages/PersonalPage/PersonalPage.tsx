@@ -7,13 +7,14 @@ import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 import {useGetUserQuery} from "../../api/user.api";
 import {useGetAuthorPostsQuery} from "../../api/news.api";
 import {NewsType} from "../../api/news.api";
+import {store} from "../../redux/store";
 
 
 export const PersonalPage = () => {
     let [active,setActive] = useState(false);
     let [author,setAuthor] = useState('');
     let dataUser = useGetUserQuery();
-    console.log(dataUser)
+    console.log( dataUser)
     let dataLike= useGetAuthorPostsQuery();
 
     if (active){
@@ -31,7 +32,12 @@ export const PersonalPage = () => {
     }
     return (
             <div className={style.pageContainer}>
-                <PersonalData data={dataUser?.data}/>
+                {
+                    dataUser.isLoading
+                        ? <div>Loading...</div>
+                        : <PersonalData data={dataUser.data} />
+                }
+
                 <div className={style.headerWrapper}>
                     <h1 className={style.selectedNewsHeader}>Избранные новости</h1>
                     <div  className={style.buttonContainer}>
@@ -40,16 +46,13 @@ export const PersonalPage = () => {
                         } } type={'button'} text={'Новая публикация'} />
                     </div>
                 </div>
-                <PopUpAddNews active={active} setActive={setActive}/>
-
+                {/*<PopUpAddNews active={active} setActive={setActive}/>*/}
                 {
                     dataLike?.data?.map((likeNews:NewsType)=>{
-                        return <NewsItem data = {likeNews} selfPublication={true}/>
+                        return <NewsItem key={likeNews.id} data = {likeNews} selfPublication={true}/>
                     })
                 }
             </div>
-
-
 
     );
 };

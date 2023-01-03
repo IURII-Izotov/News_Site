@@ -15,7 +15,6 @@ export const fetchLoginApi = createApi({
                 body: payload,
             }),
             transformResponse: (response: { data:any}, meta, arg) =>{
-
                 return response
             },
             invalidatesTags: ['Login'],

@@ -24,13 +24,14 @@ export const Select: FC<SelectPropsType> = ({options}) => {
                     >
                         <option value="Не выбрано" label="Не выбрано"/>
                         {
-                            options?.map((option) => {
-                                    return <option value={option} label={option}/>
+                            options?.map((option,i) => {
+                                    return <option key={i} value={option} label={option}/>
                                 }
                             )
                         }
-                        <img src={arrowDown} alt=""/>
+
                     </select>
+                    <img src={arrowDown} alt=""/>
                 </div>
 
 

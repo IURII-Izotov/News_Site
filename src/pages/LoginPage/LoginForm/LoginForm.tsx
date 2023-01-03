@@ -3,7 +3,7 @@ import logo from "../../../assets/img/logo-purple.svg";
 import {Formik, Form, Field} from 'formik';
 import {InputComponent} from "../../../components/Input/Input";
 import {Button} from "../../../components/Button/Button";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {usePostLoginMutation} from '../../../api/login.api'
 import {useSignIn} from "react-auth-kit";
 import {QueryStatus} from "@reduxjs/toolkit/query";
@@ -11,7 +11,6 @@ import {QueryStatus} from "@reduxjs/toolkit/query";
 export const LoginForm = () => {
     const signIn = useSignIn();
     const [updatePost, res] = usePostLoginMutation();
-
     useEffect(()=>{
         if(res.data){
             signIn(
@@ -24,7 +23,6 @@ export const LoginForm = () => {
 
             )
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('nickname', res.data.nickname);
         if(res?.status == QueryStatus.fulfilled){
             if (typeof window !== 'undefined') {
                 const win: Window = window;
@@ -45,6 +43,7 @@ export const LoginForm = () => {
             }
             onSubmit={(values, { setSubmitting }) => {
                 updatePost(values);
+                localStorage.setItem('nickname', values.nickname);
                 setSubmitting(false);
             }}
         >
