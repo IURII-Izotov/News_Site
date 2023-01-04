@@ -72,7 +72,8 @@
 .textareaContainer{
     width: 100%;
     max-width: 263px;
-    height: 95px;
+    min-height: 95px;
+    max-height: 295px;
 }
 .buttonContainer{
     width: 100%;

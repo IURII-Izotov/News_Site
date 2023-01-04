@@ -7,7 +7,6 @@ import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 import {useGetUserQuery} from "../../api/user.api";
 import {useGetAuthorPostsQuery} from "../../api/news.api";
 import {NewsType} from "../../api/news.api";
-import {store} from "../../redux/store";
 
 
 export const PersonalPage = () => {
@@ -53,7 +52,7 @@ export const PersonalPage = () => {
                     })
                 }
             </div>
-            {/*<PopUpAddNews active={active} setActive={setActive}/>*/}
+            <PopUpAddNews active={active} setActive={setActive}/>
             </>
     );
 };

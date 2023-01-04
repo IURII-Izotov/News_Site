@@ -5,7 +5,7 @@ type initialValuesFormType = {
     [key: string]: boolean
 }
 type InputPropsType = {
-    type: string
+    type?: string
     nameField: string
     notification?: string
     errors?: {}
@@ -14,34 +14,38 @@ type InputPropsType = {
     placeholder?:string
     isReplay?:boolean
     isChangeHeight?:boolean
+    value?:string
+    setFieldValue?:any
 }
 
 
-export const Textarea = ({type, nameField,placeholder,notification, errors,touched,isSubmitting,isReplay=false,isChangeHeight=true }: InputPropsType) => {
+export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notification, errors,touched,isSubmitting,isReplay=false,isChangeHeight=true }: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [value, setValue] = useState('');
+    let [valueText, setValueText] = useState('');
     const ref = useRef<any>();
 
     let onChangeTextarea =(event:any)=>{
-        setValue(event.target.value);
+        setValueText(event.target.value);
 
         let el=ref.current;
-        if(!value){
-            el.style.height = el.style.height;
+        el.style.maxheight = '100%';
+        if(!event.value){
+            el.style.height = '119px';
         }
         if(el){
             el.style.paddingTop = "7px";
             el.style.lineHeight = "150%";
             el.style.height = el.scrollHeight - 24 + 'px';
-
+            el.height = '100%'
         }
-
+        setFieldValue("text", event.target.value);
     }
     let onChangeValueTextArea = (event:any)=>{
-        setValue(event.target.value);
+        setValueText(event.target.value);
         let el=ref.current;
         el.style.paddingTop = "7px";
         el.style.lineHeight = "150%";
+        setFieldValue("text", event.target.value);
     }
     function validateTextField(value?: string) {
         !value
@@ -52,27 +56,39 @@ export const Textarea = ({type, nameField,placeholder,notification, errors,touch
     let styleReplay =  `${style.textarea} ${style.textareaReplay}`
     let textareaStyle= `${style.textarea}`
     return (
-        <>
-            <Field as={CustomTextarea} className={
+            <Field as='textarea' className={
               `${isReplay ? styleReplay : textareaStyle} ${error && touched?.[nameField]
                   ? `${style.textarea} ${style.inputStyleError}`
                   : `${style.textarea}`}`
             }
-                   onChange={!isChangeHeight? onChangeValueTextArea:onChangeTextarea}
+                   onChange={(e:any)=>{
+                       if(!isChangeHeight){
+                           onChangeValueTextArea(e)
+                       }
+                       onChangeTextarea(e)
+                   }
+
+                    }
+                   // onChange={onChangeValueTextArea}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
                    value={value}
-                   innerref={ref}
+                   innerRef={ref}
             />
-            {notification ? <span className={style.subSpan}>{notification}</span> : <></>}
-        </>
+
 
     );
 };
-let CustomTextarea=(props:any)=>{
-   return <textarea ref={props.innerref} placeholder={props.placeholder} {...props}/>
-}
+
+// let CustomTextarea=({
+// // @ts-ignore
+//    field,
+//    form: { },
+//    ...props
+//  })=>{
+//    return <textarea ref={props.innerref} name={props.name} placeholder={props.placeholder} {...props}/>
+// }
 
 
 

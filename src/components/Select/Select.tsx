@@ -1,10 +1,12 @@
 import style from './Select.module.css'
 import {FC} from "react";
 import arrowDown from '../../assets/icons/arrow-down.svg'
+import {Field} from "formik";
 type SelectPropsType={
-    options:string[]
+    options:string[],
+    nameField:string
 }
-export const Select: FC<SelectPropsType> = ({options}) => {
+export const Select: FC<SelectPropsType> = ({options,nameField}) => {
 
 
     let onChangeValue = (event: any) => {
@@ -12,10 +14,10 @@ export const Select: FC<SelectPropsType> = ({options}) => {
     }
     return (
 
-            <form onSubmit={onChangeValue}>
+            <div onSubmit={onChangeValue}>
                 <div className={style.selectWrap}>
-                    <select
-                        name="category"
+                    <Field as="select"
+                        name={nameField}
                         // value={values.color}
                         // onChange={handleChange}
                         // onBlur={handleBlur}
@@ -30,7 +32,7 @@ export const Select: FC<SelectPropsType> = ({options}) => {
                             )
                         }
 
-                    </select>
+                    </Field>
                     <img src={arrowDown} alt=""/>
                 </div>
 
@@ -43,7 +45,7 @@ export const Select: FC<SelectPropsType> = ({options}) => {
 
 
                 {/*<DisplayFormikState {...props} />*/}
-            </form>
+            </div>
 
 
     );

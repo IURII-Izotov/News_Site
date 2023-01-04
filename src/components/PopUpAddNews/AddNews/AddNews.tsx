@@ -1,5 +1,5 @@
 import style from './AddNews.module.css'
-import {Form, Formik} from "formik";
+import {Field, Form, Formik} from "formik";
 import download from "../../../assets/icons/download.svg";
 import closeButton from "../../../assets/icons/close-button.svg";
 import {InputComponent} from "../../Input/Input";
@@ -24,18 +24,17 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
         <Formik
             initialValues={
                 {
-                    nickname: '',
-                    password: '',
+                    title:'',
+                    text:'',
+                    short_desc:'',
+                    tag:''
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    console.log(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+                console.log(values)
             }}
         >
-            {({ isSubmitting,errors,touched }) => (
+            {({ isSubmitting,errors,touched,setFieldValue,values  }) => (
                 <div className={style.formContainer} onClick={(e)=>e.stopPropagation()}>
                     <img onClick={()=>setActive(false)} className={style.closeButton} src={closeButton} alt=""/>
                     <Form className={style.formWrap}>
@@ -49,31 +48,30 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                         <div className='formFieldWrap'>
                             <label htmlFor="header">Заголовок</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text" nameField="header"  errors={errors} touched ={touched}/>
+                                <InputComponent type="text" nameField="title"  errors={errors} touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
-                            <label htmlFor="description">Краткое описание</label>
+                            <label htmlFor="short_desc">Краткое описание</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text" nameField="description" errors={errors} touched ={touched}/>
+                                <InputComponent type="text" nameField="short_desc" errors={errors} touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
                             <label htmlFor="text">Текст новости</label>
                             <div className={style.textareaContainer}>
-                                <Textarea type="text" nameField="text" isChangeHeight={false} errors={errors} touched ={touched}/>
+                                <Textarea value={values.text} setFieldValue ={setFieldValue } nameField="text" isChangeHeight={false} errors={errors} touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
-                            <label htmlFor="category">Выбрать категорию</label>
+                            <label htmlFor="tag">Выбрать категорию</label>
                             <div className={style.inputContainer}>
-                                <Select options={arrOptions} />
+                                <Select nameField="tag" options={arrOptions} />
                             </div>
                         </div>
                         <div className={style.buttonContainer}>
                             <Button type="submit" text="Создать" disabled={isSubmitting}/>
                         </div>
-
                     </Form>
                 </div>
             )}
