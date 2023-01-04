@@ -102,6 +102,23 @@ export const fetchPostApi = createApi({
             },
             invalidatesTags: ['COMMENT'],
         }),
+        setReplay: builder.mutation<any,any>({
+            query: (payload:any) => {
+                return {
+                    url: `comment/` ,
+                    method: 'POST',
+                    body:payload,
+                    headers:{
+                        "Authorization": `Token ${localStorage.getItem('token')}`,
+                    }
+                }
+            },
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                console.log(response)
+                return response
+            },
+            invalidatesTags: ['COMMENT'],
+        }),
     }),
 })
 export const {
@@ -110,5 +127,6 @@ export const {
     useGetSelectNewsQuery,
     useGetAuthorPostsQuery,
     useCreatePostMutation,
-    useSetCommentMutation
+    useSetCommentMutation,
+    useSetReplayMutation
 }=fetchPostApi

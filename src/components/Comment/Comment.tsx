@@ -5,15 +5,23 @@ import {Form, Formik} from "formik";
 import {Button} from "../Button/Button";
 import {Textarea} from "../Textarea/Textarea";
 import {CommentType, ReplayType} from "../../api/post.api";
+import {useSetReplayMutation} from '../../api/post.api'
 
 type commentProps = {
     isReplay?: boolean
     comment?: CommentType
     replay?:ReplayType
+    postID?:string
+    parentID?:number
 }
-export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => {
+export const Comment: FC<commentProps> = ({isReplay = false,
+                                              comment,
+                                              replay,
+                                              postID,
+                                          parentID}) => {
     let [inputVisible,setInputVisible]=useState(false);
 
+    let [setReplay,res]=useSetReplayMutation();
     return (
         <div className={isReplay ? `${style.replayContainer} ${style.commenContainer}` : style.commenContainer}>
             <h3 className={style.nickName}>{isReplay ? replay?.user.nickname : comment?.user.nickname}</h3>
@@ -25,37 +33,32 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
 
             <Formik
                 initialValues={
-                    {
-                        text: ''
+                    {   post:Number(postID),
+                        text:'',
+                        parent: parentID
                     }
                 }
                 onSubmit={(values, {setSubmitting}) => {
-                    setTimeout(() => {
-                        console.log(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
+                    setReplay(values);
+                    setSubmitting(false);
                 }}
             >
-                {({isSubmitting, errors, touched}) => (
+                {({isSubmitting, errors, touched,setFieldValue}) => (
                     <Form className={style.formComment} >
                         {inputVisible
-                            ? (isReplay
-                                ? <>
+                            ? (<>
                                     <label className={style.labelStyle} htmlFor="text">Вы</label>
-                                    <Textarea isReplay={true} type="text" nameField="text" errors={errors} touched={touched}/>
+                                    <Textarea setFieldValue ={setFieldValue }
+                                              isReplay={true}
+                                              type="text"
+                                              nameField="text"
+                                              errors={errors} touched={touched}/>
                                     <div className={style.buttonContainer}>
                                         <Button type={'submit'} text={'Ответить'} disabled={isSubmitting}/>
                                     </div>
 
                                 </>
-                                : <>
-                                    <Textarea isReplay={true} type="text" nameField="text" errors={errors} touched={touched}/>
-
-                                    <button className={`bigButton ${style.commentButton}`} type="submit"
-                                            disabled={isSubmitting}>
-                                        Ответить
-                                    </button>
-                                </>)
+                               )
 
                             :<></>
                         }
