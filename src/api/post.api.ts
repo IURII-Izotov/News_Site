@@ -51,13 +51,14 @@ export const fetchPostApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
         headers:{ "Authorization": `Token ${localStorage.getItem('token')}`
     } }),
-    tagTypes: ['POST'],
+    tagTypes: ['POST','COMMENT'],
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], void>({
             query: () => `post`,
         }),
         getFullNews: builder.query<FullNewsType, string>({
             query: (id) => `post/${id}`,
+            providesTags: ['POST','COMMENT']
         }),
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
@@ -84,6 +85,30 @@ export const fetchPostApi = createApi({
             invalidatesTags: ['POST'],
         }),
 
+        setComment: builder.mutation<any,any>({
+            query: (payload:any) => {
+                return {
+                    url: `comment/` ,
+                    method: 'POST',
+                    body:payload,
+                    headers:{
+                        "Authorization": `Token ${localStorage.getItem('token')}`,
+                    }
+                }
+            },
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                console.log(response)
+                return response
+            },
+            invalidatesTags: ['COMMENT'],
+        }),
     }),
 })
-export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery,useGetAuthorPostsQuery,useCreatePostMutation}=fetchPostApi
+export const {
+    useGetNewsQuery,
+    useGetFullNewsQuery,
+    useGetSelectNewsQuery,
+    useGetAuthorPostsQuery,
+    useCreatePostMutation,
+    useSetCommentMutation
+}=fetchPostApi
