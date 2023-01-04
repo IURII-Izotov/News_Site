@@ -35,3 +35,6 @@ input.inputStyle:focus {
     height: 27px;
     max-width: 274px;
 }
+.textareaPost{
+    max-height: 295px;
+}

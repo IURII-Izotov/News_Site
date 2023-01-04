@@ -26,9 +26,7 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
 
     let onChangeTextarea =(event:any)=>{
         setValueText(event.target.value);
-
         let el=ref.current;
-        el.style.maxheight = '100%';
         if(!event.value){
             el.style.height = '119px';
         }
@@ -58,8 +56,8 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
     return (
             <Field as='textarea' className={
               `${isReplay ? styleReplay : textareaStyle} ${error && touched?.[nameField]
-                  ? `${style.textarea} ${style.inputStyleError}`
-                  : `${style.textarea}`}`
+                  ? `${style.textarea}${style.textareaPost} ${style.inputStyleError}`
+                  : `${style.textarea} ${style.textareaPost}`}`
             }
                    onChange={(e:any)=>{
                        if(!isChangeHeight){
