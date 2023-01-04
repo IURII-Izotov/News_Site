@@ -50,7 +50,7 @@ export const FullNewsPage = () => {
 
 
                         <Form className={style.formComment}>
-                            <Textarea type="text" nameField="text" placeholder='Напишите комментарий'/>
+                            <Textarea setFieldValue={setFieldValue} type="text" nameField="text" placeholder='Напишите комментарий'/>
                             <button className={`bigButton ${style.commentButton}`} type="submit"
                                     disabled={isSubmitting}>
                                 Ответить

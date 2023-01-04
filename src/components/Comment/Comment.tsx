@@ -49,8 +49,7 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
 
                                 </>
                                 : <>
-                                    <Textarea type="text" nameField="text" placeholder='Напишите комментарий'
-                                              errors={errors} touched={touched}/>
+                                    <Textarea isReplay={true} type="text" nameField="text" errors={errors} touched={touched}/>
 
                                     <button className={`bigButton ${style.commentButton}`} type="submit"
                                             disabled={isSubmitting}>

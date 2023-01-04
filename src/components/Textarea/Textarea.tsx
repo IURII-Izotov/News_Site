@@ -31,8 +31,13 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
             el.style.height = '100%';
             el.style.minheight = '100%';
         }
-        if(el){
+        if(el.value.length > 32){
             el.style.lineHeight = "150%";
+            el.style.height = el.scrollHeight - 0 + 'px';
+            el.height = '100%'
+        }
+        if(el.value.length < 32){
+            el.style.lineHeight = "60%";
             el.style.height = el.scrollHeight - 0 + 'px';
             el.height = '100%'
         }

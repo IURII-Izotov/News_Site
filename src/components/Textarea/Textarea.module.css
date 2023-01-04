@@ -18,10 +18,9 @@
     overflow-y: auto;
     font-family: 'Ubuntu';
     font-size: 16px;
-    line-height: 40%;
+    line-height: 60%;
 
 }
-
 .textarea::-webkit-scrollbar {
     width: 0.1px;
 }
