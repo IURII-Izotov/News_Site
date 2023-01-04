@@ -28,12 +28,12 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
         setValueText(event.target.value);
         let el=ref.current;
         if(!event.value){
-            el.style.height = '119px';
+            el.style.height = '100%';
+            el.style.minheight = '100%';
         }
         if(el){
-            el.style.paddingTop = "7px";
             el.style.lineHeight = "150%";
-            el.style.height = el.scrollHeight - 24 + 'px';
+            el.style.height = el.scrollHeight - 0 + 'px';
             el.height = '100%'
         }
         setFieldValue("text", event.target.value);
@@ -41,7 +41,6 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
     let onChangeValueTextArea = (event:any)=>{
         setValueText(event.target.value);
         let el=ref.current;
-        el.style.paddingTop = "7px";
         el.style.lineHeight = "150%";
         setFieldValue("text", event.target.value);
     }

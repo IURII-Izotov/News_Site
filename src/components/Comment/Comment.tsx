@@ -37,7 +37,7 @@ export const Comment: FC<commentProps> = ({isReplay = false,comment,replay}) => 
                 }}
             >
                 {({isSubmitting, errors, touched}) => (
-                    <Form className={style.formComment} action='#'>
+                    <Form className={style.formComment} >
                         {inputVisible
                             ? (isReplay
                                 ? <>
