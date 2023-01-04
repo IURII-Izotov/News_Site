@@ -55,6 +55,7 @@ export const fetchPostApi = createApi({
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], void>({
             query: () => `post`,
+            providesTags: ['POST']
         }),
         getFullNews: builder.query<FullNewsType, string>({
             query: (id) => `post/${id}`,
@@ -97,7 +98,6 @@ export const fetchPostApi = createApi({
                 }
             },
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response)
                 return response
             },
             invalidatesTags: ['COMMENT'],
@@ -108,16 +108,40 @@ export const fetchPostApi = createApi({
                     url: `comment/` ,
                     method: 'POST',
                     body:payload,
-                    headers:{
-                        "Authorization": `Token ${localStorage.getItem('token')}`,
+                }
+            },
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                return response
+            },
+            invalidatesTags: ['COMMENT'],
+        }),
+
+        deletePost: builder.mutation<any,any>({
+            query: (id:any) => {
+                return {
+                    url: `post/${id}/` ,
+                    method: 'DELETE',
+                }
+            },
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                return response
+            },
+            invalidatesTags: ['POST'],
+        }),
+        postLike: builder.mutation<any,any>({
+            query: (id:any) => {
+                return {
+                    url: `like/` ,
+                    method: 'POST',
+                    body:{
+                        post:id
                     }
                 }
             },
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response)
                 return response
             },
-            invalidatesTags: ['COMMENT'],
+            invalidatesTags: ['POST'],
         }),
     }),
 })
@@ -128,5 +152,7 @@ export const {
     useGetAuthorPostsQuery,
     useCreatePostMutation,
     useSetCommentMutation,
-    useSetReplayMutation
+    useSetReplayMutation,
+    useDeletePostMutation,
+    usePostLikeMutation
 }=fetchPostApi

@@ -90,6 +90,12 @@
 .like{
     width: 21px;
     height: 18px;
+    cursor: pointer;
+}
+.iconStyle{
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
 }
 .wrapper{
     display: flex;
@@ -101,13 +107,8 @@
     display: flex;
     flex-direction: column;
 }
-.commentButton{
 
-}
-.iconStyle{
-    height: 30px;
-    width: 30px;
-}
+
 .noImg{
     display: flex;
     flex-direction: row;

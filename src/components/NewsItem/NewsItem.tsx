@@ -8,6 +8,7 @@ import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
 import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
+import {useDeletePostMutation,usePostLikeMutation} from '../../api/post.api'
 
 type NewsItemType = {
     fullItem?: boolean
@@ -31,6 +32,9 @@ export const NewsItem: FC<NewsItemType> = ({
         firsSentence = arr?.splice(0, 2).join('.');
         restText = arr?.join('.');
     }
+    let [deletePost]=useDeletePostMutation();
+    let [postLike]=usePostLikeMutation();
+
     return (
         <div className={style.wrapper}>
             {
@@ -43,7 +47,9 @@ export const NewsItem: FC<NewsItemType> = ({
                     fullItem
                         ?   <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
-                                <img className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
+                                <img onClick={()=>{
+                                    postLike(fullData?.id)
+                                }} className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
                             </div>
                         : <div className={style.imgContainer}>
                             {
@@ -67,12 +73,14 @@ export const NewsItem: FC<NewsItemType> = ({
                             : <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
                                 {!selfPublication ?
-                                    <img src={data?.is_liked
+                                    <img onClick={()=>postLike(data?.id)}
+                                         src={data?.is_liked
                                         ? heartRed
                                         : heart} alt="like"
-                                         className={selfPublication ? style.iconStyle : ''}/>
+                                         className={selfPublication ? '': style.iconStyle }/>
                                          :
                                     <img src={trash} alt="like"
+                                         onClick={()=>deletePost(data?.id)}
                                          className={selfPublication ? style.iconStyle : ''}/>
                                 }
                             </div>
