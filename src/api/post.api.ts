@@ -46,11 +46,12 @@ export interface FullNewsType {
     author: string;
 }
 
-export const fetchNewsApi = createApi({
+export const fetchPostApi = createApi({
     reducerPath: 'api/post',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
         headers:{ "Authorization": `Token ${localStorage.getItem('token')}`
     } }),
+    tagTypes: ['POST'],
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], void>({
             query: () => `post`,
@@ -60,17 +61,29 @@ export const fetchNewsApi = createApi({
         }),
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
-        })
-        ,
+            providesTags: ['POST']
+        }),
         getAuthorPosts: builder.query<any, void>({
             query: () => ({
                     url: `post/?author=${localStorage.getItem('nickname')}`,
                     method: 'GET',
                 }
             ),
-
+            providesTags: ['POST']
+        }),
+        createPost: builder.mutation<any,any>({
+            query: (payload:any) => (
+                {
+                    url: 'post/',
+                    method: 'POST',
+                    body: payload,
+                }),
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                return response
+            },
+            invalidatesTags: ['POST'],
         }),
 
     }),
 })
-export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery,useGetAuthorPostsQuery}=fetchNewsApi
+export const {useGetNewsQuery,useGetFullNewsQuery,useGetSelectNewsQuery,useGetAuthorPostsQuery,useCreatePostMutation}=fetchPostApi

@@ -1,7 +1,7 @@
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {Comment} from "../../components/Comment/Comment";
 import {useParams} from 'react-router-dom'
-import {useGetFullNewsQuery} from '../../api/news.api'
+import {useGetFullNewsQuery} from '../../api/post.api'
 export const FullNewsPage = () => {
     let {id}=useParams();
     if (!id){

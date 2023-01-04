@@ -7,8 +7,8 @@ import {Button} from "../../Button/Button";
 import {Textarea} from "../../Textarea/Textarea";
 import {Select} from "../../Select/Select";
 import {ButtonIcon} from "../../Button/ButtonIcon/ButtonIcon";
-import {FC} from "react";
-
+import {ChangeEvent, FC, useRef, useState} from "react";
+import {useCreatePostMutation} from '../../../api/post.api'
 type AddNewsType={
     setActive:any
 }
@@ -19,11 +19,26 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
         'Кулинария',
         'Автомобили'
     ]
+    let [setPost,res]=useCreatePostMutation();
+    console.log(res);
+    const inputRef = useRef<any>();
+    let [file,setFile] = useState<any>();
+    const onDownloadClick = () => {
+        inputRef?.current?.click();
+    }
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+        }
+
+    };
 
     return (
         <Formik
             initialValues={
                 {
+                    image:'',
                     title:'',
                     text:'',
                     short_desc:'',
@@ -31,7 +46,17 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
-                console.log(values)
+                let formData = new FormData();
+                if (values.image){
+                    formData.append('image',file,file?.name)
+                }
+                formData.append('image','')
+                formData.append('title',values.title!)
+                formData.append('short_desc',values.short_desc!)
+                formData.append('text',values.text!)
+                formData.append('tag',values.tag!)
+                setPost(formData);
+                setSubmitting(false);
             }}
         >
             {({ isSubmitting,errors,touched,setFieldValue,values  }) => (
@@ -41,12 +66,23 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                         <div className='formFieldWrap'>
                             <span >Обложка новости</span>
                             <div className={style.btnDownloadWrap}>
-                                <ButtonIcon text={'Загрузить'} type={'button'} icon={download} isFullButton={true}/>
+                                <input
+                                    onChange={(e)=>{
+                                        handleFileChange(e);
+                                        setFieldValue("image", e.target.value);
+                                    }}
+                                    ref={inputRef}
+                                    name="image"
+                                    type="file"
+                                    accept={'image/*,.png,.jpg,.gif,.web'}
+                                    className={style.inputHidden}
+                                />
+                                <ButtonIcon onClick={onDownloadClick} text={'Загрузить'} type={'button'} icon={download} isFullButton={true}/>
                             </div>
 
                         </div>
                         <div className='formFieldWrap'>
-                            <label htmlFor="header">Заголовок</label>
+                            <label htmlFor="title">Заголовок</label>
                             <div className={style.inputContainer}>
                                 <InputComponent type="text" nameField="title"  errors={errors} touched ={touched}/>
                             </div>

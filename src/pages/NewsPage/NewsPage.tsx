@@ -2,7 +2,7 @@ import style from './NewsPage.module.css'
 
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 
-import {useGetNewsQuery} from '../../api/news.api'
+import {useGetNewsQuery} from '../../api/post.api'
 import {FilterList} from "../../components/FilterList/FilterList";
 
 export const NewsPage = () => {

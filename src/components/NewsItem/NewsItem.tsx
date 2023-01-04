@@ -6,7 +6,7 @@ import heartRed from '../../assets/icons/heart-red.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
-import {baseUrl, FullNewsType, NewsType} from "../../api/news.api";
+import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
 
 type NewsItemType = {

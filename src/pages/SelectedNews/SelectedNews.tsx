@@ -1,7 +1,7 @@
 import style from './SelectedNews.module.css'
 import React from "react";
 import {NewsItem} from "../../components/NewsItem/NewsItem";
-import {useGetSelectNewsQuery} from '../../api/news.api'
+import {useGetSelectNewsQuery} from '../../api/post.api'
 
 export const SelectedNews = () => {
     let {data,isLoading} = useGetSelectNewsQuery()

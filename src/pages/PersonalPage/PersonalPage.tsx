@@ -5,13 +5,12 @@ import {PersonalData} from "../../components/PersonalData/PersonalData";
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 import {useGetUserQuery} from "../../api/user.api";
-import {useGetAuthorPostsQuery} from "../../api/news.api";
-import {NewsType} from "../../api/news.api";
+import {useGetAuthorPostsQuery} from "../../api/post.api";
+import {NewsType} from "../../api/post.api";
 
 
 export const PersonalPage = () => {
     let [active,setActive] = useState(false);
-    let [author,setAuthor] = useState('');
     let dataUser = useGetUserQuery();
     let dataLike= useGetAuthorPostsQuery();
 
@@ -38,7 +37,7 @@ export const PersonalPage = () => {
                 }
 
                 <div className={style.headerWrapper}>
-                    <h1 className={style.selectedNewsHeader}>Избранные новости</h1>
+                    <h1 className={style.selectedNewsHeader}>Мои публикации</h1>
                     <div  className={style.buttonContainer}>
                         <Button onClickHandler={()=>{
                             setActive(true)

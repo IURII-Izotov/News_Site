@@ -18,7 +18,7 @@ export const fetchUserApi = createApi({
         headers:{
         "Authorization": `Token ${localStorage.getItem('token')}`
     } }),
-
+    tagTypes: ['USER_DATA'],
     endpoints: (builder) => ({
         getUser: builder.query<PersonalDataType, void>({
             query: () => ({

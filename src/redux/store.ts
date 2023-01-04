@@ -1,18 +1,18 @@
 import {configureStore} from "@reduxjs/toolkit";
-import {fetchNewsApi} from "../api/news.api";
+import {fetchPostApi} from "../api/post.api";
 import {fetchUserApi} from "../api/user.api";
 import {fetchLoginApi} from "../api/login.api";
 
 
 export const store = configureStore({
     reducer:{
-        [fetchNewsApi.reducerPath]:fetchNewsApi.reducer,
+        [fetchPostApi.reducerPath]:fetchPostApi.reducer,
         [fetchUserApi.reducerPath]:fetchUserApi.reducer,
         [fetchLoginApi.reducerPath]:fetchLoginApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat([
-            fetchNewsApi.middleware,
+            fetchPostApi.middleware,
             fetchUserApi.middleware,
             fetchLoginApi.middleware]),
 })

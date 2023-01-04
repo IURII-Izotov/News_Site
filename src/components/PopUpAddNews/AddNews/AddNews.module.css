@@ -92,3 +92,7 @@
     align-self: flex-end;
     cursor: pointer;
 }
+.inputHidden{
+    width: 0;
+    height: 0;
+}

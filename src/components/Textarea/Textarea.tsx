@@ -67,7 +67,6 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
                    }
 
                     }
-                   // onChange={onChangeValueTextArea}
                    name={nameField}
                    validate={validateTextField}
                    placeholder={placeholder}
@@ -78,15 +77,6 @@ export const Textarea = ({setFieldValue ,value,type, nameField,placeholder,notif
 
     );
 };
-
-// let CustomTextarea=({
-// // @ts-ignore
-//    field,
-//    form: { },
-//    ...props
-//  })=>{
-//    return <textarea ref={props.innerref} name={props.name} placeholder={props.placeholder} {...props}/>
-// }
 
 
 

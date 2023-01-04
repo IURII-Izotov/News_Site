@@ -25,7 +25,6 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
     const inputRef = useRef<any>();
     let [disabled, setDisabled] = useState(true);
     let [setUserData,res] = useSetDataUserMutation();
-    console.log(res.data)
     let [file,setFile] = useState<any>();
 
     const onDownloadClick = () => {
@@ -50,14 +49,16 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                 }
             }
             onSubmit={(values, {setSubmitting}) => {
+                console.log(values)
                 let formData = new FormData();
-                if (file !== null){
-                    formData.append('profile_image',file,file.name)
-                }
-                formData.append('profile_image','')
+                // formData.append('profile_image','')
                 formData.append('name',values.name!)
                 formData.append('last_name',values.last_name!)
                 formData.append('nickname',values.nickname!)
+                if (file){
+                    formData.append('profile_image',file,file.name)
+                }
+                localStorage.setItem('nickname', values.nickname!);
                 setUserData(formData);
                 setSubmitting(false);
             }}

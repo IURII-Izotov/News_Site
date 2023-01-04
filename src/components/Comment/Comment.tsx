@@ -4,7 +4,7 @@ import style from './Comment.module.css'
 import {Form, Formik} from "formik";
 import {Button} from "../Button/Button";
 import {Textarea} from "../Textarea/Textarea";
-import {CommentType, ReplayType} from "../../api/news.api";
+import {CommentType, ReplayType} from "../../api/post.api";
 
 type commentProps = {
     isReplay?: boolean
