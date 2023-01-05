@@ -1,4 +1,6 @@
 .header{
+    display: flex;
+    flex-direction: column;
     color: white;
     background-color: black;
     padding-left: calc((150%/1440)*100);
@@ -26,7 +28,7 @@
     font-size: 72px;
     text-align: end;
     line-height: 83px;
-    align-self: flex-end;
+    align-self: center;
     height: max-content;
 }
 .menuWrap{
@@ -40,6 +42,7 @@
 .icon{
     height: 29px;
     max-height: 100%;
+    cursor: pointer;
 }
 .subMenu{
     height: max-content;
