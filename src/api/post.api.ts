@@ -53,8 +53,8 @@ export const fetchPostApi = createApi({
     } }),
     tagTypes: ['POST','COMMENT'],
     endpoints: (builder) => ({
-        getNews: builder.query<NewsType[], void>({
-            query: () => `post`,
+        getNews: builder.query<NewsType[], any>({
+            query: (args) => `post/?${args?.text? "search="+args?.text:''}${args?.tag?'&tag='+args?.tag:''}`,
             providesTags: ['POST']
         }),
         getFullNews: builder.query<FullNewsType, string>({
@@ -143,6 +143,10 @@ export const fetchPostApi = createApi({
             },
             invalidatesTags: ['POST'],
         }),
+        getTags: builder.query<any, void>({
+            query: () => `tag/`,
+            providesTags: ['POST']
+        }),
     }),
 })
 export const {
@@ -154,5 +158,6 @@ export const {
     useSetCommentMutation,
     useSetReplayMutation,
     useDeletePostMutation,
-    usePostLikeMutation
+    usePostLikeMutation,
+    useGetTagsQuery,
 }=fetchPostApi

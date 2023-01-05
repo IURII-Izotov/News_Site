@@ -1,12 +1,20 @@
 import style from './FilterItem.module.css'
-import {useState} from "react";
+import React, {FC, useState} from "react";
+import {Field} from "formik";
 
-export const FilterItem = (props:any) => {
+type FilterItemPropsType={
+    value:string
+    name:string
+}
+export const FilterItem:FC<FilterItemPropsType> = (props:any) => {
     let [checked,setChecked] = useState(false)
-
     return (
-            <label className={style.container}>{props.name}
-                <input type="checkbox" onChange={()=>setChecked(!checked)} checked={checked}/>
+            <label className={style.container}>
+
+                <Field  onClick={()=>{
+                    setChecked(!checked)
+                }} checked={checked} type="checkbox" name={props.name} value={props.value}/>
+                {props.value}
                 <span className={style.checkmark}></span>
             </label>
 

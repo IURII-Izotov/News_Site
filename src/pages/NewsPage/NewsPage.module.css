@@ -1,5 +1,6 @@
 .newsContentWrap{
-margin-left: calc((127%/1440)*100);;
+    width: 100%;
+margin-left: calc((127%/1440)*100);
 }
 .wrapper{
     display: flex;
