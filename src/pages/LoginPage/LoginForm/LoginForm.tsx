@@ -11,8 +11,9 @@ import {QueryStatus} from "@reduxjs/toolkit/query";
 export const LoginForm = () => {
     const signIn = useSignIn();
     const [updatePost, res] = usePostLoginMutation();
+    console.log(res)
     useEffect(()=>{
-        if(res.data){
+        if(res?.data){
             signIn(
                 {
                     token: res.data.token,
@@ -22,8 +23,9 @@ export const LoginForm = () => {
                 }
 
             )
-            localStorage.setItem('token', res.data.token);
+
         if(res?.status == QueryStatus.fulfilled){
+            localStorage.setItem('token', res.data.token);
             if (typeof window !== 'undefined') {
                 const win: Window = window;
                 win.location = '/';
@@ -42,6 +44,7 @@ export const LoginForm = () => {
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
+                console.log(values)
                 updatePost(values);
                 localStorage.setItem('nickname', values.nickname);
                 setSubmitting(false);
@@ -55,6 +58,7 @@ export const LoginForm = () => {
                             <label htmlFor="nickname">Никнейм</label>
                             <div className='inputContainer'>
                                 <InputComponent handleChange={handleChange}
+                                                onChange={handleChange}
                                                 value={values.nickname}
                                                 type="text"
                                                 nameField="nickname"
@@ -65,7 +69,9 @@ export const LoginForm = () => {
                         <div className='formFieldWrap'>
                             <label htmlFor="password">Пароль</label>
                             <div className='inputContainer'>
-                                <InputComponent handleChange={handleChange}
+                                <InputComponent
+                                    onChange={handleChange}
+                                    handleChange={handleChange}
                                                 value={values.password}
                                                 type="password"
                                                 nameField="password"

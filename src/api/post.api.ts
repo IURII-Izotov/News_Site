@@ -54,7 +54,10 @@ export const fetchPostApi = createApi({
     tagTypes: ['POST','COMMENT'],
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], any>({
-            query: (args) => `post/?${args?.text? "search="+args?.text:''}${args?.tag?'&tag='+args?.tag:''}`,
+            query: (arg) => {
+                let url = new URL( `post/?${arg.searchText.search_text ? "search="+arg.searchText.search_text:''}${`${arg?.filterValue}`?'&tag='+arg?.filterValue:''}`, baseUrl);
+                return `post/${url.search}`
+            },
             providesTags: ['POST']
         }),
         getFullNews: builder.query<FullNewsType, string>({

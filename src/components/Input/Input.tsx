@@ -23,7 +23,7 @@ type InputPropsType = {
     innerRef?:any
     disabled?:boolean
     accept?:string
-    onChange?:(e:any)=>void
+    onChange?:any
 }
 
 export const InputComponent = ({value,type, nameField, placeholder,

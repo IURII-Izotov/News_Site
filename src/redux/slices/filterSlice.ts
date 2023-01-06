@@ -1,12 +1,8 @@
 import {createSlice} from "@reduxjs/toolkit";
-type FilterSort={
-    name:string,
-    sortProperty:'rating'|'price'|'title'|'-rating'|'-price'|'-title'
-}
 
 const initialState={
     searchText:'',
-    filterValue:[]
+    filterValue:''
 }
 
 export const filterSlice=createSlice({
@@ -14,7 +10,8 @@ export const filterSlice=createSlice({
     initialState,
     reducers:{
         setSearchText(state,action){
-            state.searchText = action.payload.search_text
+            console.log(action.payload)
+            state.searchText = action.payload
         },
         setFilterValue(state,action){
             state.filterValue = action.payload

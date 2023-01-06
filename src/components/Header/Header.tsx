@@ -18,15 +18,12 @@ import {useGetNewsQuery} from "../../api/post.api";
         let [subMenu, setSubMenu] = useState(false)
         let [showInputSearch, setShowInputSearch] = useState(true);
         let {pathname} = useLocation();
-    useEffect(()=>{
-        if(pathname === '/like' || pathname === '/user'){
-            setSubMenu(true)
-        }
-    },[])
-    let dispatch = useDispatch();
-        const {filterValue,searchText} = useSelector((state:any) => state.filter)
-        let {data,isLoading}=useGetNewsQuery(searchText);
-        console.log(data)
+        useEffect(() => {
+            if (pathname === '/like' || pathname === '/user') {
+                setSubMenu(true)
+            }
+        }, [])
+        let dispatch = useDispatch();
     return (
         <header className={subMenu? style.subMenu : style.header}>
             <div className={style.wrap}>
@@ -35,15 +32,16 @@ import {useGetNewsQuery} from "../../api/post.api";
                     <Formik
                         initialValues={
                             {
-                                search_text:''
+                                search_text:'post'
                             }
                         }
                         onSubmit={(values, {setSubmitting}) => {
+                            console.log(values)
                             dispatch(setSearchText(values));
                             setSubmitting(false);
                         }}
                     >
-                        {({isSubmitting,setSubmitting,
+                        {({isSubmitting,setSubmitting,setFieldValue,
                               errors, touched, values, handleChange}) => (
                             <div className={style.formContainer}>
                                 <Form className={style.formContainer}>
@@ -51,7 +49,9 @@ import {useGetNewsQuery} from "../../api/post.api";
                                         <div className="formFieldWrap">
                                             <div className="inputContainer">
                                                 <InputComponent
-                                                    type="text" nameField="search_text"
+                                                    onChange={(e:any)=>setFieldValue('search_text',e.target.value)}
+                                                    type="text"
+                                                    nameField="search_text"
                                                     errors={errors}
                                                     isSubmitting={isSubmitting}
                                                     hidden={showInputSearch}

@@ -21,7 +21,24 @@ export const FilterList: FC<FilterListPropsType> = ({data}) => {
                     tag: [],
                 }}
                 onSubmit={(values,{ setSubmitting }) => {
-                    dispatch(setFilterValue(values))
+                    let arrValues = values.tag;
+                    let newArr: any = arrValues.map((tag: string) => {
+                        let arr = tag?.split('');
+                        for (let i = 0; i <= arr.length; i++) {
+                            if (arr[i] == '#') {
+                                arr[i] = '%23';
+                            }
+                        }
+                        return arr
+                    })
+                    let joinStr = newArr.map((str: string[]) => {
+                        return str.join('')
+                    })
+                    let arrToStr = joinStr.join(',');
+                    console.log(arrToStr)
+                    // let strValues = values.tag.join(',')
+                    // console.log(strValues)
+                    dispatch(setFilterValue(arrToStr))
                     setSubmitting(false);
                 }}
             >
