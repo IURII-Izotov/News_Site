@@ -60,6 +60,7 @@
 .imgShare{
     width: 24px;
     height: 24px;
+    cursor: pointer;
 }
 .headerInfo{
     margin-bottom:8px ;
@@ -117,4 +118,8 @@
     min-width: 100%;
     min-height: 100%;
     background-color: #b3b3b3;
+}
+.shareWrap{
+    position: relative;
+    max-width: max-content;
 }

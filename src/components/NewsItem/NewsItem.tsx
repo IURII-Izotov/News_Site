@@ -1,5 +1,5 @@
 import style from './NewsItem.module.css'
-import {FC} from "react";
+import {FC, useState} from "react";
 import share from '../../assets/icons/share.svg'
 import heart from '../../assets/icons/heart.svg'
 import heartRed from '../../assets/icons/heart-red.svg'
@@ -9,6 +9,7 @@ import image from '../../assets/icons/image.svg'
 import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
 import {useDeletePostMutation,usePostLikeMutation} from '../../api/post.api'
+import {Share} from "../Share/Share";
 
 type NewsItemType = {
     fullItem?: boolean
@@ -34,6 +35,7 @@ export const NewsItem: FC<NewsItemType> = ({
     }
     let [deletePost]=useDeletePostMutation();
     let [postLike]=usePostLikeMutation();
+    let [isVisibleShare,setIsVisibleShare]=useState(false);
 
     return (
         <div className={style.wrapper}>
@@ -121,7 +123,17 @@ export const NewsItem: FC<NewsItemType> = ({
                                 : <Link to={
                                     `/post/${data?.id}`
                                 } className={style.linkNews}>Читать дальше</Link>}
-                        <img className={style.imgShare} src={share} alt="share"/>
+                        <div className={style.shareWrap}>
+                            <img onClick={()=>setIsVisibleShare(!isVisibleShare)} className={style.imgShare} src={share} alt="share"/>
+                            {
+                                isVisibleShare
+                                    ? <Share setIsVisibleShare={setIsVisibleShare}/>
+                                    :<></>
+                            }
+
+                        </div>
+
+
                     </div>
 
                 </div>
