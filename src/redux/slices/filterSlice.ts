@@ -10,10 +10,10 @@ export const filterSlice=createSlice({
     initialState,
     reducers:{
         setSearchText(state,action){
-            console.log(action.payload)
             state.searchText = action.payload
         },
         setFilterValue(state,action){
+            console.log(action.payload)
             state.filterValue = action.payload
         },
 
