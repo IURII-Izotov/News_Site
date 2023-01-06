@@ -10,9 +10,8 @@ type tagType = {
 }
 type FilterListPropsType = {
     data: tagType[],
-    setSearch:any
 }
-export const FilterList: FC<FilterListPropsType> = ({data,setSearch}) => {
+export const FilterList: FC<FilterListPropsType> = ({data}) => {
     let dispatch =useDispatch();
     return (
         <div className={style.filterWrap}>

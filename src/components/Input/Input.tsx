@@ -23,6 +23,7 @@ type InputPropsType = {
     innerRef?:any
     disabled?:boolean
     accept?:string
+    onChange?:(e:any)=>void
 }
 
 export const InputComponent = ({value,type, nameField, placeholder,
@@ -30,7 +31,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
                                     hidden, innerRef, disabled,
-                                   accept
+                                   accept,onChange
                                }: InputPropsType) => {
     let [error, setError] = useState(false);
     function validateTextField(value?: string) {
@@ -55,6 +56,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
                        disabled = {disabled}
                        innerRef={innerRef}
                        accept={accept}
+                       onChange={onChange}
                 />
             </div>
     );

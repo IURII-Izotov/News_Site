@@ -14,7 +14,7 @@ export const filterSlice=createSlice({
     initialState,
     reducers:{
         setSearchText(state,action){
-            state.searchText = action.payload
+            state.searchText = action.payload.search_text
         },
         setFilterValue(state,action){
             state.filterValue = action.payload

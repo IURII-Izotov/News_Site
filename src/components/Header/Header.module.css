@@ -34,8 +34,9 @@
 .menuWrap{
     display: flex;
     flex-direction:row;
-    width: 100%;
-    max-width: 134px;
+
+    width: 134px;
+
     height: max-content;
     justify-content: space-between;
 }
@@ -50,4 +51,8 @@
     padding-bottom: 30px;
     padding-left: calc((150%/1440)*100);
     padding-right: calc((150%/1440)*100);
+}
+.menuContainer{
+    display: flex;
+    flex-direction: row;
 }

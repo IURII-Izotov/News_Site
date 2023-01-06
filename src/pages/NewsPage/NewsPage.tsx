@@ -8,9 +8,8 @@ import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 
 export const NewsPage = () => {
-    let dispatch=useDispatch();
     const {filterValue} = useSelector((state:any) => state.filter)
-
+    console.log(filterValue)
     let {data,isLoading}=useGetNewsQuery(filterValue);
     let filterListData = useGetTagsQuery();
 
@@ -18,7 +17,7 @@ export const NewsPage = () => {
     return (
         <>
             <div className={style.wrapper}>
-                <FilterList setSearch={data} data={filterListData.data}/>
+                <FilterList data={filterListData.data}/>
                 <div className={style.newsContentWrap}>
                     {isLoading
                         ? <div className={style.loadingBlock}>Loading...</div>

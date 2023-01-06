@@ -10,43 +10,40 @@ import userIconPurple  from '../../assets/icons/user-icon-purple.svg'
 import searchIconPurple  from '../../assets/icons/search-purple.svg'
 import {useLocation} from 'react-router-dom'
 import {Form, Formik} from "formik";
-import image from "../../assets/icons/image.svg";
-import {baseUrl} from "../../api/user.api";
-import {ButtonIcon} from "../Button/ButtonIcon/ButtonIcon";
-import download from "../../assets/icons/download.svg";
-import trash from "../../assets/icons/trash.svg";
 import {InputComponent} from "../Input/Input";
-import edit from "../../assets/icons/edit.svg";
-import {Button} from "../Button/Button";
-
+import {useDispatch, useSelector} from "react-redux";
+import {setSearchText} from '../../redux/slices/filterSlice'
+import {useGetNewsQuery} from "../../api/post.api";
     export const Header:FC = () => {
-    let [subMenu,setSubMenu] = useState(false)
-        let [showInputSearch,setShowInputSearch] =useState(true)
-    let {pathname}=useLocation();
+        let [subMenu, setSubMenu] = useState(false)
+        let [showInputSearch, setShowInputSearch] = useState(true);
+        let {pathname} = useLocation();
     useEffect(()=>{
         if(pathname === '/like' || pathname === '/user'){
             setSubMenu(true)
         }
     },[])
-
-
+    let dispatch = useDispatch();
+        const {filterValue,searchText} = useSelector((state:any) => state.filter)
+        let {data,isLoading}=useGetNewsQuery(searchText);
+        console.log(data)
     return (
         <header className={subMenu? style.subMenu : style.header}>
             <div className={style.wrap}>
                 <img className="logo" src={subMenu? logoPurple : logo} alt="logo"/>
-                <div className={style.menuWrap}>
+                <div className={style.menuContainer}>
                     <Formik
                         initialValues={
                             {
+                                search_text:''
                             }
                         }
                         onSubmit={(values, {setSubmitting}) => {
-                            console.log(values)
-
+                            dispatch(setSearchText(values));
                             setSubmitting(false);
                         }}
                     >
-                        {({isSubmitting,
+                        {({isSubmitting,setSubmitting,
                               errors, touched, values, handleChange}) => (
                             <div className={style.formContainer}>
                                 <Form className={style.formContainer}>
@@ -57,7 +54,8 @@ import {Button} from "../Button/Button";
                                                     type="text" nameField="search_text"
                                                     errors={errors}
                                                     isSubmitting={isSubmitting}
-                                                hidden={showInputSearch}/>
+                                                    hidden={showInputSearch}
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -65,10 +63,12 @@ import {Button} from "../Button/Button";
                             </div>
                         )}
                     </Formik>
-
-                    <img onClick={()=>setShowInputSearch(showInputSearch)} className={style.icon} src={ subMenu?searchIconPurple :searchIcon} alt="search"/>
-                    <img className={style.icon} src={ subMenu?userIconPurple :userIcon} alt="user"/>
-                    <img className={style.icon} src={ subMenu?burgerMenuPurple :burgerMenu} alt="menu"/>
+                    <div className={style.menuWrap}>
+                        <img onClick={() => setShowInputSearch(!showInputSearch)} className={style.icon}
+                             src={subMenu ? searchIconPurple : searchIcon} alt="search"/>
+                        <img className={style.icon} src={subMenu ? userIconPurple : userIcon} alt="user"/>
+                        <img className={style.icon} src={subMenu ? burgerMenuPurple : burgerMenu} alt="menu"/>
+                    </div>
                 </div>
             </div>
             {
