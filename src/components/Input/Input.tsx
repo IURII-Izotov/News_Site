@@ -10,7 +10,7 @@ type initialValuesFormType = {
 type InputPropsType = {
     type: string
     nameField: string
-    notification?: string
+
     errors?: {}
     touched?: initialValuesFormType
     isSubmitting?: boolean
@@ -27,7 +27,7 @@ type InputPropsType = {
 }
 
 export const InputComponent = ({value,type, nameField, placeholder,
-                                   handleChange, notification, errors,
+                                   handleChange, errors,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
                                     hidden, innerRef, disabled,

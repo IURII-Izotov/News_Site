@@ -16,7 +16,6 @@ export const fetchLoginApi = createApi({
                     body: payload,
                 }
             }
-
           ,
             transformResponse: (response: { data:any}, meta, arg) =>{
                 console.log(response)
@@ -24,7 +23,21 @@ export const fetchLoginApi = createApi({
             },
             invalidatesTags: ['Login'],
         }),
+        createRegistration: builder.mutation<any,any>({
+            query: (payload:any) => {
+                return       {
+                    url: 'registration/',
+                    method: 'POST',
+                    body: payload,
+                }
+            }
+            ,
+            transformResponse: (response: { data:any}, meta, arg) =>{
+                console.log(response)
+                return response
+            },
+        }),
     }),
 })
 
-export const {usePostLoginMutation}=fetchLoginApi
+export const {usePostLoginMutation,useCreateRegistrationMutation}=fetchLoginApi
