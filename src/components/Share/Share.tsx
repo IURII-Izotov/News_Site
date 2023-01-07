@@ -7,7 +7,13 @@ import whatsapp from '../../assets/icons/whatsapp.svg'
 import copy from '../../assets/icons/copy.svg'
 import React, {FC, useEffect, useState} from "react";
 import {useGetShortLinkQuery} from "../../api/short_link.api";
-
+import {baseUrl} from "../../api/user.api";
+import {
+    FacebookShareButton,
+    TelegramShareButton,
+    TwitterShareButton,
+    WhatsappShareButton,
+} from "react-share";
 
 type sharePropsType={
     setIsVisibleShare:any
@@ -32,18 +38,34 @@ export const Share:FC<sharePropsType> = ({setIsVisibleShare,id}) => {
                 <img onClick={()=>setIsVisibleShare(false)} className={style.imgClose} src={close} alt="close"/>
             </div>
             <div className={style.socialNetworkWrap}>
-                <div className={style.socialNetwork}>
+                <div className={style.socialNetworkContainer}>
+                    <TelegramShareButton
+                        className={style.socialNetwork}
+                        title={''}
+                        children={undefined}
+                        url={`${baseUrl}post/${id}`}/>
                     <img src={telegram} alt="telegram"/>
                 </div>
-                <div className={style.socialNetwork}>
+                <div className={style.socialNetworkContainer}>
+                    <TwitterShareButton
+                        className={style.socialNetwork}
+                        url={`${baseUrl}post/${id}`}
+                        children={undefined}/>
                     <img src={twitter} alt="twitter"/>
-                </div>
-                <div className={style.socialNetwork}>
+                </div>  <div className={style.socialNetworkContainer}>
+                    <FacebookShareButton
+                        className={style.socialNetwork}
+                        quote={''}
+                        hashtag={''}
+                        children={undefined} url={`${baseUrl}post/${id}`}/>
                     <img src={facebook} alt="facebook"/>
-                </div>
-                <div className={style.socialNetwork}>
+                </div>  <div className={style.socialNetworkContainer}>
+                    <WhatsappShareButton
+                        className={style.socialNetwork}
+                        children={undefined} url={`${baseUrl}post/${id}`}/>
                     <img src={whatsapp} alt="whatsapp"/>
                 </div>
+
             </div>
             <div className={style.shortLinkWrap}>
                 <h2>Короткая ссылка</h2>
