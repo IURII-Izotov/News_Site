@@ -1,5 +1,5 @@
 import style from './NewsItem.module.css'
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import share from '../../assets/icons/share.svg'
 import heart from '../../assets/icons/heart.svg'
 import heartRed from '../../assets/icons/heart-red.svg'
@@ -11,6 +11,8 @@ import {Link} from "react-router-dom";
 import {useDeletePostMutation,usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
 
+
+
 type NewsItemType = {
     fullItem?: boolean
     selectedItems?: boolean
@@ -18,6 +20,7 @@ type NewsItemType = {
     data?: NewsType
     fullData?:FullNewsType
 }
+
 export const NewsItem: FC<NewsItemType> = ({
                                                fullItem = false,
                                                selfPublication = false,
@@ -36,6 +39,11 @@ export const NewsItem: FC<NewsItemType> = ({
     let [deletePost]=useDeletePostMutation();
     let [postLike]=usePostLikeMutation();
     let [isVisibleShare,setIsVisibleShare]=useState(false);
+
+    let [shortLink,setShortLink]=useState<any>();
+
+    // setShortLink(useOnClickShare(data?.id));
+    // console.log(shortLink)
 
     return (
         <div className={style.wrapper}>
@@ -124,10 +132,13 @@ export const NewsItem: FC<NewsItemType> = ({
                                     `/post/${data?.id}`
                                 } className={style.linkNews}>Читать дальше</Link>}
                         <div className={style.shareWrap}>
-                            <img onClick={()=>setIsVisibleShare(!isVisibleShare)} className={style.imgShare} src={share} alt="share"/>
+                            <img onClick={()=>{
+
+                                setIsVisibleShare(!isVisibleShare)}
+                            } className={style.imgShare} src={share} alt="share"/>
                             {
                                 isVisibleShare
-                                    ? <Share setIsVisibleShare={setIsVisibleShare}/>
+                                    ? <Share id={fullItem?fullData?.id: data?.id} setIsVisibleShare={setIsVisibleShare}/>
                                     :<></>
                             }
 
