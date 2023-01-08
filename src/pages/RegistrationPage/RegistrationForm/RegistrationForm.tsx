@@ -13,13 +13,20 @@ export const RegistrationForm = () => {
     console.log(res);
     useEffect(()=>{
         if(res?.status == QueryStatus.fulfilled){
-            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('nickname', res.data.nickname);
             if (typeof window !== 'undefined') {
                 const win: Window = window;
                 win.location = '/login';
             }
         }
     },[res])
+    let handleClickLogin = ()=>{
+        localStorage.setItem('nickname', 'undefined');
+        if (typeof window !== 'undefined') {
+            const win: Window = window;
+            win.location = '/login';
+        }
+    }
     return (
         <Formik
             initialValues={
@@ -105,7 +112,7 @@ export const RegistrationForm = () => {
                             <Button type="submit" text="Регистрация" disabled={isSubmitting}/>
                         </div>
                     </Form>
-                    <span className={style.textLogin}>Уже есть логин? <Link to={'/login'}>Войти</Link></span>
+                    <span  className={style.textLogin}>Уже есть логин? <Link onClick={()=>handleClickLogin()} to={'/login'}>Войти</Link></span>
                 </div>
             )}
         </Formik>
