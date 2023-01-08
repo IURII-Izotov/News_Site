@@ -54,6 +54,9 @@ function useOnClickOutside(ref:any, handler:any) {
             if (pathname == '/like/' || pathname == '/user/') {
                 setSubMenu(true)
             }
+            if (pathname == '/like' || pathname == '/user') {
+                setSubMenu(true)
+            }
         }, [])
         useOnClickOutside(burgerMenuRef,()=> setBurgerMenuVisible(true));
         useOnClickOutside(accountMenuRef,()=> setAccountMenuVisible(true));
