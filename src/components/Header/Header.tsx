@@ -1,5 +1,5 @@
 import style from './Header.module.css'
-import {FC, useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import logo  from '../../assets/img/logo.svg'
 import burgerMenu  from '../../assets/icons/burger-menu.svg'
 import userIcon  from '../../assets/icons/user-icon.svg'
@@ -8,14 +8,15 @@ import logoPurple  from '../../assets/img/logo-purple.svg'
 import burgerMenuPurple  from '../../assets/icons/burger-menu-purple.svg'
 import userIconPurple  from '../../assets/icons/user-icon-purple.svg'
 import searchIconPurple  from '../../assets/icons/search-purple.svg'
-import {useLocation} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import {Form, Formik} from "formik";
 import {InputComponent} from "../Input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {setSearchText} from '../../redux/slices/filterSlice'
-import {useGetNewsQuery} from "../../api/post.api";
+import {useCreateLogOutQuery} from "../../api/login.api";
 import {Menu} from "../Menu/Menu";
 import {MenuItem} from "../Menu/MenuItem";
+
 
 function useOnClickOutside(ref:any, handler:any) {
     useEffect(
@@ -38,30 +39,36 @@ function useOnClickOutside(ref:any, handler:any) {
         [ref, handler]
     );
 }
+
     export const Header:FC = () => {
         let [subMenu, setSubMenu] = useState(false)
         let [burgerMenuVisible,setBurgerMenuVisible] =useState(true);
         let [accountMenuVisible,setAccountMenuVisible] =useState(true);
-
         let [showInputSearch, setShowInputSearch] = useState(true);
+        let [skip, setSkip] = useState(true);
+        let  { data, error, isLoading, isUninitialized } = useCreateLogOutQuery({},{skip:skip});
         let {pathname} = useLocation();
 
         let burgerMenuRef=useRef<any>();
         let accountMenuRef=useRef<any>();
 
-        useEffect(() => {
+        let dispatch = useDispatch();
 
+        useEffect(() => {
             if (pathname == '/like/' || pathname == '/user/') {
                 setSubMenu(true)
             }
             if (pathname == '/like' || pathname == '/user') {
                 setSubMenu(true)
             }
-        }, [])
+        }, [pathname])
         useOnClickOutside(burgerMenuRef,()=> setBurgerMenuVisible(true));
         useOnClickOutside(accountMenuRef,()=> setAccountMenuVisible(true));
-
-        let dispatch = useDispatch();
+        let handleLogOut=()=>{
+            setSkip(false);
+            const win: Window = window;
+            win.location = '/login';
+        }
     return (
         <header className={subMenu? style.subMenu : style.header}>
             <div className={style.wrap}>
@@ -103,11 +110,13 @@ function useOnClickOutside(ref:any, handler:any) {
                     <div className={style.menuWrap}>
                         <img onClick={() => setShowInputSearch(!showInputSearch)} className={style.icon}
                              src={subMenu ? searchIconPurple : searchIcon} alt="search"/>
-                        <div ref={accountMenuRef} className={style.burgerMenuWrap} >
+                        <div  ref={accountMenuRef} className={style.burgerMenuWrap} >
                             <img onClick={()=> setAccountMenuVisible(!accountMenuVisible)} className={style.icon} src={subMenu ? userIconPurple : userIcon} alt="user"/>
                             <Menu  onClick={useOnClickOutside} hidden={accountMenuVisible}>
                                 <MenuItem link={'/user/'} text={'Мой профиль'}/>
-                                <MenuItem link={'/login/'} text={'Выйти'}/>
+                                <button onClick={() => handleLogOut()} className={style.menuItem}>
+                                    Выйти
+                                </button>
                             </Menu>
                         </div>
                         <div ref={burgerMenuRef}  className={style.burgerMenuWrap}>

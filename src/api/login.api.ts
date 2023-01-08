@@ -1,6 +1,5 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import {log} from "util";
-import compile = WebAssembly.compile;
+
 
 export const fetchLoginApi = createApi({
     reducerPath: 'api/login',
@@ -18,7 +17,6 @@ export const fetchLoginApi = createApi({
             }
           ,
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response)
                 return response
             },
             invalidatesTags: ['Login'],
@@ -33,11 +31,20 @@ export const fetchLoginApi = createApi({
             }
             ,
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response)
                 return response
             },
+        }),
+        createLogOut: builder.query<any,any>({
+            query: (arg) =>{
+               return  {
+                   url:`logout/`,
+                   headers:{ "Authorization": `Token ${localStorage.getItem('token')}`
+                   }
+               }
+
+            }
         }),
     }),
 })
 
-export const {usePostLoginMutation,useCreateRegistrationMutation}=fetchLoginApi
+export const {usePostLoginMutation,useCreateRegistrationMutation,useCreateLogOutQuery}=fetchLoginApi

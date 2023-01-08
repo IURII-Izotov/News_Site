@@ -10,7 +10,7 @@ type MenuItemPropsType={
 
 export const MenuItem:FC<MenuItemPropsType> = ({link,onClick,text}) => {
     return (
-        <Link className={style.menuItem} to={link} onClick={onClick}>
+        <Link className={style.menuItem} to={link} onClick={()=>onClick}>
             {text}
         </Link>
     );
