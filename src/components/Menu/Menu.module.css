@@ -1,0 +1,17 @@
+.menuWrapper{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    padding-right: 18px;
+    width: 176px;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+.hidden{
+    visibility: hidden;
+}

@@ -1,5 +1,5 @@
 import style from './Header.module.css'
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect, useRef, useState} from "react";
 import logo  from '../../assets/img/logo.svg'
 import burgerMenu  from '../../assets/icons/burger-menu.svg'
 import userIcon  from '../../assets/icons/user-icon.svg'
@@ -14,15 +14,50 @@ import {InputComponent} from "../Input/Input";
 import {useDispatch, useSelector} from "react-redux";
 import {setSearchText} from '../../redux/slices/filterSlice'
 import {useGetNewsQuery} from "../../api/post.api";
+import {Menu} from "../Menu/Menu";
+import {MenuItem} from "../Menu/MenuItem";
+
+function useOnClickOutside(ref:any, handler:any) {
+    useEffect(
+        () => {
+            const listener = (event:any) => {
+                // Do nothing if clicking ref's element or descendent elements
+                if (!ref.current || ref.current.contains(event.target)) {
+                    return;
+                }
+                handler(event);
+            };
+            document.addEventListener("mousedown", listener);
+            document.addEventListener("touchstart", listener);
+            return () => {
+                document.removeEventListener("mousedown", listener);
+                document.removeEventListener("touchstart", listener);
+            };
+        },
+
+        [ref, handler]
+    );
+}
     export const Header:FC = () => {
         let [subMenu, setSubMenu] = useState(false)
+        let [burgerMenuVisible,setBurgerMenuVisible] =useState(true);
+        let [accountMenuVisible,setAccountMenuVisible] =useState(true);
+
         let [showInputSearch, setShowInputSearch] = useState(true);
         let {pathname} = useLocation();
+
+        let burgerMenuRef=useRef<any>();
+        let accountMenuRef=useRef<any>();
+
         useEffect(() => {
-            if (pathname === '/like' || pathname === '/user') {
+
+            if (pathname == '/like/' || pathname == '/user/') {
                 setSubMenu(true)
             }
         }, [])
+        useOnClickOutside(burgerMenuRef,()=> setBurgerMenuVisible(true));
+        useOnClickOutside(accountMenuRef,()=> setAccountMenuVisible(true));
+
         let dispatch = useDispatch();
     return (
         <header className={subMenu? style.subMenu : style.header}>
@@ -36,7 +71,6 @@ import {useGetNewsQuery} from "../../api/post.api";
                             }
                         }
                         onSubmit={(values, {setSubmitting}) => {
-                            console.log(values)
                             dispatch(setSearchText(values));
                             setSubmitting(false);
                         }}
@@ -66,8 +100,22 @@ import {useGetNewsQuery} from "../../api/post.api";
                     <div className={style.menuWrap}>
                         <img onClick={() => setShowInputSearch(!showInputSearch)} className={style.icon}
                              src={subMenu ? searchIconPurple : searchIcon} alt="search"/>
-                        <img className={style.icon} src={subMenu ? userIconPurple : userIcon} alt="user"/>
-                        <img className={style.icon} src={subMenu ? burgerMenuPurple : burgerMenu} alt="menu"/>
+                        <div ref={accountMenuRef} className={style.burgerMenuWrap} >
+                            <img onClick={()=> setAccountMenuVisible(!accountMenuVisible)} className={style.icon} src={subMenu ? userIconPurple : userIcon} alt="user"/>
+                            <Menu  onClick={useOnClickOutside} hidden={accountMenuVisible}>
+                                <MenuItem link={'/user/'} text={'Мой профиль'}/>
+                                <MenuItem link={'/login/'} text={'Выйти'}/>
+                            </Menu>
+                        </div>
+                        <div ref={burgerMenuRef}  className={style.burgerMenuWrap}>
+                            <img onClick={()=>{
+                                setBurgerMenuVisible(!burgerMenuVisible);
+                            }} className={style.icon} src={subMenu ? burgerMenuPurple : burgerMenu} alt="menu"/>
+                            <Menu  onClick={useOnClickOutside} hidden={burgerMenuVisible} className={'burgerMenu'}>
+                                <MenuItem link={'/like/'} text={'Избранные новости'}/>
+                            </Menu>
+                        </div>
+
                     </div>
                 </div>
             </div>
