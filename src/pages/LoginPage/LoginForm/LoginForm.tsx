@@ -11,7 +11,13 @@ import {QueryStatus} from "@reduxjs/toolkit/query";
 export const LoginForm = () => {
     const signIn = useSignIn();
     const [updatePost, res] = usePostLoginMutation();
-    console.log(res)
+
+    useEffect(()=>{
+        if(!localStorage.getItem('nickname')){
+        const win: Window = window;
+        win.location = '/registration';
+}
+    },[])
     useEffect(()=>{
         if(res?.data){
             signIn(
@@ -44,7 +50,6 @@ export const LoginForm = () => {
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
-                console.log(values)
                 updatePost(values);
                 localStorage.setItem('nickname', values.nickname);
                 setSubmitting(false);

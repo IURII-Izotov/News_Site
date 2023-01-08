@@ -14,6 +14,7 @@ import {AuthProvider, RequireAuth} from "react-auth-kit";
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
     <AuthProvider authType={'cookie'}
                   authName={'token'}
@@ -29,8 +30,6 @@ root.render(
             </Provider>
         </BrowserRouter>
     </AuthProvider>
-
-
 );
 
 // If you want to start measuring performance in your app, pass a function
