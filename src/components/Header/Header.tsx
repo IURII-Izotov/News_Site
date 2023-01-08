@@ -114,9 +114,9 @@ function useOnClickOutside(ref:any, handler:any) {
                             <img onClick={()=> setAccountMenuVisible(!accountMenuVisible)} className={style.icon} src={subMenu ? userIconPurple : userIcon} alt="user"/>
                             <Menu  onClick={useOnClickOutside} hidden={accountMenuVisible}>
                                 <MenuItem link={'/user/'} text={'Мой профиль'}/>
-                                <button onClick={() => handleLogOut()} className={style.menuItem}>
+                                <div onClick={() => handleLogOut()} className={style.logOut}>
                                     Выйти
-                                </button>
+                                </div>
                             </Menu>
                         </div>
                         <div ref={burgerMenuRef}  className={style.burgerMenuWrap}>
