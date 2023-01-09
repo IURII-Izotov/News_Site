@@ -5,7 +5,7 @@ export const SkeletonNewsItem = () => {
         <ContentLoader
             speed={2}
             width={841}
-            height={211}
+            height={'24%'}
             viewBox="0 0 841 211"
             backgroundColor="#f3f3f3"
             foregroundColor="#ecebeb"

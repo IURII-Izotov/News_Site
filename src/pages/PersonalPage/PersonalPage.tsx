@@ -7,6 +7,7 @@ import {PopUpAddNews} from "../../components/PopUpAddNews/PopUpAddNews";
 import {useGetUserQuery} from "../../api/user.api";
 import {useGetAuthorPostsQuery} from "../../api/post.api";
 import {NewsType} from "../../api/post.api";
+import {SkeletonNewsItem} from "../../features/SkeletonNewsItem";
 
 
 export const PersonalPage = () => {
@@ -45,10 +46,15 @@ export const PersonalPage = () => {
                     </div>
                 </div>
 
-                {
-                    dataLike?.data?.map((likeNews:NewsType)=>{
+                {   dataLike.isLoading
+                    ?<div className='loadingBlock'>
+                        { [...new Array(4)].map((_,index)=> <SkeletonNewsItem key={index} />)}
+                    </div>
+                    : dataLike?.data?.map((likeNews:NewsType)=>{
                         return <NewsItem key={likeNews.id} data = {likeNews} selfPublication={true}/>
                     })
+
+
                 }
             </div>
             <PopUpAddNews active={active} setActive={setActive}/>

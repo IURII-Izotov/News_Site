@@ -10,6 +10,3 @@ margin-left: calc((127%/1440)*100);
     padding-top: 34px;
     padding-bottom: 124px;
 }
-.loadingBlock{
-    height: 100vh;
-}

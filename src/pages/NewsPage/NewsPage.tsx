@@ -2,11 +2,10 @@ import style from './NewsPage.module.css'
 
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 
-import {useGetNewsQuery,useGetTagsQuery} from '../../api/post.api'
+import {useGetTagsQuery} from '../../api/post.api'
 import {FilterList} from "../../components/FilterList/FilterList";
 import {FC} from "react";
-import ContentLoader from "react-content-loader";
-import {SkeletonNewsItem} from './SkeletonNewsItem'
+import {SkeletonNewsItem} from '../../features/SkeletonNewsItem'
 
 type newsPagePropsType={
     data:any
@@ -21,7 +20,7 @@ export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
                 <FilterList data={filterListData.data}/>
                     {isLoading
                         ?
-                        <div className={style.loadingBlock}>
+                        <div className='loadingBlock'>
                             { [...new Array(4)].map((_,index)=> <SkeletonNewsItem key={index} />)}
                         </div>
                         :
