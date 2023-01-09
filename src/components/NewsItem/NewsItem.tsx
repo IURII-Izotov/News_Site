@@ -1,5 +1,5 @@
 import style from './NewsItem.module.css'
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import share from '../../assets/icons/share.svg'
 import heart from '../../assets/icons/heart.svg'
 import heartRed from '../../assets/icons/heart-red.svg'
@@ -49,7 +49,10 @@ export const NewsItem: FC<NewsItemType> = ({
         <div className={style.wrapper}>
             {
                 fullItem
-                    ? <img onClick={()=>onClickBackArrow()} className={style.arrowLeft} src={arrowLeft} alt="back arrow"/>
+                    ? <img onClick={()=>onClickBackArrow()}
+                           className={style.arrowLeft}
+                           src={arrowLeft}
+                           alt="back arrow"/>
                     : <></>
             }
             <div className={fullItem ? style.contentContainerFull : style.contentContainer}>

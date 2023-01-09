@@ -5,7 +5,8 @@ import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {useGetNewsQuery,useGetTagsQuery} from '../../api/post.api'
 import {FilterList} from "../../components/FilterList/FilterList";
 import {FC} from "react";
-
+import ContentLoader from "react-content-loader";
+import {SkeletonNewsItem} from './SkeletonNewsItem'
 
 type newsPagePropsType={
     data:any
@@ -18,16 +19,18 @@ export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
         <>
             <div className={style.wrapper}>
                 <FilterList data={filterListData.data}/>
-                <div className={style.newsContentWrap}>
                     {isLoading
-                        ? <div className={style.loadingBlock}>Loading...</div>
-                        : data?.map((item:any)=>{
-                            return <NewsItem key={item.id} data={item}/>
-                        })
-
+                        ?
+                        <div className={style.loadingBlock}>
+                            { [...new Array(4)].map((_,index)=> <SkeletonNewsItem key={index} />)}
+                        </div>
+                        :
+                        <div className={style.newsContentWrap}>
+                            {   data?.map((item:any)=>{
+                                return <NewsItem key={item.id} data={item}/>
+                            })}
+                        </div>
                     }
-
-                </div>
             </div>
 
         </>
