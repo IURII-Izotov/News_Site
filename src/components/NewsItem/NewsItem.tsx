@@ -10,7 +10,7 @@ import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
 import {useDeletePostMutation,usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
-
+import { useNavigate } from "react-router-dom";
 
 
 type NewsItemType = {
@@ -40,16 +40,16 @@ export const NewsItem: FC<NewsItemType> = ({
     let [postLike]=usePostLikeMutation();
     let [isVisibleShare,setIsVisibleShare]=useState(false);
 
-    let [shortLink,setShortLink]=useState<any>();
-
-    // setShortLink(useOnClickShare(data?.id));
-    // console.log(shortLink)
+    const navigate = useNavigate();
+    let onClickBackArrow=()=>{
+        navigate(-1);
+    }
 
     return (
         <div className={style.wrapper}>
             {
                 fullItem
-                    ? <img className={style.arrowLeft} src={arrowLeft} alt="back arrow"/>
+                    ? <img onClick={()=>onClickBackArrow()} className={style.arrowLeft} src={arrowLeft} alt="back arrow"/>
                     : <></>
             }
             <div className={fullItem ? style.contentContainerFull : style.contentContainer}>

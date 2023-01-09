@@ -21,6 +21,7 @@
     width: 41px;
     height: 30px;
     margin-bottom: 24px;
+    cursor: pointer;
 }
 .imgNews{
     position: absolute;
@@ -79,7 +80,7 @@
     font-size: 16px;
     line-height: 150%;
     color: #858080;
-    line-break: anywhere;
+    line-break: normal;
     word-wrap:break-word;
 }
 .linkNews{
