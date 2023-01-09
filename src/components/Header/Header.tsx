@@ -53,14 +53,13 @@ function useOnClickOutside(ref:any, handler:any) {
         let accountMenuRef=useRef<any>();
 
         let dispatch = useDispatch();
-
+        let arrLinksSubMenu=['/like/','/like','/user/','/user']
         useEffect(() => {
-            if (pathname == '/like/' || pathname == '/user/') {
+            if(arrLinksSubMenu.includes(pathname)){
                 setSubMenu(true)
+                return;
             }
-            if (pathname == '/like' || pathname == '/user') {
-                setSubMenu(true)
-            }
+            setSubMenu(false)
         }, [pathname])
         useOnClickOutside(burgerMenuRef,()=> setBurgerMenuVisible(true));
         useOnClickOutside(accountMenuRef,()=> setAccountMenuVisible(true));
@@ -72,7 +71,9 @@ function useOnClickOutside(ref:any, handler:any) {
     return (
         <header className={subMenu? style.subMenu : style.header}>
             <div className={style.wrap}>
-                <img className="logo" src={subMenu? logoPurple : logo} alt="logo"/>
+                <Link to={'/'}>
+                    <img className="logo" src={subMenu? logoPurple : logo} alt="logo"/>
+                </Link>
                 <div className={style.menuContainer}>
                     <Formik
                         initialValues={
