@@ -79,6 +79,8 @@
     font-size: 16px;
     line-height: 150%;
     color: #858080;
+    line-break: anywhere;
+    word-wrap:break-word;
 }
 .linkNews{
     margin-bottom: 15px;
