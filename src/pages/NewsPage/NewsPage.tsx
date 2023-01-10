@@ -5,6 +5,7 @@ import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {useGetTagsQuery} from '../../api/post.api'
 import {FilterList} from "../../components/FilterList/FilterList";
 import {FC} from "react";
+import {FilterListItemSkeleton} from '../../features/FilterListItemSkeleton'
 import {SkeletonNewsItem} from '../../features/SkeletonNewsItem'
 
 type newsPagePropsType={
@@ -17,8 +18,9 @@ export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
     return (
         <>
             <div className={style.wrapper}>
-                <FilterList data={filterListData.data}/>
-                    {isLoading
+                <FilterList data={filterListData.data} isLoading={filterListData.isLoading}/>
+
+                {isLoading
                         ?
                         <div className='loadingBlock'>
                             { [...new Array(4)].map((_,index)=> <SkeletonNewsItem key={index} />)}
