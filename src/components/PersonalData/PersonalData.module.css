@@ -65,15 +65,7 @@
     margin-right: calc((16.1%/247)*100);
 }
 
-.editImg {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    cursor: pointer;
-}
+
 .inputHidden{
     width: 0;
     height: 0;

@@ -2,6 +2,7 @@ import style from './Input.module.css'
 import {Field, useFormik} from 'formik';
 import {useRef, useState} from "react";
 import {LoginForm} from "../../pages/LoginPage/LoginForm/LoginForm";
+import edit from "../../assets/icons/edit.svg";
 
 
 type initialValuesFormType = {
@@ -21,7 +22,7 @@ type InputPropsType = {
     handleChange?:any
     hidden?:boolean
     innerRef?:any
-    disabled?:boolean
+    isEditable?:boolean
     accept?:string
     onChange?:any
 }
@@ -30,10 +31,11 @@ export const InputComponent = ({value,type, nameField, placeholder,
                                    handleChange, errors,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
-                                    hidden, innerRef, disabled,
-                                   accept,onChange
+                                    hidden, innerRef,
+                                   accept,onChange,isEditable
                                }: InputPropsType) => {
     let [error, setError] = useState(false);
+    let [disabled,setDisabled] = useState(true);
     function validateTextField(value?: string) {
         !value
             ? setError(true)
@@ -41,6 +43,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
     }
 
     return (
+        <>
             <div  className={`${style.inputWrap}`}>
                 <Field className={
                     `${error && touched?.[nameField]
@@ -59,6 +62,14 @@ export const InputComponent = ({value,type, nameField, placeholder,
                        onChange={onChange}
                 />
             </div>
+            {
+                isEditable
+                    ? <img onClick={() => setDisabled(!disabled)} className={style.editImg} src={edit}
+                         alt="edit"/>
+                    : <></>
+            }
+
+        </>
     );
 };
 

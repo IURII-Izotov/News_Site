@@ -40,3 +40,13 @@ label{
 .inputStyleNotification{
     height: 39px;
 }
+.editImg {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-right: 8px;
+}

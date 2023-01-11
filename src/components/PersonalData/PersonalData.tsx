@@ -49,9 +49,7 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                 }
             }
             onSubmit={(values, {setSubmitting}) => {
-                console.log(values)
                 let formData = new FormData();
-                // formData.append('profile_image','')
                 formData.append('name',values.name!)
                 formData.append('last_name',values.last_name!)
                 formData.append('nickname',values.nickname!)
@@ -106,9 +104,8 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                                         errors={errors}
                                         touched={touched}
                                         isSubmitting={isSubmitting}
-                                        disabled={disabled}/>
-                                    <img onClick={() => setDisabled(!disabled)} className={style.editImg} src={edit}
-                                         alt="edit"/>
+                                        isEditable = {true}
+                                       />
                                 </div>
                             </div>
                             <div className="formFieldWrap">
@@ -120,9 +117,8 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                                         type="text" nameField="name"
                                         errors={errors}
                                         touched={touched}
-                                        disabled={disabled}/>
-                                    <img onClick={() => setDisabled(!disabled)} className={style.editImg} src={edit}
-                                         alt="edit"/>
+                                        isEditable = {true}
+                                        />
                                 </div>
                             </div>
                             <div className="formFieldWrap">
@@ -132,9 +128,10 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data}) => {
                                         handleChange={handleChange}
                                         value={values.nickname}
                                         type="text" nameField="nickname"
-                                        errors={errors} touched={touched} disabled={disabled}/>
-                                    <img onClick={() => setDisabled(!disabled)} className={style.editImg} src={edit}
-                                         alt="edit"/>
+                                        errors={errors}
+                                        touched={touched}
+                                        isEditable = {true}/>
+
                                 </div>
                             </div>
                             <div className={style.buttonContainer}>
