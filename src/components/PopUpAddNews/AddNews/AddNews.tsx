@@ -84,13 +84,19 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                         <div className='formFieldWrap'>
                             <label htmlFor="title">Заголовок</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text" nameField="title"  errors={errors} touched ={touched}/>
+                                <InputComponent type="text"
+                                                nameField="title"
+                                                errors={errors}
+                                                touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
                             <label htmlFor="short_desc">Краткое описание</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text" nameField="short_desc" errors={errors} touched ={touched}/>
+                                <InputComponent type="text"
+                                                nameField="short_desc"
+                                                errors={errors}
+                                                touched ={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>

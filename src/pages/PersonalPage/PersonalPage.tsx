@@ -35,7 +35,7 @@ export const PersonalPage = () => {
                 {
                     dataUser.isLoading
                         ? <SkeletonUserData/>
-                        : <PersonalData data={dataUser.data} />
+                        : <PersonalData data={dataUser.data} isFetching = {dataUser.isFetching}  />
                 }
 
                 <div className={style.headerWrapper}>

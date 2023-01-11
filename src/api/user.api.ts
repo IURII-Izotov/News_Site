@@ -1,8 +1,4 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
-import {SetStateAction} from "react";
-
-
-
 export const baseUrl='https://megalab.pythonanywhere.com/';
 
 export interface PersonalDataType {
@@ -26,7 +22,7 @@ export const fetchUserApi = createApi({
                     method: 'GET',
                 }
             ),
-
+            providesTags:['USER_DATA']
         }),
         setDataUser: builder.mutation<any,any>({
             query: (payload:any) => {
@@ -39,8 +35,8 @@ export const fetchUserApi = createApi({
                     }
                 }
             },
+            invalidatesTags:['USER_DATA'],
             transformResponse: (response: { data:any}, meta, arg) =>{
-                console.log(response)
                 return response
             },
         }),
