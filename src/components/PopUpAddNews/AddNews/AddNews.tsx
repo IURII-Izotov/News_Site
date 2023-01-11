@@ -20,7 +20,6 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
         'Автомобили'
     ]
     let [setPost,res]=useCreatePostMutation();
-    console.log(res);
     const inputRef = useRef<any>();
     let [file,setFile] = useState<any>();
     const onDownloadClick = () => {
@@ -59,7 +58,12 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                 setSubmitting(false);
             }}
         >
-            {({ isSubmitting,errors,touched,setFieldValue,values  }) => (
+            {({ isSubmitting,
+                  errors,
+                  touched,
+                  setFieldValue,
+                  values,
+                  handleChange  }) => (
                 <div className={style.formContainer} onClick={(e)=>e.stopPropagation()}>
                     <img onClick={()=>setActive(false)} className={style.closeButton} src={closeButton} alt=""/>
                     <Form className={style.formWrap}>
@@ -84,16 +88,21 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                         <div className='formFieldWrap'>
                             <label htmlFor="title">Заголовок</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text"
-                                                nameField="title"
-                                                errors={errors}
-                                                touched ={touched}/>
+                                <InputComponent
+                                    onChange={handleChange}
+                                    value={values.title}
+                                    type="text"
+                                    nameField="title"
+                                    errors={errors}
+                                    touched={touched}/>
                             </div>
                         </div>
                         <div className='formFieldWrap'>
                             <label htmlFor="short_desc">Краткое описание</label>
                             <div className={style.inputContainer}>
-                                <InputComponent type="text"
+                                <InputComponent onChange={handleChange}
+                                                value={values.short_desc}
+                                                type="text"
                                                 nameField="short_desc"
                                                 errors={errors}
                                                 touched ={touched}/>

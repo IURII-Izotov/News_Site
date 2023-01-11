@@ -47,7 +47,7 @@ export const PersonalPage = () => {
                     </div>
                 </div>
 
-                {   dataLike.isLoading
+                {   dataLike.isFetching
                     ?<div className='loadingBlock'>
                         { [...new Array(4)].map((_,index)=> <SkeletonNewsItem key={index} />)}
                     </div>
