@@ -11,24 +11,22 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import {store} from "../redux/store";
-import {useSignIn} from "react-auth-kit";
-import {usePostLoginMutation} from "../api/login.api";
+
 import {useGetNewsQuery} from "../api/post.api";
 import {useSelector} from "react-redux";
 
 
 function App() {
     const {filterValue,searchText} = useSelector((state:any) => state.filter)
-    let {data,isLoading}=useGetNewsQuery({searchText,filterValue});
+    let {data,isFetching}=useGetNewsQuery({searchText,filterValue});
     return (
         <div className="App">
             <div className='wrapper'>
                 <Header/>
                 <div className='contentWrap'>
                     <Routes>
-                        <Route path="/" element={<NewsPage data={data} isLoading={isLoading}/>}/>
-                        <Route path="/post" element={<NewsPage data={data} isLoading={isLoading}/>}/>
+                        <Route path="/" element={<NewsPage data={data} isLoading={isFetching}/>}/>
+                        <Route path="/post" element={<NewsPage data={data} isLoading={isFetching}/>}/>
                         <Route path="/post/:id" element={<FullNewsPage/>}/>
                         <Route path="/like" element={<SelectedNews/>}/>
                         <Route path="/user" element={<PersonalPage/>}/>
