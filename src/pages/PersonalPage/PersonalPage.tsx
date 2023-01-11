@@ -8,6 +8,7 @@ import {useGetUserQuery} from "../../api/user.api";
 import {useGetAuthorPostsQuery} from "../../api/post.api";
 import {NewsType} from "../../api/post.api";
 import {SkeletonNewsItem} from "../../features/SkeletonNewsItem";
+import {SkeletonUserData} from "../../features/SkeletonUserData";
 
 
 export const PersonalPage = () => {
@@ -33,7 +34,7 @@ export const PersonalPage = () => {
             <div className={style.pageContainer}>
                 {
                     dataUser.isLoading
-                        ? <div>Loading...</div>
+                        ? <SkeletonUserData/>
                         : <PersonalData data={dataUser.data} />
                 }
 
