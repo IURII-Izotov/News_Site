@@ -7,20 +7,10 @@ type SelectPropsType={
     nameField:string
 }
 export const Select: FC<SelectPropsType> = ({options,nameField}) => {
-
-
-    let onChangeValue = (event: any) => {
-
-    }
     return (
-
-            <div onSubmit={onChangeValue}>
                 <div className={style.selectWrap}>
                     <Field as="select"
                         name={nameField}
-                        // value={values.color}
-                        // onChange={handleChange}
-                        // onBlur={handleBlur}
                         style={{display: 'block'}}
                         className={style.select}
                     >
@@ -33,20 +23,7 @@ export const Select: FC<SelectPropsType> = ({options,nameField}) => {
                         }
 
                     </Field>
-                    <img src={arrowDown} alt=""/>
                 </div>
-
-
-                {/*{errors.color &&*/}
-                {/*touched.color &&*/}
-                {/*<div className="input-feedback">*/}
-                {/*    {errors.color}*/}
-                {/*</div>}*/}
-
-
-                {/*<DisplayFormikState {...props} />*/}
-            </div>
-
 
     );
 };
