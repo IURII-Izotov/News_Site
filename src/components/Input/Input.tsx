@@ -25,6 +25,7 @@ type InputPropsType = {
     isEditable?:boolean
     accept?:string
     onChange?:any
+    list?:string
 }
 
 export const InputComponent = ({value,type, nameField, placeholder,
@@ -32,7 +33,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
                                     hidden, innerRef,
-                                   accept,onChange,isEditable
+                                   accept,onChange,isEditable,list
                                }: InputPropsType) => {
     let [error, setError] = useState(false);
     let [disabled,setDisabled] = useState(true);
@@ -60,6 +61,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
                        innerRef={innerRef}
                        accept={accept}
                        onChange={onChange}
+                       list={list}
                 />
             </div>
             {

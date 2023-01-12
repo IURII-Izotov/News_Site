@@ -8,7 +8,7 @@ import {Textarea} from "../../Textarea/Textarea";
 import {Select} from "../../Select/Select";
 import {ButtonIcon} from "../../Button/ButtonIcon/ButtonIcon";
 import {ChangeEvent, FC, useRef, useState} from "react";
-import {useCreatePostMutation} from '../../../api/post.api'
+import {useCreatePostMutation,useGetTagsQuery} from '../../../api/post.api'
 type AddNewsType={
     setActive:any
 }
@@ -19,6 +19,8 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
         'Кулинария',
         'Автомобили'
     ]
+    let tagsList = useGetTagsQuery();
+    console.log(tagsList)
     let [setPost,res]=useCreatePostMutation();
     const inputRef = useRef<any>();
     let [file,setFile] = useState<any>();
@@ -45,6 +47,7 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                 }
             }
             onSubmit={(values, { setSubmitting }) => {
+                console.log(values)
                 let formData = new FormData();
                 if (values.image){
                     formData.append('image',file,file?.name)
@@ -117,7 +120,19 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                         <div className='formFieldWrap'>
                             <label htmlFor="tag">Выбрать категорию</label>
                             <div className={style.inputContainer}>
-                                <Select nameField="tag" options={arrOptions} />
+                                <InputComponent
+                                    onChange={handleChange}
+                                    value={values.tag}
+                                    nameField='tag'
+                                    type="text"
+                                    list="tags" />
+                                <datalist id="tags">
+                                    {
+                                        tagsList?.data?.map((tag:{id:number,name:string})=>{
+                                            return <option key={tag.id}>{tag.name}</option>
+                                        })
+                                    }
+                                </datalist>
                             </div>
                         </div>
                         <div className={style.buttonContainer}>
