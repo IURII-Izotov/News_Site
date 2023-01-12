@@ -100,8 +100,6 @@ export const NewsItem: FC<NewsItemType> = ({
                     }
 
                     <div className={fullItem ? style.contentFullWrapper : style.mainContent}>
-
-
                         {
                             fullItem
                                 ? <>
