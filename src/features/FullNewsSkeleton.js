@@ -4,19 +4,19 @@ export const FullNewsSkeleton = () => {
     return (
         <ContentLoader
             speed={2}
-            width={845}
-            height={500}
-            viewBox="0 0 845 500"
+            width={'70vw'}
+            height={'100vh'}
+            viewBox="0 0 70vw 100vh"
             backgroundColor="#f3f3f3"
             foregroundColor="#ecebeb"
-            {...props}
         >
-            <rect x="67" y="47" rx="0" ry="0" width="1" height="2" />
-            <rect x="-123" y="95" rx="0" ry="0" width="845" height="280" />
-            <rect x="4" y="24" rx="0" ry="0" width="603" height="59" />
-            <rect x="2" y="387" rx="0" ry="0" width="536" height="29" />
-            <rect x="2" y="387" rx="0" ry="0" width="536" height="29" />
-            <rect x="2" y="387" rx="0" ry="0" width="536" height="29" />
+            <rect x="0" y="24" rx="0" ry="0" width="35px" height="35px" />
+            <rect x="0" y="24" rx="0" ry="0" width="60vw" height="40" />
+            <rect x="0" y="95" rx="0" ry="0" width="100vw" height="50vh" />
+            <rect x="0" y="550" rx="0" ry="0" width="100vw" height="29" />
+            <rect x="0" y="600" rx="0" ry="0" width="100vw" height="29" />
+            <rect x="0" y="650" rx="0" ry="0" width="100vw" height="29" />
+            <rect x="0" y="700" rx="0" ry="0" width="29" height="29" />
         </ContentLoader>
     );
 };
