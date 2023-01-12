@@ -17,6 +17,7 @@
 .contentWrap{
     padding-left: calc((150%/1440)*100);
     padding-right: calc((150%/1440)*100);
+    padding-bottom: 104px;
 }
 .bigButton{
     min-height: 38px;
