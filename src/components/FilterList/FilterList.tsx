@@ -38,7 +38,7 @@ export const FilterList: FC<FilterListPropsType> = ({data, isLoading}) => {
             {
                 isLoading
                     ? <div>
-                        {[...new Array(8)].map((_, index) => <FilterListItemSkeleton key={index}/>)}
+                        {[...new Array(6)].map((_, index) => <FilterListItemSkeleton key={index}/>)}
                     </div>
 
                     : <Formik

@@ -34,11 +34,10 @@
 .menuWrap{
     display: flex;
     flex-direction:row;
-
     width: 134px;
-
     height: max-content;
     justify-content: space-between;
+    align-self: flex-end;
 }
 .icon{
     height: 29px;
@@ -52,14 +51,24 @@
     padding-left: calc((150%/1440)*100);
     padding-right: calc((150%/1440)*100);
 }
+.formContainer{
+    width: 60%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
 .menuContainer{
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
 }
 .burgerMenuWrap{
     position: relative;
 }
-
+.searchInputContainer{
+    height: 35px;
+    width: 100%;
+}
 .logOut{
     width: 100%;
     height: 24px;
