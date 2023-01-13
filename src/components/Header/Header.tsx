@@ -78,7 +78,7 @@ function useOnClickOutside(ref:any, handler:any) {
                     <Formik
                         initialValues={
                             {
-                                search_text:'post'
+                                search_text:''
                             }
                         }
                         onSubmit={(values, {setSubmitting}) => {

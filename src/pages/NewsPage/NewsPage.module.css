@@ -6,7 +6,5 @@ margin-left: calc((127%/1440)*100);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
     padding-top: 34px;
-    padding-bottom: 124px;
 }
