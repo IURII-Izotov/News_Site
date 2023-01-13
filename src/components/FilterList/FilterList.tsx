@@ -67,8 +67,8 @@ export const FilterList: FC<FilterListPropsType> = ({data, isLoading}) => {
                                                 }
                                                 setFieldValue('tag', tagArr);
                                                 let strTags = tagsArrToStr(tagArr);
-                                                dispatch(setFilterValue(strTags))
-                                                setSubmitting(false)
+                                                dispatch(setFilterValue(strTags));
+                                                setSubmitting(false);
                                             }
                                             } key={item.id} value={item.name} name='tag'/>
                                         })

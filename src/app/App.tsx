@@ -18,6 +18,7 @@ import {useSelector} from "react-redux";
 
 function App() {
     const {filterValue,searchText} = useSelector((state:any) => state.filter)
+    console.log(searchText)
     let {data,isFetching,isLoading}=useGetNewsQuery({searchText,filterValue});
     return (
         <div className="App">
@@ -25,8 +26,8 @@ function App() {
                 <Header/>
                 <div className='contentWrap'>
                     <Routes>
-                        <Route path="/" element={<NewsPage data={data} isLoading={isLoading}/>}/>
-                        <Route path="/post" element={<NewsPage data={data} isLoading={isLoading}/>}/>
+                        <Route path="/" element={<NewsPage data={data} isLoading={isFetching}/>}/>
+                        <Route path="/post" element={<NewsPage data={data} isLoading={isFetching}/>}/>
                         <Route path="/post/:id" element={<FullNewsPage/>}/>
                         <Route path="/like" element={<SelectedNews/>}/>
                         <Route path="/user" element={<PersonalPage/>}/>

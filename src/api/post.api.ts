@@ -55,6 +55,7 @@ export const fetchPostApi = createApi({
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], any>({
             query: (arg) => {
+                console.log(arg.searchText.search_text)
                 let url = new URL( `post/?${arg.searchText.search_text ? "search="+arg.searchText.search_text:''}${`${arg?.filterValue}`?'&tag='+arg?.filterValue:''}`, baseUrl);
                 return `post/${url.search}`
             },

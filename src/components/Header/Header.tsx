@@ -1,5 +1,5 @@
 import style from './Header.module.css'
-import React, {FC, useEffect, useRef, useState} from "react";
+import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import logo from '../../assets/img/logo.svg'
 import burgerMenu from '../../assets/icons/burger-menu.svg'
 import userIcon from '../../assets/icons/user-icon.svg'
@@ -16,7 +16,7 @@ import {setSearchText} from '../../redux/slices/filterSlice'
 import {useCreateLogOutQuery} from "../../api/login.api";
 import {Menu} from "../Menu/Menu";
 import {MenuItem} from "../Menu/MenuItem";
-
+import lodash from "lodash"
 
 function useOnClickOutside(ref: any, handler: any) {
     useEffect(
@@ -47,11 +47,10 @@ export const Header: FC = () => {
     let [showInputSearch, setShowInputSearch] = useState(true);
     let [skip, setSkip] = useState(true);
     let {data, error, isLoading, isUninitialized} = useCreateLogOutQuery({}, {skip: skip});
-    let {pathname} = useLocation();
-
     let burgerMenuRef = useRef<any>();
     let accountMenuRef = useRef<any>();
     const navigate = useNavigate();
+    let {pathname} = useLocation();
     let dispatch = useDispatch();
     let arrLinksSubMenu = ['/like/', '/like', '/user/', '/user']
     useEffect(() => {
@@ -68,6 +67,11 @@ export const Header: FC = () => {
         const win: Window = window;
         win.location = '/login';
     }
+    let updateSearchValue = useCallback(
+        lodash.debounce((values:any)=>{
+            dispatch(setSearchText(values));
+        }, 700),[]
+    )
     return (
         <header className={subMenu ? style.subMenu : style.header}>
             <div className={style.wrap}>
@@ -96,6 +100,10 @@ export const Header: FC = () => {
                                             onChange={(e: any) => {
                                                 navigate('/');
                                                 setFieldValue('search_text', e.target.value)
+                                                updateSearchValue({
+                                                    search_text: e.target.value
+                                                });
+                                                setSubmitting(false);
                                             }}
                                             type="text"
                                             nameField="search_text"
