@@ -16,8 +16,7 @@ type newsPagePropsType={
 export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
     let filterListData = useGetTagsQuery();
     return (
-        <>
-            <div className={style.wrapper}>
+            <div className={style.wrapperPage}>
                 <FilterList data={filterListData.data} isLoading={filterListData.isLoading}/>
 
                 {isLoading
@@ -34,6 +33,5 @@ export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
                     }
             </div>
 
-        </>
     );
 };

@@ -46,7 +46,7 @@ export const NewsItem: FC<NewsItemType> = ({
     }
 
     return (
-        <div className={style.wrapper}>
+        <div className={fullItem?style.wrapperFullItem: style.wrapper }>
             {
                 fullItem
                     ? <img onClick={()=>onClickBackArrow()}

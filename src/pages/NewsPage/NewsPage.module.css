@@ -1,8 +1,9 @@
 .newsContentWrap{
-    width: 100%;
-margin-left: calc((127%/1440)*100);
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 }
-.wrapper{
+.wrapperPage{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

@@ -101,7 +101,7 @@ export const Header: FC = () => {
                                                 navigate('/');
                                                 setFieldValue('search_text', e.target.value)
                                                 updateSearchValue({
-                                                    search_text: e.target.value
+                                                    search_text:e.target.value
                                                 });
                                                 setSubmitting(false);
                                             }}
