@@ -8,7 +8,7 @@ import logoPurple from '../../assets/img/logo-purple.svg'
 import burgerMenuPurple from '../../assets/icons/burger-menu-purple.svg'
 import userIconPurple from '../../assets/icons/user-icon-purple.svg'
 import searchIconPurple from '../../assets/icons/search-purple.svg'
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {Form, Formik} from "formik";
 import {InputComponent} from "../Input/Input";
 import {useDispatch, useSelector} from "react-redux";
@@ -51,7 +51,7 @@ export const Header: FC = () => {
 
     let burgerMenuRef = useRef<any>();
     let accountMenuRef = useRef<any>();
-
+    const navigate = useNavigate();
     let dispatch = useDispatch();
     let arrLinksSubMenu = ['/like/', '/like', '/user/', '/user']
     useEffect(() => {
@@ -93,7 +93,10 @@ export const Header: FC = () => {
                             <Form className={style.formContainer}>
                                     <div className={style.searchInputContainer}>
                                         <InputComponent
-                                            onChange={(e: any) => setFieldValue('search_text', e.target.value)}
+                                            onChange={(e: any) => {
+                                                navigate('/');
+                                                setFieldValue('search_text', e.target.value)
+                                            }}
                                             type="text"
                                             nameField="search_text"
                                             errors={errors}
