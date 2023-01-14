@@ -4,7 +4,7 @@
     justify-content: space-between;
     margin: 0 auto;
     width: 100%;
-
+    padding-bottom: 16px;
 }
 .wrapper{
     display: flex;
@@ -69,6 +69,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom:8px ;
 }
 .mainContent{
     display: flex;
@@ -79,9 +80,7 @@
     height: 24px;
     cursor: pointer;
 }
-.headerInfo{
-    margin-bottom:8px ;
-}
+
 .headerNews{
     margin-bottom:8px;
     font-family: 'Ubuntu';
@@ -102,9 +101,7 @@
 .linkNews{
     margin-bottom: 15px;
 }
-.contentContainer{
-    padding-bottom: 16px;
-}
+
 .like{
     width: 21px;
     height: 18px;
