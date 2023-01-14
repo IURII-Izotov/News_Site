@@ -7,6 +7,7 @@ import {FilterList} from "../../components/FilterList/FilterList";
 import {FC} from "react";
 import {FilterListItemSkeleton} from '../../features/FilterListItemSkeleton'
 import {SkeletonNewsItem} from '../../features/SkeletonNewsItem'
+import filter from '../../assets/icons/filter.svg'
 
 type newsPagePropsType={
     data:any
@@ -17,6 +18,7 @@ export const NewsPage:FC<newsPagePropsType> = ({data,isLoading}) => {
     let filterListData = useGetTagsQuery();
     return (
             <div className={style.wrapperPage}>
+
                 <FilterList data={filterListData.data} isLoading={filterListData.isLoading}/>
 
                 {isLoading

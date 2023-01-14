@@ -6,6 +6,18 @@
     width: 100%;
     padding-bottom: 16px;
 }
+@media screen and (max-width: 360px) {
+    .contentContainer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        width: 100%;
+        padding-bottom: 16px;
+
+    }
+}
 .wrapper{
     display: flex;
     flex-direction: row;
@@ -24,8 +36,8 @@
 }
 .imgContainer{
     position: relative;
-    width: 255px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 255px;
     min-width: 211px;;
     height: 211px;
     padding-top: 0;

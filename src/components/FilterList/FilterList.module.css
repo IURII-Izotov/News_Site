@@ -18,6 +18,16 @@
     color: #FFFFFF;
     border: 1px solid #6939c6;
 }
+.filterIcon{
+    align-self: flex-start;
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .filterIcon{
+        align-self: flex-end;
+        display: block;
+    }
+}
 .headerFilter{
     margin-bottom: 18.5px;
 }
@@ -27,6 +37,28 @@
     max-width: 168px;
     margin-right: calc((127px/1440)*100);
 }
+.filterWrapHide{
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    .filterWrap{
+        position: absolute;
+        background: #FFFFFF;
+        box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+        border-radius: 10px;
+        padding-top: 20px;
+        padding-left: 27px;
+        padding-right: 27px;
+        padding-bottom: 27px;
+        top:60px;
+        right: 0;
+        width: 100%;
+        display: block;
+        max-width: 168px;
+        z-index: 1;
+    }
+}
+
 .checkboxContainer{
     min-width: 168px;
     height: 100%;
