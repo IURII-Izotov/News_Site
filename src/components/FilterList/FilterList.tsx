@@ -17,7 +17,7 @@ type FilterListPropsType = {
 }
 export const FilterList: FC<FilterListPropsType> = ({data, isLoading}) => {
     let dispatch = useDispatch();
-    let [filterDisplay,setFilterDisplay]= useState(false);
+    let [filterDisplay,setFilterDisplay]= useState(true);
     let tagsArrToStr = (arrTags: string[]) => {
         let newArr: any = arrTags.map((tag: string) => {
             let arr = tag?.split('');
@@ -38,9 +38,9 @@ export const FilterList: FC<FilterListPropsType> = ({data, isLoading}) => {
         <>
             <img onClick={()=> setFilterDisplay(!filterDisplay)} className={style.filterIcon} src={filter}/>
             {
-                filterDisplay?
-                    (
-                        <div className={`${style.filterWrap}`}>
+                // filterDisplay?
+                //     (
+                        <div className={`${filterDisplay ? style.filterWrapHide:''} ${style.filterWrap} ${filterDisplay?style.filterWrapHide:''}`}>
                             <h2 className={style.headerFilter}>Фильтрация</h2>
                             {
                                 isLoading
@@ -88,8 +88,8 @@ export const FilterList: FC<FilterListPropsType> = ({data, isLoading}) => {
                             }
 
                         </div>
-                    )
-                    :<></>
+                    // )
+                    // :<></>
             }
 
         </>

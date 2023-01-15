@@ -37,9 +37,7 @@
     max-width: 168px;
     margin-right: calc((127px/1440)*100);
 }
-.filterWrapHide{
-    display: none;
-}
+
 @media screen and (max-width: 700px) {
     .filterWrap{
         position: absolute;
@@ -56,6 +54,9 @@
         display: block;
         max-width: 168px;
         z-index: 1;
+    }
+    .filterWrapHide{
+        opacity: 0;
     }
 }
 
