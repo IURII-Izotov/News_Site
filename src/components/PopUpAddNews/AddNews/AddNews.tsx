@@ -14,11 +14,7 @@ type AddNewsType={
 }
 
 export const AddNews:FC<AddNewsType> = ({setActive}) => {
-    let arrOptions=[
-        'Спорт',
-        'Кулинария',
-        'Автомобили'
-    ]
+
     let tagsList = useGetTagsQuery();
     console.log(tagsList)
     let [setPost,res]=useCreatePostMutation();
@@ -46,8 +42,7 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                     tag:''
                 }
             }
-            onSubmit={(values, { setSubmitting }) => {
-                console.log(values)
+            onSubmit={(values, { setSubmitting,resetForm }) => {
                 let formData = new FormData();
                 if (values.image){
                     formData.append('image',file,file?.name)
@@ -59,6 +54,7 @@ export const AddNews:FC<AddNewsType> = ({setActive}) => {
                 formData.append('tag',values.tag!)
                 setPost(formData);
                 setSubmitting(false);
+                resetForm();
             }}
         >
             {({ isSubmitting,
