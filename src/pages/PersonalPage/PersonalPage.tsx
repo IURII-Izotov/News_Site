@@ -40,10 +40,17 @@ export const PersonalPage = () => {
 
                 <div className={style.headerWrapper}>
                     <h1 className={style.selectedNewsHeader}>Мои публикации</h1>
-                    <div  className={style.buttonContainer}>
+                    {/* Only for large screen*/}
+                    <div  className={`${style.buttonContainer} ${style.forLargeScreens}`}>
                         <Button onClickHandler={()=>{
                             setActive(true)
                         } } type={'button'} text={'Новая публикация'} />
+                    </div>
+                    {/* Only for small screen*/}
+                    <div  className={`${style.buttonContainer} ${style.forSmallScreens}`}>
+                        <Button onClickHandler={()=>{
+                            setActive(true)
+                        } } type={'button'} text={'+'} />
                     </div>
                 </div>
 

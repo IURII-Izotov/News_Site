@@ -21,11 +21,13 @@
 .filterIcon{
     align-self: flex-start;
     display: none;
+    margin-bottom: 17px;
 }
 @media screen and (max-width: 700px) {
     .filterIcon{
         align-self: flex-end;
         display: block;
+
     }
 }
 .headerFilter{

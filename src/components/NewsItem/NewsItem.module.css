@@ -44,6 +44,19 @@
     overflow: hidden;
     margin-right: calc((40%/845)*100);
 }
+@media screen and (max-width: 360px) {
+    .imgContainer{
+        position: relative;
+        width: 100%;
+        max-width: 320px;
+        min-width: 211px;;
+        height: 265px;
+        padding-top: 0;
+        overflow: hidden;
+        margin-bottom: 16px;
+        margin-right: 0px;
+    }
+}
 .arrowLeft{
     width: 41px;
     height: 30px;
