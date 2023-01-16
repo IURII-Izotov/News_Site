@@ -16,6 +16,7 @@
     border-radius: 10px;
     outline: none;
     padding-left: 18px;
+    width: 100%;
 }
 .inputStyleError {
     border: 1px solid #ff3131;
