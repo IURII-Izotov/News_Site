@@ -14,6 +14,11 @@
     background-color: #FFFFFF;
     z-index: 100;
 }
+@media screen and (max-width: 360px) {
+    .formContainer{
+        max-width: 320px;
+    }
+}
 .logo{
     align-self: center;
     margin-bottom: 21px;
