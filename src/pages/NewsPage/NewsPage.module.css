@@ -1,8 +1,15 @@
 .newsContentWrap{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
+    max-width: 100%;
 }
+@media screen and (max-width: 700px) {
+    .newsContentWrap{
+        width: 100%;
+    }
+}
+
 .wrapperPage{
     display: flex;
     flex-direction: row;
