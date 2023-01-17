@@ -131,7 +131,7 @@ export const NewsItem: FC<NewsItemType> = ({
                                 ? <></>
                                 : <Link to={
                                     `/post/${data?.id}`
-                                } className={style.linkNews}>Читать дальше</Link>}
+                                } className={style.linkNews}>Читать дальше&gt;&gt;</Link>}
                         <div className={style.shareWrap}>
                             <img onClick={()=>{
 

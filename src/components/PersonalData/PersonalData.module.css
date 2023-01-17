@@ -89,7 +89,14 @@
     flex-direction: column;
     margin-right: calc((16.1%/247)*100);
 }
+.avatarMenu{
+    display: flex;
+    flex-direction: row;
+}
 @media screen and (max-width: 360px) {
+    .avatarMenu{
+        flex-direction: column;
+    }
     .avatarContainer{
         width: 100%;
         min-width: 125px;
