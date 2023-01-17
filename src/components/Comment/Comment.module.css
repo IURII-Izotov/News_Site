@@ -88,9 +88,22 @@
 }
 .replayContainer{
     margin-left: 56px;
+
+}
+.replayFormContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 457px;
+    max-height: 27px;
 }
 .commenContainer{
     width: 100%;
     max-width: 845px;
     margin-bottom: 24px;
+}
+.textareaContainer{
+    width: 100%;
+    max-width: 457px;
+    margin-right: 14px;
 }

@@ -22,6 +22,8 @@
 .buttonContainer{
     width: 100%;
     max-width: 191px;
+    height: 30px;
+    align-self: center;
 }
 @media screen and (max-width: 360px) {
     .buttonContainer{
