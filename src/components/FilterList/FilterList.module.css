@@ -32,10 +32,10 @@
 }
 .headerFilter{
     margin-bottom: 18.5px;
+    font-size: 18px;
 }
 .filterWrap{
     width: 100%;
-    display: block;
     max-width: 168px;
     margin-right: calc((127px/1440)*100);
 }
