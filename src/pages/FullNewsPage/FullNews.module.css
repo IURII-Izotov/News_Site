@@ -1,0 +1,21 @@
+.formComment {
+    display: flex;
+    flex-direction: row;
+    min-height: 38px;
+}
+
+.commentButton {
+    font-family: Ubuntu;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 6px 34.5px 6px 34.5px;
+    background: #7E5BC2;
+    border-radius: 10px;
+    border: 1px solid #7E5BC2;
+    width: max-content;
+    outline: none;
+    cursor: pointer;
+    align-self: center;
+}
+

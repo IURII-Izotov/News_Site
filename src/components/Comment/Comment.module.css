@@ -1,11 +1,12 @@
-.nickName{
+.nickName {
     font-family: 'Ubuntu';
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
     margin-bottom: 7px;
 }
-.textComment{
+
+.textComment {
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
@@ -14,16 +15,18 @@
     color: #858080;
     margin-bottom: 7px;
 }
-.dateComment{
+
+.dateComment {
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
     color: #858080;
-    margin-right:30px;
+    margin-right: 30px;
 }
-.replyComment{
+
+.replyComment {
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 400;
@@ -33,17 +36,20 @@
     border: none;
     background: none;
     cursor: pointer;
-    text-decoration-line:underline;
+    text-decoration-line: underline;
 }
-.footerComment{
+
+.footerComment {
     margin-bottom: 24px;
 }
-.commentInput{
+
+.commentInput {
     margin-right: 25px;
     width: 346px;
     min-height: 39px;
     max-height: 100%;
 }
+
 .commentButton {
     font-family: Ubuntu;
     font-size: 16px;
@@ -58,16 +64,19 @@
     cursor: pointer;
     align-self: center;
 }
-.commentButton:hover{
+
+.commentButton:hover {
     color: #FFFFFF;
     border: 1px solid #6939c6;
 }
-.formComment{
+
+.formComment {
     display: flex;
     flex-direction: row;
     height: min-content;
 }
-.labelStyle{
+
+.labelStyle {
     font-family: 'Ubuntu';
     font-style: normal;
     font-weight: 500;
@@ -76,33 +85,39 @@
     margin-right: 14px;
     align-self: center;
 }
-.replayInput{
+
+.replayInput {
     main-height: 27px;
     max-height: 500px;
     align-self: center;
 }
-.buttonContainer{
+
+.buttonContainer {
     height: 27px;
     width: 100%;
     max-width: 128px;
 }
-.replayContainer{
+
+.replayContainer {
     margin-left: 56px;
 
 }
-.replayFormContainer{
+
+.replayFormContainer {
     display: flex;
     flex-direction: row;
     width: 100%;
     max-width: 457px;
     max-height: 27px;
 }
-.commenContainer{
+
+.commenContainer {
     width: 100%;
     max-width: 845px;
     margin-bottom: 24px;
 }
-.textareaContainer{
+
+.textareaContainer {
     width: 100%;
     max-width: 457px;
     margin-right: 14px;

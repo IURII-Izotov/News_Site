@@ -1,4 +1,4 @@
-.contentContainer{
+.contentContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -6,8 +6,9 @@
     width: 100%;
     padding-bottom: 16px;
 }
+
 @media screen and (max-width: 360px) {
-    .contentContainer{
+    .contentContainer {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -18,7 +19,8 @@
 
     }
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,15 +28,18 @@
     border-bottom: 1px solid #D9D9D9;
     width: 100%;
 }
-.contentWrap{
+
+.contentWrap {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.wrapper:nth-last-child(1){
+
+.wrapper:nth-last-child(1) {
     border-bottom: none;
 }
-.imgContainer{
+
+.imgContainer {
     position: relative;
     width: 100%;
     max-width: 255px;
@@ -42,10 +47,11 @@
     height: 211px;
     padding-top: 0;
     overflow: hidden;
-    margin-right: calc((40%/845)*100);
+    margin-right: calc((40% / 845) * 100);
 }
+
 @media screen and (max-width: 360px) {
-    .imgContainer{
+    .imgContainer {
         position: relative;
         width: 100%;
         max-width: 320px;
@@ -57,92 +63,104 @@
         margin-right: 0px;
     }
 }
-.arrowLeft{
+
+.arrowLeft {
     width: 41px;
     height: 30px;
     margin-bottom: 24px;
     cursor: pointer;
 }
-.imgNews{
+
+.imgNews {
     position: absolute;
     width: 100%;
-    height:100%;
+    height: 100%;
     object-fit: cover;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.contentFullWrapper{
-    width: calc((864%/1140)*100);
+.contentFullWrapper {
+    width: calc((864% / 1140) * 100);
 }
-.fullContentWrap{
+
+.fullContentWrap {
     width: 100%;
     height: 100%;
 }
-.wrapperFullItem{
+
+.wrapperFullItem {
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
 }
-.imgNewsFull{
-    width:100%;
+
+.imgNewsFull {
+    width: 100%;
     height: auto;
 
 }
-.headerInfo{
+
+.headerInfo {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom:8px ;
+    margin-bottom: 8px;
 }
-.mainContent{
+
+.mainContent {
     display: flex;
     flex-direction: column;
 }
-.imgShare{
+
+.imgShare {
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
 
-.headerNews{
-    margin-bottom:8px;
+.headerNews {
+    margin-bottom: 8px;
     font-family: 'Ubuntu';
     font-weight: 500;
     line-height: 28px;
     font-size: 24px;
 }
-.textNews{
-    margin-bottom:8px;
+
+.textNews {
+    margin-bottom: 8px;
     font-family: Ubuntu;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
     color: #858080;
     line-break: normal;
-    word-wrap:break-word;
+    word-wrap: break-word;
 }
-.linkNews{
+
+.linkNews {
     margin-bottom: 15px;
 }
 
-.like{
+.like {
     width: 24px;
     height: 24px;
     cursor: pointer;
 }
-.iconStyle{
+
+.iconStyle {
     height: 30px;
     width: 30px;
     cursor: pointer;
 }
 
-.contentContainerFull{
+.contentContainerFull {
     display: flex;
     flex-direction: column;
 }
-.noImg{
+
+.noImg {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -151,6 +169,7 @@
     min-height: 100%;
     background-color: #b3b3b3;
 }
-.shareWrap{
+
+.shareWrap {
     position: relative;
 }

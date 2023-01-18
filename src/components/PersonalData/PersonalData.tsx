@@ -8,8 +8,7 @@ import image from "../../assets/icons/image.svg"
 import loading from "../../assets/img/loading.gif"
 import {ButtonIcon} from "../Button/ButtonIcon/ButtonIcon";
 import {ChangeEvent, FC, useRef, useState} from "react";
-import {baseUrl, PersonalDataType,useSetDataUserMutation} from "../../api/user.api"
-
+import {baseUrl, PersonalDataType, useSetDataUserMutation} from "../../api/user.api"
 
 
 type PersonalDataPropsType = {
@@ -20,30 +19,31 @@ type formData = {
     last_name?: string,
     name?: string,
     nickname?: string,
-    profile_image: string|undefined|null
+    profile_image: string | undefined | null
 
 }
-export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
+export const PersonalData: FC<PersonalDataPropsType> = ({data, isFetching}) => {
     const inputRef = useRef<any>();
-    let [file,setFile] = useState<any>();
-    let [setUserData,res] = useSetDataUserMutation();
+    let [file, setFile] = useState<any>();
+    let [setUserData, res] = useSetDataUserMutation();
 
-    function userFormData(values:formData){
+    function userFormData(values: formData) {
         let formData = new FormData();
-        formData.append('name',values.name!)
-        formData.append('last_name',values.last_name!)
-        formData.append('nickname',values.nickname!)
-        if (file){
-            formData.append('profile_image',file,file.name)
+        formData.append('name', values.name!)
+        formData.append('last_name', values.last_name!)
+        formData.append('nickname', values.nickname!)
+        if (file) {
+            formData.append('profile_image', file, file.name)
         }
-        formData.append('profile_image','');
+        formData.append('profile_image', '');
         setUserData(formData);
         localStorage.setItem('nickname', values.nickname!);
     }
+
     const onDownloadClick = () => {
         inputRef?.current?.click();
     }
-    const handleFileChange = (e: ChangeEvent<HTMLInputElement>,handleSubmit:()=>void) => {
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>, handleSubmit: () => void) => {
         if (e.target.files) {
             setFile(e.target.files[0]);
         }
@@ -60,28 +60,30 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
                     profile_image: data?.profile_image
                 }
             }
-            onSubmit={(values:formData, {setSubmitting}) => {
+            onSubmit={(values: formData, {setSubmitting}) => {
                 userFormData(values);
                 setSubmitting(false);
             }}
         >
-            {({isSubmitting,
+            {({
+                  isSubmitting,
                   errors,
                   touched,
                   values,
                   handleChange,
-                  handleSubmit}) => (
+                  handleSubmit
+              }) => (
                 <div className={style.formContainer}>
                     <Form className={style.formContainer}>
                         <div className={style.formAvatar}>
                             <div className={style.avatarContainer}>
                                 {
-                                    isFetching?
+                                    isFetching ?
                                         <img className={style.loadingImg} src={loading} alt=""/>
-                                        : <img className={data?.profile_image? style.avatar: style.noAvatar} src={
+                                        : <img className={data?.profile_image ? style.avatar : style.noAvatar} src={
                                             data?.profile_image || res?.data?.profile_image
-                                                ?  `${baseUrl}/${data?.profile_image}`
-                                                :( isFetching ? trash:image )
+                                                ? `${baseUrl}/${data?.profile_image}`
+                                                : (isFetching ? trash : image)
                                         }
                                                alt="avatar"/>
                                 }
@@ -89,7 +91,7 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
 
                             <div className={style.avatarMenu}>
                                 <input
-                                    onChange={(e)=>{
+                                    onChange={(e) => {
                                         handleFileChange(e, handleSubmit);
                                     }}
                                     ref={inputRef}
@@ -98,11 +100,12 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
                                     accept={'image/*,.png,.jpg,.gif,.web'}
                                     className={style.inputHidden}
                                 />
-                                <ButtonIcon onClick={()=>{
+                                <ButtonIcon onClick={() => {
                                     onDownloadClick();
                                 }} type={"button"} text={'Добавить фото'}
                                             icon={download}/>
-                                <ButtonIcon onClick={()=>setFile(null)} type={"submit"} text={'Удалить'} icon={trash}/>
+                                <ButtonIcon onClick={() => setFile(null)} type={"submit"} text={'Удалить'}
+                                            icon={trash}/>
                             </div>
                         </div>
 
@@ -118,8 +121,8 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
                                         errors={errors}
                                         touched={touched}
                                         isSubmitting={isSubmitting}
-                                        isEditable = {true}
-                                       />
+                                        isEditable={true}
+                                    />
                                 </div>
                             </div>
                             <div className="formFieldWrap">
@@ -132,8 +135,8 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
                                         nameField="name"
                                         errors={errors}
                                         touched={touched}
-                                        isEditable = {true}
-                                        />
+                                        isEditable={true}
+                                    />
                                 </div>
                             </div>
                             <div className="formFieldWrap">
@@ -145,7 +148,7 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data,isFetching}) => {
                                         type="text" nameField="nickname"
                                         errors={errors}
                                         touched={touched}
-                                        isEditable = {true}/>
+                                        isEditable={true}/>
 
                                 </div>
                             </div>

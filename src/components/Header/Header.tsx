@@ -11,7 +11,7 @@ import searchIconPurple from '../../assets/icons/search-purple.svg'
 import {Link, useLocation, useNavigate} from 'react-router-dom'
 import {Form, Formik} from "formik";
 import {InputComponent} from "../Input/Input";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {setSearchText} from '../../redux/slices/filterSlice'
 import {useCreateLogOutQuery} from "../../api/login.api";
 import {Menu} from "../Menu/Menu";
@@ -68,9 +68,9 @@ export const Header: FC = () => {
         win.location = '/login';
     }
     let updateSearchValue = useCallback(
-        lodash.debounce((values:any)=>{
+        lodash.debounce((values: any) => {
             dispatch(setSearchText(values));
-        }, 700),[]
+        }, 700), []
     )
     return (
         <header className={subMenu ? style.subMenu : style.header}>
@@ -95,23 +95,23 @@ export const Header: FC = () => {
                               errors, touched, values, handleChange
                           }) => (
                             <Form className={style.formContainer}>
-                                    <div className={style.searchInputContainer}>
-                                        <InputComponent
-                                            onChange={(e: any) => {
-                                                navigate('/');
-                                                setFieldValue('search_text', e.target.value)
-                                                updateSearchValue({
-                                                    search_text:e.target.value
-                                                });
-                                                setSubmitting(false);
-                                            }}
-                                            type="text"
-                                            nameField="search_text"
-                                            errors={errors}
-                                            isSubmitting={isSubmitting}
-                                            hidden={showInputSearch}
-                                        />
-                                    </div>
+                                <div className={style.searchInputContainer}>
+                                    <InputComponent
+                                        onChange={(e: any) => {
+                                            navigate('/');
+                                            setFieldValue('search_text', e.target.value)
+                                            updateSearchValue({
+                                                search_text: e.target.value
+                                            });
+                                            setSubmitting(false);
+                                        }}
+                                        type="text"
+                                        nameField="search_text"
+                                        errors={errors}
+                                        isSubmitting={isSubmitting}
+                                        hidden={showInputSearch}
+                                    />
+                                </div>
                             </Form>
                         )}
                     </Formik>

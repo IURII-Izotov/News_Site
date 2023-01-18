@@ -1,7 +1,8 @@
 .container {
     display: block;
     position: relative;
-    font-family: 'Ubuntu';font-weight: 400;
+    font-family: 'Ubuntu';
+    font-weight: 400;
     font-size: 16px;
     line-height: 18px;
     padding-left: 35px;

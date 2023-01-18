@@ -1,6 +1,5 @@
 import style from './Select.module.css'
 import {FC} from "react";
-import arrowDown from '../../assets/icons/arrow-down.svg'
 import {Field} from "formik";
 type SelectPropsType={
     options:string[],

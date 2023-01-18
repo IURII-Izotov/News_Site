@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 import {useGetFullNewsQuery, useSetCommentMutation} from '../../api/post.api'
 import {Textarea} from "../../components/Textarea/Textarea";
 import {Form, Formik} from "formik";
-import style from "../../components/PopUpAddNews/AddNews/AddNews.module.css";
+import style from "./FullNews.module.css";
 import {FullNewsSkeleton} from "../../features/FullNewsSkeleton";
 
 export const FullNewsPage = () => {
@@ -47,7 +47,6 @@ export const FullNewsPage = () => {
                     }
                 }
                 onSubmit={(values, {setSubmitting}) => {
-                    console.log(values)
                     setComment(values);
                     setSubmitting(false);
                 }}

@@ -1,7 +1,6 @@
 import style from './Input.module.css'
-import {Field, useFormik} from 'formik';
-import {useRef, useState} from "react";
-import {LoginForm} from "../../pages/LoginPage/LoginForm/LoginForm";
+import {Field} from 'formik';
+import {useState} from "react";
 import edit from "../../assets/icons/edit.svg";
 
 
@@ -18,25 +17,27 @@ type InputPropsType = {
     placeholder?: string
     typeTextarea?: boolean
     options?: string[]
-    value?:string
-    handleChange?:any
-    hidden?:boolean
-    innerRef?:any
-    isEditable?:boolean
-    accept?:string
-    onChange?:any
-    list?:string
+    value?: string
+    handleChange?: any
+    hidden?: boolean
+    innerRef?: any
+    isEditable?: boolean
+    accept?: string
+    onChange?: any
+    list?: string
 }
 
-export const InputComponent = ({value,type, nameField, placeholder,
+export const InputComponent = ({
+                                   value, type, nameField, placeholder,
                                    handleChange, errors,
                                    touched, isSubmitting,
                                    typeTextarea = false, options,
-                                    hidden, innerRef,
-                                   accept,onChange,isEditable,list
+                                   hidden, innerRef,
+                                   accept, onChange, isEditable, list
                                }: InputPropsType) => {
     let [error, setError] = useState(false);
-    let [disabled,setDisabled] = useState(true);
+    let [disabled, setDisabled] = useState(true);
+
     function validateTextField(value?: string) {
         !value
             ? setError(true)
@@ -45,7 +46,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
 
     return (
         <>
-            <div  className={`${style.inputWrap}`}>
+            <div className={`${style.inputWrap}`}>
                 <Field className={
                     `${error && touched?.[nameField]
                         ? `${style.inputStyle} ${style.inputStyleError}`
@@ -57,7 +58,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
                        placeholder={placeholder}
                        value={value}
                        hidden={hidden}
-                       disabled = {isEditable? disabled: ''}
+                       disabled={isEditable ? disabled : ''}
                        innerRef={innerRef}
                        accept={accept}
                        onChange={onChange}
@@ -67,7 +68,7 @@ export const InputComponent = ({value,type, nameField, placeholder,
             {
                 isEditable
                     ? <img onClick={() => setDisabled(!disabled)} className={style.editImg} src={edit}
-                         alt="edit"/>
+                           alt="edit"/>
                     : <></>
             }
 

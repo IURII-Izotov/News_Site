@@ -9,9 +9,10 @@ type PopUpAddNewsType = {
 
 export const PopUpAddNews: FC<PopUpAddNewsType> = ({active, setActive}) => {
     return (
-              <div onClick={()=>setActive(false)} className={active ? `${style.modalContainer} ${style.active}`:style.modalContainer}>
-                    <AddNews setActive={setActive}/>
-              </div>
+        <div onClick={() => setActive(false)}
+             className={active ? `${style.modalContainer} ${style.active}` : style.modalContainer}>
+            <AddNews setActive={setActive}/>
+        </div>
 
     );
 };

@@ -1,7 +1,8 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/dist/query/react";
 
 
-export const baseUrl='https://megalab.pythonanywhere.com/';
+export const baseUrl = 'https://megalab.pythonanywhere.com/';
+
 export interface ReplayType {
     id: number;
     user: User;
@@ -19,6 +20,7 @@ export interface NewsType {
     short_desc?: any;
     author: string;
 }
+
 export interface User {
     id: number;
     nickname: string;
@@ -48,22 +50,24 @@ export interface FullNewsType {
 
 export const fetchPostApi = createApi({
     reducerPath: 'api/post',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://megalab.pythonanywhere.com/',
-        headers:{ "Authorization": `Token ${localStorage.getItem('token')}`
-    } }),
-    tagTypes: ['POST','COMMENT'],
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://megalab.pythonanywhere.com/',
+        headers: {
+            "Authorization": `Token ${localStorage.getItem('token')}`
+        }
+    }),
+    tagTypes: ['POST', 'COMMENT'],
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], any>({
             query: (arg) => {
-                console.log(arg.searchText.search_text)
-                let url = new URL( `post/?${arg.searchText.search_text ? "search="+arg.searchText.search_text:''}${`${arg?.filterValue}`?'&tag='+arg?.filterValue:''}`, baseUrl);
+                let url = new URL(`post/?${arg.searchText.search_text ? "search=" + arg.searchText.search_text : ''}${`${arg?.filterValue}` ? '&tag=' + arg?.filterValue : ''}`, baseUrl);
                 return `post/${url.search}`
             },
             providesTags: ['POST']
         }),
         getFullNews: builder.query<FullNewsType, string>({
             query: (id) => `post/${id}`,
-            providesTags: ['POST','COMMENT']
+            providesTags: ['POST', 'COMMENT']
         }),
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
@@ -77,72 +81,72 @@ export const fetchPostApi = createApi({
             ),
             providesTags: ['POST']
         }),
-        createPost: builder.mutation<any,any>({
-            query: (payload:any) => (
+        createPost: builder.mutation<any, any>({
+            query: (payload: any) => (
                 {
                     url: 'post/',
                     method: 'POST',
                     body: payload,
                 }),
-            transformResponse: (response: { data:any}, meta, arg) =>{
+            transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
             invalidatesTags: ['POST'],
         }),
 
-        setComment: builder.mutation<any,any>({
-            query: (payload:any) => {
+        setComment: builder.mutation<any, any>({
+            query: (payload: any) => {
                 return {
-                    url: `comment/` ,
+                    url: `comment/`,
                     method: 'POST',
-                    body:payload,
-                    headers:{
+                    body: payload,
+                    headers: {
                         "Authorization": `Token ${localStorage.getItem('token')}`,
                     }
                 }
             },
-            transformResponse: (response: { data:any}, meta, arg) =>{
+            transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
             invalidatesTags: ['COMMENT'],
         }),
-        setReplay: builder.mutation<any,any>({
-            query: (payload:any) => {
+        setReplay: builder.mutation<any, any>({
+            query: (payload: any) => {
                 return {
-                    url: `comment/` ,
+                    url: `comment/`,
                     method: 'POST',
-                    body:payload,
+                    body: payload,
                 }
             },
-            transformResponse: (response: { data:any}, meta, arg) =>{
+            transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
             invalidatesTags: ['COMMENT'],
         }),
 
-        deletePost: builder.mutation<any,any>({
-            query: (id:any) => {
+        deletePost: builder.mutation<any, any>({
+            query: (id: any) => {
                 return {
-                    url: `post/${id}/` ,
+                    url: `post/${id}/`,
                     method: 'DELETE',
                 }
             },
-            transformResponse: (response: { data:any}, meta, arg) =>{
+            transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
             invalidatesTags: ['POST'],
         }),
-        postLike: builder.mutation<any,any>({
-            query: (id:any) => {
+        postLike: builder.mutation<any, any>({
+            query: (id: any) => {
                 return {
-                    url: `like/` ,
+                    url: `like/`,
                     method: 'POST',
-                    body:{
-                        post:id
+                    body: {
+                        post: id
                     }
                 }
             },
-            transformResponse: (response: { data:any}, meta, arg) =>{
+            transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
             invalidatesTags: ['POST'],
@@ -164,4 +168,4 @@ export const {
     useDeletePostMutation,
     usePostLikeMutation,
     useGetTagsQuery,
-}=fetchPostApi
+} = fetchPostApi

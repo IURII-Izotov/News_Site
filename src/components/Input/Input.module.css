@@ -1,13 +1,15 @@
-.inputWrap{
+.inputWrap {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
     max-height: 39px;
 }
-.inputWrap > span{
+
+.inputWrap > span {
     align-self: start;
 }
+
 .inputStyle {
     box-sizing: border-box;
     width: auto;
@@ -18,13 +20,16 @@
     padding-left: 18px;
     width: 100%;
 }
+
 .inputStyleError {
     border: 1px solid #ff3131;
 }
+
 input.inputStyle:focus {
     border: 1.5px solid #7b7a7a;
 }
-label{
+
+label {
     font-family: 'Ubuntu';
     font-weight: 400;
     font-size: 16px;
@@ -32,15 +37,18 @@ label{
     align-self: center;
 }
 
-.inputContainer{
-   height: 100%;
+.inputContainer {
+    height: 100%;
 }
-.inputWrapNotification{
+
+.inputWrapNotification {
     height: content-box;
 }
-.inputStyleNotification{
+
+.inputStyleNotification {
     height: 39px;
 }
+
 .editImg {
     position: absolute;
     right: 0;

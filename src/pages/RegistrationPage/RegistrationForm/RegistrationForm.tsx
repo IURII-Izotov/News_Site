@@ -19,7 +19,6 @@ const SignupSchema = Yup.object().shape({
 
 export const RegistrationForm = () => {
     const [createRegistration, res] = useCreateRegistrationMutation();
-    console.log(res);
     useEffect(() => {
         if (res?.status == QueryStatus.fulfilled) {
             localStorage.setItem('nickname', res.data.nickname);
@@ -51,7 +50,6 @@ export const RegistrationForm = () => {
             }
             validationSchema={SignupSchema}
             onSubmit={(values, {setSubmitting}) => {
-                console.log(values)
                 createRegistration(values);
                 setSubmitting(false);
             }}

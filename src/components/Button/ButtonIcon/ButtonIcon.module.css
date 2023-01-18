@@ -1,7 +1,8 @@
-.img{
+.img {
     margin-left: 8px;
 }
-.button{
+
+.button {
     display: flex;
     background-color: transparent;
     border: transparent;
@@ -14,12 +15,14 @@
     flex-wrap: nowrap;
     white-space: nowrap;
 }
+
 @media screen and (max-width: 360px) {
-    .button{
+    .button {
         margin-bottom: 14px;
     }
 }
-.fullButton{
+
+.fullButton {
     padding: 8px 15px;
     border: 1px solid #DEDCE4;
     border-radius: 5px;

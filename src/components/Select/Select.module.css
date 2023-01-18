@@ -1,4 +1,4 @@
-.selectWrap{
+.selectWrap {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -16,13 +16,16 @@
     outline: none;
     padding-left: 18px;
 }
+
 .inputStyleError {
     border: 1px solid #ff3131;
 }
+
 input.inputStyle:focus {
     border: 1.5px solid #7b7a7a;
 }
-label{
+
+label {
     font-family: 'Ubuntu';
     font-weight: 400;
     font-size: 16px;
@@ -30,12 +33,14 @@ label{
     align-self: center;
 }
 
-.inputContainer{
-   height: 100%;
+.inputContainer {
+    height: 100%;
 }
-.inputWrapNotification{
+
+.inputWrapNotification {
     height: content-box;
 }
-.inputStyleNotification{
+
+.inputStyleNotification {
     height: 39px;
 }

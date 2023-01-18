@@ -1,4 +1,4 @@
-.footer{
+.footer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,29 +7,35 @@
     padding-top: 34px;
     padding-bottom: 65px;
 }
-.wrap{
+
+.wrap {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
 }
-.logo{
+
+.logo {
     margin-bottom: 40px;
     align-self: center;
 }
-.link{
+
+.link {
     color: #FFFFFF;
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
     text-decoration: none;
 }
-.link:nth-child(1){
+
+.link:nth-child(1) {
     margin-right: 13px;
 }
-.link:nth-last-child(1){
+
+.link:nth-last-child(1) {
     margin-left: 13px;
 }
-.wrapMenu{
+
+.wrapMenu {
     width: max-content;
 }

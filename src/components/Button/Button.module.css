@@ -12,7 +12,8 @@
     outline: none;
     cursor: pointer;
 }
-.button:hover{
+
+.button:hover {
     color: #FFFFFF;
     border: 1px solid #6939c6;
 }

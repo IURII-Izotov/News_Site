@@ -1,4 +1,4 @@
-.menuWrapper{
+.menuWrapper {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -12,6 +12,7 @@
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
 }
-.hidden{
+
+.hidden {
     visibility: hidden;
 }

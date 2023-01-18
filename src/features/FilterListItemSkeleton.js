@@ -11,7 +11,7 @@ export const FilterListItemSkeleton = (props) => (
         foregroundColor="#ecebeb"
         {...props}
     >
-        <rect x="35" y="4" rx="4" ry="4" width="140" height="13" />
-        <rect x="5" y="0" rx="4" ry="4" width="22" height="22" />
+        <rect x="35" y="4" rx="4" ry="4" width="140" height="13"/>
+        <rect x="5" y="0" rx="4" ry="4" width="22" height="22"/>
     </ContentLoader>
 )

@@ -1,28 +1,34 @@
 @import '../Normalize.css';
-.App{
+
+.App {
     position: relative;
 }
-.wrapper{
+
+.wrapper {
     margin: 0 auto;
     max-width: 1440px;
     font-family: Ubuntu;
 }
-.logo{
+
+.logo {
     width: 129px;
     max-width: 100%;
     height: 29px;
     max-height: 100%;
-    align-self:flex-start;
+    align-self: flex-start;
 }
-.contentWrap{
-    padding-left: calc((150%/1440)*100);
-    padding-right: calc((150%/1440)*100);
+
+.contentWrap {
+    padding-left: calc((150% / 1440) * 100);
+    padding-right: calc((150% / 1440) * 100);
     padding-bottom: 104px;
 }
-.bigButton{
+
+.bigButton {
     min-height: 38px;
 }
-.formFieldWrap{
+
+.formFieldWrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -31,7 +37,8 @@
     width: 100%;
     flex-wrap: wrap;
 }
-.inputContainer{
+
+.inputContainer {
     display: flex;
     flex-direction: row;
     position: relative;
@@ -39,15 +46,18 @@
     max-width: 231px;
     min-height: 39px;
 }
-.formFieldWrapNotification{
+
+.formFieldWrapNotification {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 231px;
 }
-.noData{
+
+.noData {
     height: 100vh;
 }
-.loadingBlock{
+
+.loadingBlock {
     height: 100vh;
 }

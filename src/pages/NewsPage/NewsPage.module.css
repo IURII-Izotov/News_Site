@@ -1,24 +1,26 @@
-.newsContentWrap{
+.newsContentWrap {
     display: flex;
     flex-direction: column;
     max-width: 845px;
     min-width: 0px;
 
 }
+
 @media screen and (max-width: 700px) {
-    .newsContentWrap{
+    .newsContentWrap {
         width: 100%;
     }
 }
 
-.wrapperPage{
+.wrapperPage {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-top: 34px;
 }
+
 @media screen and (max-width: 700px) {
-    .wrapperPage{
+    .wrapperPage {
         display: flex;
         flex-direction: column;
         justify-content: space-between;

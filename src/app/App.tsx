@@ -1,7 +1,6 @@
 import './App.css';
 import {Header} from "../components/Header/Header";
 import {FullNewsPage} from "../pages/FullNewsPage/FullNewsPage";
-import React, {useEffect, useState} from "react";
 import {Footer} from "../components/Footer/Footer";
 import {NewsPage} from "../pages/NewsPage/NewsPage";
 import {SelectedNews} from "../pages/SelectedNews/SelectedNews";
@@ -18,7 +17,6 @@ import {useSelector} from "react-redux";
 
 function App() {
     const {filterValue,searchText} = useSelector((state:any) => state.filter)
-    console.log(searchText)
     let {data,isFetching,isLoading}=useGetNewsQuery({searchText,filterValue});
     return (
         <div className="App">

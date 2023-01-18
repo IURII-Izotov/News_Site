@@ -3,9 +3,9 @@ import {FC} from "react";
 import logo from "../../assets/img/logo.svg";
 import {Link} from "react-router-dom";
 
-export const Footer:FC = () => {
+export const Footer: FC = () => {
     return (
-        <footer className={style.footer} >
+        <footer className={style.footer}>
             <div className={style.wrap}>
                 <img className={`logo ${style.logo}`} src={logo} alt="logo"/>
                 <div className={style.wrapMenu}>

@@ -8,9 +8,9 @@ import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
 import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
-import {useDeletePostMutation,usePostLikeMutation} from '../../api/post.api'
+import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 type NewsItemType = {
@@ -18,7 +18,7 @@ type NewsItemType = {
     selectedItems?: boolean
     selfPublication?: boolean
     data?: NewsType
-    fullData?:FullNewsType
+    fullData?: FullNewsType
 }
 
 export const NewsItem: FC<NewsItemType> = ({
@@ -36,20 +36,20 @@ export const NewsItem: FC<NewsItemType> = ({
         firsSentence = arr?.splice(0, 2).join('.');
         restText = arr?.join('.');
     }
-    let [deletePost]=useDeletePostMutation();
-    let [postLike]=usePostLikeMutation();
-    let [isVisibleShare,setIsVisibleShare]=useState(false);
+    let [deletePost] = useDeletePostMutation();
+    let [postLike] = usePostLikeMutation();
+    let [isVisibleShare, setIsVisibleShare] = useState(false);
 
     const navigate = useNavigate();
-    let onClickBackArrow=()=>{
+    let onClickBackArrow = () => {
         navigate(-1);
     }
 
     return (
-        <div className={fullItem?style.wrapperFullItem: style.wrapper }>
+        <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
             {
                 fullItem
-                    ? <img onClick={()=>onClickBackArrow()}
+                    ? <img onClick={() => onClickBackArrow()}
                            className={style.arrowLeft}
                            src={arrowLeft}
                            alt="back arrow"/>
@@ -58,12 +58,12 @@ export const NewsItem: FC<NewsItemType> = ({
             <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
                 {
                     fullItem
-                        ?   <div className={style.headerInfo}>
-                                <span className={style.date}>29.11.2022</span>
-                                <img onClick={()=>{
-                                    postLike(fullData?.id)
-                                }} className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
-                            </div>
+                        ? <div className={style.headerInfo}>
+                            <span className={style.date}>29.11.2022</span>
+                            <img onClick={() => {
+                                postLike(fullData?.id)
+                            }} className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
+                        </div>
                         : <div className={style.imgContainer}>
                             {
                                 data?.image
@@ -86,14 +86,14 @@ export const NewsItem: FC<NewsItemType> = ({
                             : <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
                                 {!selfPublication ?
-                                    <img onClick={()=>postLike(data?.id)}
+                                    <img onClick={() => postLike(data?.id)}
                                          src={data?.is_liked
-                                        ? heartRed
-                                        : heart} alt="like"
-                                         className={selfPublication ? '': style.iconStyle }/>
-                                         :
+                                             ? heartRed
+                                             : heart} alt="like"
+                                         className={selfPublication ? '' : style.iconStyle}/>
+                                    :
                                     <img src={trash} alt="like"
-                                         onClick={()=>deletePost(data?.id)}
+                                         onClick={() => deletePost(data?.id)}
                                          className={selfPublication ? style.iconStyle : ''}/>
                                 }
                             </div>
@@ -114,7 +114,7 @@ export const NewsItem: FC<NewsItemType> = ({
                                                      alt="img news"/>
                                                 <p className={style.textNews}>{restText}</p>
                                             </>
-                                            :<></>
+                                            : <></>
                                     }
 
                                 </>
@@ -133,14 +133,16 @@ export const NewsItem: FC<NewsItemType> = ({
                                     `/post/${data?.id}`
                                 } className={style.linkNews}>Читать дальше&gt;&gt;</Link>}
                         <div className={style.shareWrap}>
-                            <img onClick={()=>{
+                            <img onClick={() => {
 
-                                setIsVisibleShare(!isVisibleShare)}
+                                setIsVisibleShare(!isVisibleShare)
+                            }
                             } className={style.imgShare} src={share} alt="share"/>
                             {
                                 isVisibleShare
-                                    ? <Share id={fullItem?fullData?.id: data?.id} setIsVisibleShare={setIsVisibleShare}/>
-                                    :<></>
+                                    ? <Share id={fullItem ? fullData?.id : data?.id}
+                                             setIsVisibleShare={setIsVisibleShare}/>
+                                    : <></>
                             }
 
                         </div>

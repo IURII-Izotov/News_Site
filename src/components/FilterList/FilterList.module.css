@@ -14,34 +14,39 @@
     align-self: center;
     margin-top: 14px;
 }
-.formButton:hover{
+
+.formButton:hover {
     color: #FFFFFF;
     border: 1px solid #6939c6;
 }
-.filterIcon{
+
+.filterIcon {
     align-self: flex-start;
     display: none;
     margin-bottom: 17px;
 }
+
 @media screen and (max-width: 700px) {
-    .filterIcon{
+    .filterIcon {
         align-self: flex-end;
         display: block;
 
     }
 }
-.headerFilter{
+
+.headerFilter {
     margin-bottom: 18.5px;
     font-size: 18px;
 }
-.filterWrap{
+
+.filterWrap {
     width: 100%;
     max-width: 168px;
-    margin-right: calc((127px/1440)*100);
+    margin-right: calc((127px / 1440) * 100);
 }
 
 @media screen and (max-width: 700px) {
-    .filterWrap{
+    .filterWrap {
         position: absolute;
         background: #FFFFFF;
         box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
@@ -50,40 +55,46 @@
         padding-left: 27px;
         padding-right: 27px;
         padding-bottom: 27px;
-        top:60px;
+        top: 60px;
         right: 0;
         width: 100%;
         display: block;
         max-width: 168px;
         z-index: 1;
     }
-    .filterWrapHide{
+
+    .filterWrapHide {
         opacity: 0;
     }
 }
 
-.checkboxContainer{
+.checkboxContainer {
     min-width: 168px;
     height: 100%;
     max-height: 262px;
     overflow-y: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
-.checkboxContainer::-webkit-scrollbar{
+
+.checkboxContainer::-webkit-scrollbar {
     width: 0px;
 }
+
 .checkboxContainer:hover.checkboxContainer::-webkit-scrollbar {
     width: 4px;
 }
-.checkboxContainer::-webkit-scrollbar-track{
+
+.checkboxContainer::-webkit-scrollbar-track {
     box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
 }
+
 .checkboxContainer::-webkit-scrollbar-thumb {
     height: 12%;
     border-radius: 4px;
     background-color: rgba(0, 0, 0, 0.2);
     outline: 1px solid rgba(0, 0, 0, 0.1);
 }
-.checkmark{
+
+.checkmark {
     word-wrap: break-word;
 }

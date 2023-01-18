@@ -1,4 +1,4 @@
-.shareContainer{
+.shareContainer {
     position: absolute;
     padding-top: 18px;
     padding-left: 16px;
@@ -12,17 +12,20 @@
     border-radius: 10px;
     z-index: 1;
 }
-.shareHead{
+
+.shareHead {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.socialNetwork{
+
+.socialNetwork {
     position: absolute;
     width: 100%;
     height: 100%;
 }
-.socialNetworkContainer{
+
+.socialNetworkContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -34,18 +37,21 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.socialNetworkWrap{
+
+.socialNetworkWrap {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
 }
-.shortLinkWrap{
+
+.shortLinkWrap {
     display: flex;
     flex-direction: column;
     margin-top: 29px;
 }
-.shortLink{
+
+.shortLink {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -64,19 +70,23 @@
     padding-right: 16px;
 
 }
-.textShortLink{
-    text-decoration:none;
+
+.textShortLink {
+    text-decoration: none;
     color: #151515;
 }
-.imgCopyLink{
+
+.imgCopyLink {
     cursor: pointer;
 }
-.imgClose{
+
+.imgClose {
     cursor: pointer;
     width: 24px;
     height: 24px;
 }
-h2{
+
+h2 {
     font-weight: 500;
     font-size: 16px;
     line-height: 19px;

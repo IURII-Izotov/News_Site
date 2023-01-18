@@ -1,4 +1,4 @@
-.formContainer{
+.formContainer {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -14,15 +14,18 @@
     background-color: #FFFFFF;
     z-index: 100;
 }
+
 @media screen and (max-width: 360px) {
-    .formContainer{
+    .formContainer {
         max-width: 320px;
     }
 }
-.logo{
+
+.logo {
     align-self: center;
     margin-bottom: 21px;
 }
+
 .formButton {
     font-family: Ubuntu;
     font-size: 16px;
@@ -39,18 +42,21 @@
     align-self: center;
     margin-top: 33px;
 }
-.formButton:hover{
+
+.formButton:hover {
     color: #FFFFFF;
     border: 1px solid #6939c6;
 }
-.formWrap{
+
+.formWrap {
     display: flex;
     flex-direction: column;
 
     width: 429px;
     max-width: 100%;
 }
-.textLogin{
+
+.textLogin {
     align-self: center;
     font-family: 'Ubuntu';
     font-weight: 400;
@@ -59,64 +65,54 @@
     margin-top: 16px;
     color: #5A5A5A;
 }
-.textLogin>a{
-    color:#2D4EC2;
+
+.textLogin > a {
+    color: #2D4EC2;
 }
-.formFieldWrap{
+
+.formFieldWrap {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
 }
-.inputContainer{
+
+.inputContainer {
     width: 100%;
     max-width: 263px;
     height: 35px;
 }
-.textareaContainer{
+
+.textareaContainer {
     width: 100%;
     max-width: 263px;
     min-height: 95px;
     max-height: 295px;
 }
-.buttonContainer{
+
+.buttonContainer {
     width: 100%;
     max-width: 168px;
     height: 30px;
     margin-top: 33px;
     align-self: center;
 }
-.btnDownloadWrap{
+
+.btnDownloadWrap {
     width: 100%;
     max-width: 263px;
 }
-.closeButton{
+
+.closeButton {
     width: 30px;
     height: 30px;
     align-self: flex-end;
     cursor: pointer;
 }
-.inputHidden{
+
+.inputHidden {
     width: 0;
     height: 0;
 }
-.commentButton {
-    font-family: Ubuntu;
-    font-size: 16px;
-    font-weight: 500;
-    color: #FFFFFF;
-    padding: 6px 34.5px 6px 34.5px;
-    background: #7E5BC2;
-    border-radius: 10px;
-    border: 1px solid #7E5BC2;
-    width: max-content;
-    outline: none;
-    cursor: pointer;
-    align-self: center;
-}
-.formComment{
-    display: flex;
-    flex-direction: row;
-    min-height: 38px;
-}
+

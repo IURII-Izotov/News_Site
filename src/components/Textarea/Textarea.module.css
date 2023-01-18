@@ -20,19 +20,24 @@
     line-height: 60%;
 
 }
+
 .textarea::-webkit-scrollbar {
     width: 0.1px;
 }
+
 .inputStyleError {
     border: 1px solid #ff3131;
 }
+
 input.inputStyle:focus {
     border: 1.5px solid #7b7a7a;
 }
-.textareaReplay{
+
+.textareaReplay {
     height: 27px;
     max-width: 274px;
 }
-.textareaPost{
+
+.textareaPost {
     max-height: 295px;
 }

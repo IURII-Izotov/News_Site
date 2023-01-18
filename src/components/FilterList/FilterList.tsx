@@ -1,7 +1,7 @@
 import style from './FilterList.module.css'
 import {FilterItem} from "./FilterItem";
 import React, {FC, useState} from "react";
-import {Formik, Field, Form} from 'formik';
+import {Formik, Form} from 'formik';
 import {setFilterValue} from '../../redux/slices/filterSlice'
 import {useDispatch} from "react-redux";
 import {FilterListItemSkeleton} from "../../features/FilterListItemSkeleton";

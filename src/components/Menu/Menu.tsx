@@ -1,5 +1,5 @@
 import style from './Menu.module.css'
-import {FC, JSXElementConstructor, ReactNode} from "react";
+import {FC, ReactNode} from "react";
 
 type MenuPropsType = {
     children: ReactNode
@@ -7,7 +7,7 @@ type MenuPropsType = {
     hidden?: boolean
     onClick: (e: any, ref: any) => any
     ref?: any
-    handler?:(a:boolean)=>void
+    handler?: (a: boolean) => void
 }
 
 export const Menu: FC<MenuPropsType> = ({
