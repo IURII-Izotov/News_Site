@@ -11,21 +11,16 @@ import {
     Route,
 } from "react-router-dom";
 
-import {useGetNewsQuery} from "../api/post.api";
-import {useSelector} from "react-redux";
-
-
 function App() {
-    const {filterValue,searchText} = useSelector((state:any) => state.filter)
-    let {data,isFetching,isLoading}=useGetNewsQuery({searchText,filterValue});
+
     return (
         <div className="App">
             <div className='wrapper'>
                 <Header/>
                 <div className='contentWrap'>
                     <Routes>
-                        <Route path="/" element={<NewsPage data={data} isLoading={isFetching}/>}/>
-                        <Route path="/post" element={<NewsPage data={data} isLoading={isFetching}/>}/>
+                        <Route path="/" element={<NewsPage />}/>
+                        <Route path="/post" element={<NewsPage/>}/>
                         <Route path="/post/:id" element={<FullNewsPage/>}/>
                         <Route path="/like" element={<SelectedNews/>}/>
                         <Route path="/user" element={<PersonalPage/>}/>

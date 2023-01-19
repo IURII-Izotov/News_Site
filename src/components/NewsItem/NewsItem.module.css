@@ -155,7 +155,10 @@
     width: 30px;
     cursor: pointer;
 }
-
+.iconStyleLoading{
+    height: 30px;
+    width: 30px;
+}
 .contentContainerFull {
     display: flex;
     flex-direction: column;

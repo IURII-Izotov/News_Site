@@ -1,12 +1,13 @@
 import style from './NewsItem.module.css'
-import {FC, useState} from "react";
+import {FC, useEffect, useState} from "react";
 import share from '../../assets/icons/share.svg'
 import heart from '../../assets/icons/heart.svg'
 import heartRed from '../../assets/icons/heart-red.svg'
+import heartGray from '../../assets/icons/heart-gr.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
-import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
+import {baseUrl, FullNewsType, NewsType, useGetNewsQuery} from "../../api/post.api";
 import {Link} from "react-router-dom";
 import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
@@ -19,6 +20,9 @@ type NewsItemType = {
     selfPublication?: boolean
     data?: NewsType
     fullData?: FullNewsType
+    isLoading?: boolean
+    isFetching?: boolean
+    refetch?:any
 }
 
 export const NewsItem: FC<NewsItemType> = ({
@@ -26,7 +30,10 @@ export const NewsItem: FC<NewsItemType> = ({
                                                selfPublication = false,
                                                data,
                                                fullData,
-                                               selectedItems
+                                               selectedItems,
+                                               isLoading,
+                                               isFetching,
+
                                            }) => {
     let text = fullData?.text;
     let firsSentence: string | undefined = '';
@@ -36,10 +43,16 @@ export const NewsItem: FC<NewsItemType> = ({
         firsSentence = arr?.splice(0, 2).join('.');
         restText = arr?.join('.');
     }
+    let [likeFetch, setLikeFetch] = useState(false);
     let [deletePost] = useDeletePostMutation();
-    let [postLike] = usePostLikeMutation();
+    let [postLike,resLike] = usePostLikeMutation();
+    let {refetch} = useGetNewsQuery({});
     let [isVisibleShare, setIsVisibleShare] = useState(false);
-
+    useEffect(() => {
+        if(!isFetching){
+            setLikeFetch(false);
+        }
+    }, [isFetching,data,postLike])
     const navigate = useNavigate();
     let onClickBackArrow = () => {
         navigate(-1);
@@ -61,7 +74,7 @@ export const NewsItem: FC<NewsItemType> = ({
                         ? <div className={style.headerInfo}>
                             <span className={style.date}>29.11.2022</span>
                             <img onClick={() => {
-                                postLike(fullData?.id)
+                                postLike(fullData?.id);
                             }} className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
                         </div>
                         : <div className={style.imgContainer}>
@@ -86,11 +99,18 @@ export const NewsItem: FC<NewsItemType> = ({
                             : <div className={style.headerInfo}>
                                 <span className={style.date}>29.11.2022</span>
                                 {!selfPublication ?
-                                    <img onClick={() => postLike(data?.id)}
-                                         src={data?.is_liked
-                                             ? heartRed
-                                             : heart} alt="like"
-                                         className={selfPublication ? '' : style.iconStyle}/>
+                                    (likeFetch ? <img src={heartGray} alt="like"
+                                                         className={selfPublication ? '' : style.iconStyleLoading}/>
+                                            : <img onClick={() => {
+                                                postLike(data?.id);
+                                                setLikeFetch(!likeFetch);
+                                            }}
+                                                   src={data?.is_liked
+                                                       ? heartRed
+                                                       : heart} alt="like"
+                                                   className={selfPublication ? '' : style.iconStyle}/>
+                                                   )
+
                                     :
                                     <img src={trash} alt="like"
                                          onClick={() => deletePost(data?.id)}
