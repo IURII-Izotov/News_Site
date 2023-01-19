@@ -6,7 +6,8 @@
 
 .wrapper {
     margin: 0 auto;
-    max-width: 1440px;
+    width: 100%;
+    /*max-width: 1440px;*/
     font-family: Ubuntu;
 }
 

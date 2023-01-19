@@ -46,13 +46,14 @@ export const NewsItem: FC<NewsItemType> = ({
     let [likeFetch, setLikeFetch] = useState(false);
     let [deletePost] = useDeletePostMutation();
     let [postLike,resLike] = usePostLikeMutation();
-    let {refetch} = useGetNewsQuery({});
     let [isVisibleShare, setIsVisibleShare] = useState(false);
     useEffect(() => {
         if(!isFetching){
             setLikeFetch(false);
         }
-    }, [isFetching,data,postLike])
+    }, [isFetching,data]);
+
+
     const navigate = useNavigate();
     let onClickBackArrow = () => {
         navigate(-1);
