@@ -12,6 +12,7 @@ import {Link} from "react-router-dom";
 import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
 import {useNavigate} from "react-router-dom";
+import {LoginForm} from "../../pages/LoginPage/LoginForm/LoginForm";
 
 
 type NewsItemType = {
@@ -22,7 +23,6 @@ type NewsItemType = {
     fullData?: FullNewsType
     isLoading?: boolean
     isFetching?: boolean
-    refetch?:any
 }
 
 export const NewsItem: FC<NewsItemType> = ({
@@ -33,8 +33,6 @@ export const NewsItem: FC<NewsItemType> = ({
                                                selectedItems,
                                                isLoading,
                                                isFetching,
-
-
                                            }) => {
     let text = fullData?.text;
     let firsSentence: string | undefined = '';
@@ -52,21 +50,20 @@ export const NewsItem: FC<NewsItemType> = ({
     let [isLikedFull, setIsLikedFull] = useState(fullData?.is_liked);
 
     useEffect(() => {
-        if(!isFetching){
+        if(!isFetching && !selectedItems){
             setLikeFetch(false);
         }
     }, [isFetching,data,resLike]);
 
     useEffect(()=>{
-        if(resLike.isLoading){
+        if(resLike.isLoading && !selectedItems){
             setLikeFetch(true);
         }
-    },[resLike]);
+    },[resLike,data]);
     const navigate = useNavigate();
     let onClickBackArrow = () => {
         navigate(-1);
     }
-
     return (
         <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
             {
@@ -113,8 +110,11 @@ export const NewsItem: FC<NewsItemType> = ({
                                                          className={selfPublication ? '' : style.iconStyleLoading}/>
                                             : <img onClick={() => {
                                                 postLike(data?.id);
-                                                setLikeFetch(!likeFetch);
-                                                setIsLiked(!isLiked);
+                                                if(!selectedItems){
+                                                    setLikeFetch(!likeFetch);
+                                                    setIsLiked(!isLiked);
+                                                }
+
                                             }}
                                                    src={isLiked
                                                        ? heartRed

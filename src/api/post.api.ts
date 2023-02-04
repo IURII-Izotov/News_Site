@@ -71,7 +71,7 @@ export const fetchPostApi = createApi({
         }),
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
-            providesTags: ['POST','LIKE']
+            providesTags: ['LIKE']
         }),
         getAuthorPosts: builder.query<any, void>({
             query: () => ({
