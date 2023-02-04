@@ -7,7 +7,7 @@ import heartGray from '../../assets/icons/heart-gr.svg'
 import arrowLeft from '../../assets/icons/arrow-left.svg'
 import trash from '../../assets/icons/trash.svg'
 import image from '../../assets/icons/image.svg'
-import {baseUrl, FullNewsType, NewsType, useGetNewsQuery} from "../../api/post.api";
+import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
 import {Link} from "react-router-dom";
 import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
@@ -34,6 +34,7 @@ export const NewsItem: FC<NewsItemType> = ({
                                                isLoading,
                                                isFetching,
 
+
                                            }) => {
     let text = fullData?.text;
     let firsSentence: string | undefined = '';
@@ -48,6 +49,7 @@ export const NewsItem: FC<NewsItemType> = ({
     let [postLike,resLike] = usePostLikeMutation();
     let [isVisibleShare, setIsVisibleShare] = useState(false);
     let [isLiked, setIsLiked] = useState(data?.is_liked);
+    let [isLikedFull, setIsLikedFull] = useState(fullData?.is_liked);
 
     useEffect(() => {
         if(!isFetching){
@@ -82,7 +84,8 @@ export const NewsItem: FC<NewsItemType> = ({
                             <span className={style.date}>29.11.2022</span>
                             <img onClick={() => {
                                 postLike(fullData?.id);
-                            }} className={style.like} src={isLiked ? heartRed : heart} alt="like"/>
+                                setIsLikedFull(!isLikedFull);
+                            }} className={style.like} src={isLikedFull ? heartRed : heart} alt="like"/>
                         </div>
                         : <div className={style.imgContainer}>
                             {

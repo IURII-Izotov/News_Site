@@ -56,22 +56,22 @@ export const fetchPostApi = createApi({
             "Authorization": `Token ${localStorage.getItem('token')}`
         }
     }),
-    tagTypes: ['POST', 'COMMENT'],
+    tagTypes: ['POST', 'COMMENT','LIKE'],
     endpoints: (builder) => ({
         getNews: builder.query<NewsType[], any>({
             query: (arg) => {
                 let url = new URL(`post/?${arg.searchText.search_text ? "search=" + arg.searchText.search_text : ''}${`${arg?.filterValue}` ? '&tag=' + arg?.filterValue : ''}`, baseUrl);
                 return `post/${url.search}`
             },
-            providesTags: ['POST']
+            providesTags: ['POST','LIKE']
         }),
         getFullNews: builder.query<FullNewsType, string>({
             query: (id) => `post/${id}`,
-            providesTags: ['POST', 'COMMENT']
+            providesTags: ['POST', 'COMMENT','LIKE']
         }),
         getSelectNews: builder.query<NewsType[], void>({
             query: () => `like`,
-            providesTags: ['POST']
+            providesTags: ['POST','LIKE']
         }),
         getAuthorPosts: builder.query<any, void>({
             query: () => ({
@@ -149,7 +149,7 @@ export const fetchPostApi = createApi({
             transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
-            // invalidatesTags: ['POST'],
+            invalidatesTags: ['LIKE'],
         }),
         getTags: builder.query<any, void>({
             query: () => `tag/`,

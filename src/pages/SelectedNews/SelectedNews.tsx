@@ -1,11 +1,11 @@
 import style from './SelectedNews.module.css'
-import React from "react";
+import React, {useState} from "react";
 import {NewsItem} from "../../components/NewsItem/NewsItem";
 import {useGetSelectNewsQuery} from '../../api/post.api'
 import {SkeletonNewsItem} from "../../features/SkeletonNewsItem";
 
 export const SelectedNews = () => {
-    let {data, isLoading} = useGetSelectNewsQuery()
+    let {data, isLoading} = useGetSelectNewsQuery();
     return (
         <div className={style.selectedNewsContainer}>
             <h1 className={style.selectedNewsHeader}>Избранные новости</h1>

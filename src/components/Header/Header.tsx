@@ -45,8 +45,6 @@ export const Header: FC = () => {
     let [burgerMenuVisible, setBurgerMenuVisible] = useState(true);
     let [accountMenuVisible, setAccountMenuVisible] = useState(true);
     let [showInputSearch, setShowInputSearch] = useState(true);
-    let [skip, setSkip] = useState(true);
-    let {data, error, isLoading, isUninitialized} = useCreateLogOutQuery({}, {skip: skip});
     let burgerMenuRef = useRef<any>();
     let accountMenuRef = useRef<any>();
     const navigate = useNavigate();
@@ -63,7 +61,6 @@ export const Header: FC = () => {
     useOnClickOutside(burgerMenuRef, () => setBurgerMenuVisible(true));
     useOnClickOutside(accountMenuRef, () => setAccountMenuVisible(true));
     let handleLogOut = () => {
-        setSkip(false);
         const win: Window = window;
         win.location = '/login';
     }
