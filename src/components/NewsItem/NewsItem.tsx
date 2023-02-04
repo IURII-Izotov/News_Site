@@ -47,13 +47,19 @@ export const NewsItem: FC<NewsItemType> = ({
     let [deletePost] = useDeletePostMutation();
     let [postLike,resLike] = usePostLikeMutation();
     let [isVisibleShare, setIsVisibleShare] = useState(false);
+    let [isLiked, setIsLiked] = useState(data?.is_liked);
+
     useEffect(() => {
         if(!isFetching){
             setLikeFetch(false);
         }
-    }, [isFetching,data]);
+    }, [isFetching,data,resLike]);
 
-
+    useEffect(()=>{
+        if(resLike.isLoading){
+            setLikeFetch(true);
+        }
+    },[resLike]);
     const navigate = useNavigate();
     let onClickBackArrow = () => {
         navigate(-1);
@@ -76,7 +82,7 @@ export const NewsItem: FC<NewsItemType> = ({
                             <span className={style.date}>29.11.2022</span>
                             <img onClick={() => {
                                 postLike(fullData?.id);
-                            }} className={style.like} src={fullData?.is_liked ? heartRed : heart} alt="like"/>
+                            }} className={style.like} src={isLiked ? heartRed : heart} alt="like"/>
                         </div>
                         : <div className={style.imgContainer}>
                             {
@@ -105,8 +111,9 @@ export const NewsItem: FC<NewsItemType> = ({
                                             : <img onClick={() => {
                                                 postLike(data?.id);
                                                 setLikeFetch(!likeFetch);
+                                                setIsLiked(!isLiked);
                                             }}
-                                                   src={data?.is_liked
+                                                   src={isLiked
                                                        ? heartRed
                                                        : heart} alt="like"
                                                    className={selfPublication ? '' : style.iconStyle}/>

@@ -149,7 +149,7 @@ export const fetchPostApi = createApi({
             transformResponse: (response: { data: any }, meta, arg) => {
                 return response
             },
-            invalidatesTags: ['POST'],
+            // invalidatesTags: ['POST'],
         }),
         getTags: builder.query<any, void>({
             query: () => `tag/`,
