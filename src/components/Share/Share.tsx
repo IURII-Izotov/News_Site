@@ -7,7 +7,7 @@ import whatsapp from '../../assets/icons/whatsapp.svg'
 import copy from '../../assets/icons/copy.svg'
 import React, {FC, useEffect, useState} from "react";
 import {useGetShortLinkQuery} from "../../api/short_link.api";
-import {baseUrl} from "../../api/user.api";
+
 import {
     FacebookShareButton,
     TelegramShareButton,
@@ -19,6 +19,10 @@ type sharePropsType = {
     setIsVisibleShare: any
     id: any
 
+}
+let url= window.location.origin;
+if(url.includes('localhost')){
+    url = 'https://news-site-rho.vercel.app'
 }
 export const Share: FC<sharePropsType> = ({setIsVisibleShare, id}) => {
     const [text, setText] = useState('');
@@ -43,13 +47,13 @@ export const Share: FC<sharePropsType> = ({setIsVisibleShare, id}) => {
                         className={style.socialNetwork}
                         title={''}
                         children={undefined}
-                        url={`${baseUrl}post/${id}`}/>
+                        url={`${url}post/${id}`}/>
                     <img src={telegram} alt="telegram"/>
                 </div>
                 <div className={style.socialNetworkContainer}>
                     <TwitterShareButton
                         className={style.socialNetwork}
-                        url={`${baseUrl}post/${id}`}
+                        url={`${url}post/${id}`}
                         children={undefined}/>
                     <img src={twitter} alt="twitter"/>
                 </div>
@@ -58,13 +62,13 @@ export const Share: FC<sharePropsType> = ({setIsVisibleShare, id}) => {
                         className={style.socialNetwork}
                         quote={''}
                         hashtag={''}
-                        children={undefined} url={`${baseUrl}post/${id}`}/>
+                        children={undefined} url={`${url}post/${id}`}/>
                     <img src={facebook} alt="facebook"/>
                 </div>
                 <div className={style.socialNetworkContainer}>
                     <WhatsappShareButton
                         className={style.socialNetwork}
-                        children={undefined} url={`${baseUrl}post/${id}`}/>
+                        children={undefined} url={`${url}post/${id}`}/>
                     <img src={whatsapp} alt="whatsapp"/>
                 </div>
 
