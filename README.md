@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/IURII-Izotov/News_Site">
-    <img src="https://news-site-rho.vercel.app/static/media/logo-purple.5be150e132ed2f9c60058b60e3355ab6.svg" alt="Logo" width="80" height="80">
+    <img src="https://news-site-rho.vercel.app/static/media/logo-purple.5be150e132ed2f9c60058b60e3355ab6.svg" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">News Site</h3>
