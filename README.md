@@ -15,7 +15,8 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/IURII-Izotov/News_Site?color=dark-green) ![Issues](https://img.shields.io/github/issues/IURII-Izotov/News_Site) 
+![Contributors](https://img.shields.io/github/contributors/IURII-Izotov/News_Site?color=dark-green) 
+![Issues](https://img.shields.io/github/issues/IURII-Izotov/News_Site) 
 
 ## Table Of Contents
 
