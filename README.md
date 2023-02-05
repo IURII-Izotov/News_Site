@@ -10,7 +10,7 @@
     Project for Megalab(Megacom,Kyrgyzstan)
     <br/>
     <br/>
-    <a href="https://github.com/IURII-Izotov/News_Site">View Demo</a>
+    <a href="https://news-site-rho.vercel.app/">View Demo</a>
     .
   </p>
 </p>
