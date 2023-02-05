@@ -35,7 +35,7 @@
 
 ![Screen Shot](https://i.postimg.cc/BZgtcjvN/image.jpg)
 
-A news site project that aims to implement most of the standard cases in the development of the front-end part of the site
+A news site project that aims to implement most of the standard cases in the development of the front-end part of the site<br>
 Includes:
 * -Registration
 * -Login
@@ -46,7 +46,7 @@ Includes:
 * -Editing user data
 * -Display full news
 * -Search news
-* - Generation of a short link to the news
+* -Generation of a short link to the news
 
 To create the project, an API was given, the description of this API was in Postman
 Link to project design in Figma: [News site](https://shrtco.de/VlEuUV)
