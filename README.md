@@ -53,7 +53,7 @@ Link to project design in Figma: [News site](https://shrtco.de/VlEuUV)
 
 ## Built With
 
-HTML, CSS componets, JavaScript
+HTML(JSX), CSS componets, JavaScript
 
 * [React](https://reactjs.org/)
 * [Redux-Toolkit](https://redux-toolkit.js.org/)
