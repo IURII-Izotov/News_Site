@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+<br/>
+<p align="center">
+  <a href="https://github.com/IURII-Izotov/News_Site">
+    <img src="https://news-site-rho.vercel.app/static/media/logo-purple.5be150e132ed2f9c60058b60e3355ab6.svg" alt="Logo" width="200" height="200">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <h3 align="center">News Site</h3>
 
-## Available Scripts
+  <p align="center">
+    Project for Megalab(Megacom,Kyrgyzstan)
+    <br/>
+    <br/>
+    <a href="https://news-site-rho.vercel.app/">View Demo</a>
+    .
+  </p>
+</p>
 
-In the project directory, you can run:
+![Contributors](https://img.shields.io/github/contributors/IURII-Izotov/News_Site?color=dark-green) 
+![Issues](https://img.shields.io/github/issues/IURII-Izotov/News_Site) 
 
-### `npm start`
+## Table Of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [About the Project](#about-the-project)
+* [Built With](#built-with)
+* [Getting Started](#getting-started)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [Usage](#usage)
+* [Roadmap](#roadmap)
+* [Contributing](#contributing)
+* [License](#license)
+* [Authors](#authors)
+* [Acknowledgements](#acknowledgements)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## About The Project
 
-### `npm test`
+![Screen Shot](https://i.postimg.cc/BZgtcjvN/image.jpg)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A news site project that aims to implement most of the standard cases in the development of the front-end part of the site<br>
+Includes:
+* -Registration
+* -Login
+* -Display all created news
+* -Adding to "favorites"
+* -Create your own news
+* -Personal user account
+* -Editing user data
+* -Display full news
+* -Search news
+* -Generation of a short link to the news
 
-### `npm run build`
+To create the project, an API was given, the description of this API was in Postman
+Link to project design in Figma: [News site](https://shrtco.de/VlEuUV)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+HTML(JSX), CSS componets, JavaScript
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* [React](https://reactjs.org/)
+* [Redux-Toolkit](https://redux-toolkit.js.org/)
+* [RTK query](https://redux-toolkit.js.org/rtk-query/overview)
+* [Type Script](https://www.typescriptlang.org/)
+* [Formik](https://formik.org/)
 
-### `npm run eject`
+## Getting Started
+### Prerequisites
+* npm
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+npm install npm@latest -g
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone the repo
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```sh
+git clone https://github.com/your_username_/Project-Name.git
+```
 
-## Learn More
+2.Install NPM packages
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Usage
+
+yarn start
