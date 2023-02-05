@@ -7,7 +7,7 @@
   <h3 align="center">News Site</h3>
 
   <p align="center">
-    Project for Megalab(by Megacom,Kyrgyzstan)
+    Project for Megalab(Megacom,Kyrgyzstan)
     <br/>
     <br/>
     <a href="https://github.com/IURII-Izotov/News_Site">View Demo</a>
