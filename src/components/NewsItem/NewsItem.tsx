@@ -12,8 +12,6 @@ import {Link} from "react-router-dom";
 import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
 import {Share} from "../Share/Share";
 import {useNavigate} from "react-router-dom";
-import {LoginForm} from "../../pages/LoginPage/LoginForm/LoginForm";
-
 
 type NewsItemType = {
     fullItem?: boolean
