@@ -49,7 +49,7 @@ Includes:
 - Generation of a short link to the news
 
 To create the project, an API was given, the description of this API was in Postman
-Link to project design in Figma: [News site](shrtco.de/VlEuUV)
+Link to project design in Figma: [News site](https://shrtco.de/VlEuUV)
 
 ## Built With
 
