@@ -19,9 +19,6 @@ dependencies:
   '@testing-library/user-event':
     specifier: ^13.5.0
     version: 13.5.0(@testing-library/dom@9.3.0)
-  '@trpc/client':
-    specifier: ^10.27.1
-    version: 10.27.1(@trpc/server@10.27.1)
   '@types/antd':
     specifier: ^1.0.0
     version: 1.0.0(react-dom@18.2.0)(react@18.2.0)
@@ -2630,18 +2627,6 @@ packages:
   /@tootallnate/once@1.1.2:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
-    dev: false
-
-  /@trpc/client@10.27.1(@trpc/server@10.27.1):
-    resolution: {integrity: sha512-e9Syj6F41OHDSUg3JvT67fgoD22UbxPzYgp9Bno13NFpyeJc6vkXRlAgDc8ZuouqUPQuouJWll/I90CsuxEqvA==}
-    peerDependencies:
-      '@trpc/server': 10.27.1
-    dependencies:
-      '@trpc/server': 10.27.1
-    dev: false
-
-  /@trpc/server@10.27.1:
-    resolution: {integrity: sha512-oMTNpei0+CAet0BuDdBE9cup0SseJAOlWRhWhcTAU05rETsJnzCA5DfNkf+aP3XiAM8rMJfrTfC0Z3aeADhHaA==}
     dev: false
 
   /@trysound/sax@0.2.0:

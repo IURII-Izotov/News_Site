@@ -1,13 +1,22 @@
 {
-  "name": "news-site-api",
-  "version": "1.0.0",
-  "description": "Backend API for the news site",
-  "type": "module",
-  "scripts": {},
-  "keywords": [],
-  "author": "Huge Letters",
-  "license": "ISC",
+  "name": "megalab-news-site-api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
-    "@trpc/server": "^10.27.1"
+    "@types/node": "20.2.3",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
+    "next": "13.4.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "5.0.4"
   }
 }
