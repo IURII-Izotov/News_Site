@@ -57,7 +57,7 @@ export const LoginForm = () => {
             {({isSubmitting, errors, touched, values, handleChange}) => (
                 <div className={style.formContainer}>
                     <img className={style.logo} src={logo} alt=""/>
-                    <Form className={style.formWrap}>
+                    <Form className={style.formWrap} >
                         <div className='formFieldWrap'>
                             <label htmlFor="nickname">Никнейм</label>
                             <div className='inputContainer'>

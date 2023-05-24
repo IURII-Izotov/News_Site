@@ -17,19 +17,20 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <AuthProvider authType={'cookie'}
-                  authName={'token'}
-                  cookieDomain={window.location.hostname}
-                  cookieSecure={window.location.protocol === "https:"}>
+    // <AuthProvider authType={'cookie'}
+    //               authName={'token'}
+    //               cookieDomain={window.location.hostname}
+    //               cookieSecure={window.location.protocol === "https:"}>
         <BrowserRouter>
             <Provider store={store}>
                 <Routes>
-                    <Route path="/login" element={<LoginPage/>}/>
-                    <Route path="/*" element={<RequireAuth loginPath={"/login"}><App/></RequireAuth>}/>
-                    <Route path="/registration" element={<RegistrationPage/>}/>
+                    {/*<Route path="/login" element={<LoginPage/>}/>*/}
+                    {/*<Route path="/*" element={<RequireAuth loginPath={"/login"}><App/></RequireAuth>}/>*/}
+                    <Route path="/*" element={<App/>}/>
+                    {/*<Route path="/registration" element={<RegistrationPage/>}/>*/}
                 </Routes>
             </Provider>
         </BrowserRouter>
-    </AuthProvider>
+   // </AuthProvider>
 );
 reportWebVitals();
