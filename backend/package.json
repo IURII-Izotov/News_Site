@@ -1,0 +1,13 @@
+{
+  "name": "news-site-api",
+  "version": "1.0.0",
+  "description": "Backend API for the news site",
+  "type": "module",
+  "scripts": {},
+  "keywords": [],
+  "author": "Huge Letters",
+  "license": "ISC",
+  "dependencies": {
+    "@trpc/server": "^10.27.1"
+  }
+}

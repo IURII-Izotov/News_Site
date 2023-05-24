@@ -1,0 +1,12 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@trpc/server':
+    specifier: ^10.27.1
+    version: 10.27.1
+
+packages:
+
+  /@trpc/server@10.27.1:
+    resolution: {integrity: sha512-oMTNpei0+CAet0BuDdBE9cup0SseJAOlWRhWhcTAU05rETsJnzCA5DfNkf+aP3XiAM8rMJfrTfC0Z3aeADhHaA==}
+    dev: false
