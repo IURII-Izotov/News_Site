@@ -5,5 +5,5 @@ type Data = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  res.status(200).json({ name: "John Dora" });
+  res.status(200).json({ name: "✨Dora✨" });
 }
