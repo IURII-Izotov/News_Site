@@ -82,7 +82,8 @@ export const PersonalData: FC<PersonalDataPropsType> = ({data, isFetching}) => {
                                         <img className={style.loadingImg} src={loading} alt=""/>
                                         : <img className={data?.profile_image ? style.avatar : style.noAvatar} src={
                                             data?.profile_image || res?.data?.profile_image
-                                                ? `${baseUrl}/${data?.profile_image}`
+                                                // ? `${baseUrl}/${data?.profile_image}`
+                                                ? `${data?.profile_image}`
                                                 : (isFetching ? trash : image)
                                         }
                                                alt="avatar"/>

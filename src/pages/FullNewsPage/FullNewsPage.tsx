@@ -6,6 +6,7 @@ import {Textarea} from "../../components/Textarea/Textarea";
 import {Form, Formik} from "formik";
 import style from "./FullNews.module.css";
 import {FullNewsSkeleton} from "../../features/FullNewsSkeleton";
+import React from "react";
 
 export const FullNewsPage = () => {
     let {id} = useParams();
