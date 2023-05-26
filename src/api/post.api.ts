@@ -50,7 +50,8 @@ export const fetchPostApi = createApi({
   reducerPath: "api/post",
   baseQuery: fetchBaseQuery({
     baseUrl,
-    // headers: { Authorization: `Token ${localStorage.getItem("token")}` },
+    headers: {
+    },
   }),
   tagTypes: ["POST", "COMMENT", "LIKE"],
   endpoints: builder => ({
@@ -59,7 +60,7 @@ export const fetchPostApi = createApi({
         const params = new URLSearchParams();
         Object.entries(arg).forEach(([k, v]) => v && params.set(k, v.toString()));
         const query = params.toString();
-        return `post/${query ? "?" : ""}${query}`;
+        return `post${query ? "/?" : ""}${query}`;
       },
       providesTags: ["POST", "LIKE"],
     }),

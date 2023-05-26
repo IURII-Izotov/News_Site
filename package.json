@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:full": "concurrently -n \"frontend,backend,prisma\" -c \"blue,red,green\" \"pnpm run dev\" \"cd backend && pnpm run dev\" \"cd backend && pnpm run prisma-studio\"",
+    "dev:full": "concurrently -n \"frontend,backend,prisma\" -c \"blue,red,green\" \"npm run dev\" \"cd backend && npm run dev\" \"cd backend && npm run prisma-studio\"",
     "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -16,7 +16,8 @@ export const SelectedNews = () => {
                     {[...new Array(4)].map((_, index) => <SkeletonNewsItem key={index}/>)}
                 </div>
                : data?.map((news) => {
-                    return <NewsItem data={news} selectedItems={true}/>
+                    // return <NewsItem data={news} selectedItems={true}/>
+                    return <></>
                 })
             }
 

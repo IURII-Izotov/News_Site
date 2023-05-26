@@ -6,6 +6,7 @@ import { FC, useEffect } from "react";
 import { SkeletonNewsItem } from "../../features/SkeletonNewsItem";
 import { useSelector } from "react-redux";
 
+
 type newsPagePropsType = {
   data?: any;
   isLoading?: boolean;
@@ -13,20 +14,22 @@ type newsPagePropsType = {
 };
 
 export const NewsPage: FC<newsPagePropsType> = () => {
-  const { filterValue, searchText } = useSelector((state: any) => state.filter);
-  let {
-    data: newsData,
-    isFetching,
-    isLoading,
-  } = useGetNewsQuery({ contains: searchText, tag: filterValue });
-  // let { data: tagsData } = useGetTagsQuery();
-
-  if (newsData?.status === "error") return <div>{newsData.error}</div>;
-  // if (tagsData?.status === "error") return <div>{tagsData.error}</div>;
-
-  return (
-    <div className={style.wrapperPage}>
-      {/* <FilterList
+    const { filterValue, searchText } = useSelector((state: any) => state.filter);
+    let {
+        data: newsData,
+        isFetching,
+        isLoading,
+    } = useGetNewsQuery({ contains: searchText, tag: filterValue });
+    // let { data: tagsData } = useGetTagsQuery();
+    console.log(newsData)
+    if (newsData?.status === "error") return <div>{newsData.error}</div>;
+    // if (tagsData?.status === "error") return <div>{tagsData.error}</div>;
+    // useEffect(()=>{
+    //     fetch("http://localhost:3001/api/post").then(res=>res.json()).then(res=>console.log(res))
+    // },[])
+    return (
+        <div className={style.wrapperPage}>
+            {/* <FilterList
         data={filterListData.data}
         isLoading={filterListData.isLoading}
       /> */}
