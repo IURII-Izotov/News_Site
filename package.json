@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:full": "concurrently -n \"frontend,backend,prisma\" -c \"blue,red,green\" \"pnpm run dev\" \"cd backend && pnpm run dev\" \"cd backend && pnpm run prisma-studio\"",
     "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -40,12 +41,6 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -59,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.194"
+    "@types/lodash": "^4.14.194",
+    "concurrently": "^8.0.1"
   }
 }
