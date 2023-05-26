@@ -13,7 +13,7 @@ type newsPagePropsType = {
 }
 
 export const NewsPage: FC<newsPagePropsType> = () => {
-    const {filterValue,searchText} = useSelector((state:any) => state.filter)
+    const {filterValue,searchText} = useSelector((state:any) => state.filter);
     let {data,isFetching,isLoading}=useGetNewsQuery({searchText,filterValue});
     let filterListData = useGetTagsQuery();
     return (
