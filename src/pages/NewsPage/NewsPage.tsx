@@ -6,6 +6,7 @@ import { FC, useEffect } from "react";
 import { SkeletonNewsItem } from "../../features/SkeletonNewsItem";
 import { useSelector } from "react-redux";
 
+
 type newsPagePropsType = {
   data?: any;
   isLoading?: boolean;
@@ -20,10 +21,12 @@ export const NewsPage: FC<newsPagePropsType> = () => {
         isLoading,
     } = useGetNewsQuery({ contains: searchText, tag: filterValue });
     // let { data: tagsData } = useGetTagsQuery();
-
+    console.log(newsData)
     if (newsData?.status === "error") return <div>{newsData.error}</div>;
     // if (tagsData?.status === "error") return <div>{tagsData.error}</div>;
-
+    // useEffect(()=>{
+    //     fetch("http://localhost:3001/api/post").then(res=>res.json()).then(res=>console.log(res))
+    // },[])
     return (
         <div className={style.wrapperPage}>
             {/* <FilterList
