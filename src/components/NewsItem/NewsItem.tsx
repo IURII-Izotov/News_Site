@@ -1,187 +1,197 @@
-import style from './NewsItem.module.css'
-import {FC, useEffect, useState} from "react";
-import share from '../../assets/icons/share.svg'
-import heart from '../../assets/icons/heart.svg'
-import heartRed from '../../assets/icons/heart-red.svg'
-import heartGray from '../../assets/icons/heart-gr.svg'
-import arrowLeft from '../../assets/icons/arrow-left.svg'
-import trash from '../../assets/icons/trash.svg'
-import image from '../../assets/icons/image.svg'
-import {baseUrl, FullNewsType, NewsType} from "../../api/post.api";
-import {Link} from "react-router-dom";
-import {useDeletePostMutation, usePostLikeMutation} from '../../api/post.api'
-import {Share} from "../Share/Share";
-import {useNavigate} from "react-router-dom";
+import style from "./NewsItem.module.css";
+import { FC, useEffect, useState } from "react";
+import share from "../../assets/icons/share.svg";
+import heart from "../../assets/icons/heart.svg";
+import heartRed from "../../assets/icons/heart-red.svg";
+import heartGray from "../../assets/icons/heart-gr.svg";
+import arrowLeft from "../../assets/icons/arrow-left.svg";
+import trash from "../../assets/icons/trash.svg";
+import image from "../../assets/icons/image.svg";
+import { FullNewsType } from "../../api/post.api";
+import { Link } from "react-router-dom";
+import { useDeletePostMutation, usePostLikeMutation } from "../../api/post.api";
+import { Share } from "../Share/Share";
+import { useNavigate } from "react-router-dom";
+import { PostGetData } from "../../../contract/api";
 
 type NewsItemType = {
-    fullItem?: boolean
-    selectedItems?: boolean
-    selfPublication?: boolean
-    data?: NewsType
-    fullData?: FullNewsType
-    isLoading?: boolean
-    isFetching?: boolean
-}
+  fullItem?: boolean;
+  selectedItems?: boolean;
+  selfPublication?: boolean;
+  data: PostGetData[number];
+  isLoading?: boolean;
+  isFetching?: boolean;
+};
 
 export const NewsItem: FC<NewsItemType> = ({
-                                               fullItem = false,
-                                               selfPublication = false,
-                                               data,
-                                               fullData,
-                                               selectedItems,
-                                               isLoading,
-                                               isFetching,
-                                           }) => {
-    let text = fullData?.text;
-    let firsSentence: string | undefined = '';
-    let restText: string | undefined = ''
-    if (fullItem) {
-        let arr = text?.split('.');
-        firsSentence = arr?.splice(0, 2).join('.');
-        restText = arr?.join('.');
+  fullItem = false,
+  selfPublication = false,
+  data,
+  selectedItems,
+  isLoading,
+  isFetching,
+}) => {
+  let text = data.text;
+  let firsSentence: string | undefined = "";
+  let restText: string | undefined = "";
+  if (fullItem) {
+    let arr = text?.split(".");
+    firsSentence = arr?.splice(0, 2).join(".");
+    restText = arr?.join(".");
+  }
+  let [likeFetch, setLikeFetch] = useState(false);
+  let [deletePost] = useDeletePostMutation();
+  let [postLike, resLike] = usePostLikeMutation();
+  let [isVisibleShare, setIsVisibleShare] = useState(false);
+  let [isLiked, setIsLiked] = useState(data?.liked);
+  let [isLikedFull, setIsLikedFull] = useState(data.liked);
+
+  useEffect(() => {
+    if (!isFetching && !selectedItems) {
+      setLikeFetch(false);
     }
-    let [likeFetch, setLikeFetch] = useState(false);
-    let [deletePost] = useDeletePostMutation();
-    let [postLike,resLike] = usePostLikeMutation();
-    let [isVisibleShare, setIsVisibleShare] = useState(false);
-    let [isLiked, setIsLiked] = useState(data?.is_liked);
-    let [isLikedFull, setIsLikedFull] = useState(fullData?.is_liked);
+  }, [isFetching, data, resLike]);
 
-    useEffect(() => {
-        if(!isFetching && !selectedItems){
-            setLikeFetch(false);
-        }
-    }, [isFetching,data,resLike]);
-
-    useEffect(()=>{
-        if(resLike.isLoading && !selectedItems){
-            setLikeFetch(true);
-        }
-    },[resLike,data]);
-    const navigate = useNavigate();
-    let onClickBackArrow = () => {
-        navigate(-1);
+  useEffect(() => {
+    if (resLike.isLoading && !selectedItems) {
+      setLikeFetch(true);
     }
-    return (
-        <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
-            {
-                fullItem
-                    ? <img onClick={() => onClickBackArrow()}
-                           className={style.arrowLeft}
-                           src={arrowLeft}
-                           alt="back arrow"/>
-                    : <></>
-            }
-            <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
-                {
-                    fullItem
-                        ? <div className={style.headerInfo}>
-                            <span className={style.date}>29.11.2022</span>
-                            <img onClick={() => {
-                                postLike(fullData?.id);
-                                setIsLikedFull(!isLikedFull);
-                            }} className={style.like} src={isLikedFull ? heartRed : heart} alt="like"/>
-                        </div>
-                        : <div className={style.imgContainer}>
-                            {
-                                data?.image
-                                    ? <img className={style.imgNews}
-                                           src={`${baseUrl}${data?.image}`}
-                                           alt="img news"/>
-                                    : <div className={style.noImg}>
-                                        <img src={image} alt=""/>
-                                    </div>
-                            }
+  }, [resLike, data]);
+  const navigate = useNavigate();
+  let onClickBackArrow = () => {
+    navigate(-1);
+  };
+  return (
+    <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
+      {fullItem ? (
+        <img
+          onClick={() => onClickBackArrow()}
+          className={style.arrowLeft}
+          src={arrowLeft}
+          alt="back arrow"
+        />
+      ) : (
+        <></>
+      )}
+      <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
+        {fullItem ? (
+          <div className={style.headerInfo}>
+            <span className={style.date}>29.11.2022</span>
+            <img
+              onClick={() => {
+                postLike(data.id);
+                setIsLikedFull(!isLikedFull);
+              }}
+              className={style.like}
+              src={isLikedFull ? heartRed : heart}
+              alt="like"
+            />
+          </div>
+        ) : (
+          <div className={style.imgContainer}>
+            {data.coverImage && (
+              <img
+                className={style.imgNews}
+                src={`data:image/png;base64,${data.coverImage}`}
+                alt="img news"
+              />
+            )}
+          </div>
+        )}
 
-                        </div>
-
-                }
-
-                <div className={fullItem ? style.fullContentWrap : style.contentWrap}>
-                    {
-                        fullItem
-                            ? <></>
-                            : <div className={style.headerInfo}>
-                                <span className={style.date}>29.11.2022</span>
-                                {!selfPublication ?
-                                    (likeFetch ? <img src={heartGray} alt="like"
-                                                         className={selfPublication ? '' : style.iconStyleLoading}/>
-                                            : <img onClick={() => {
-                                                postLike(data?.id);
-                                                if(!selectedItems){
-                                                    setLikeFetch(!likeFetch);
-                                                    setIsLiked(!isLiked);
-                                                }
-
-                                            }}
-                                                   src={isLiked
-                                                       ? heartRed
-                                                       : heart} alt="like"
-                                                   className={selfPublication ? '' : style.iconStyle}/>
-                                                   )
-
-                                    :
-                                    <img src={trash} alt="like"
-                                         onClick={() => deletePost(data?.id)}
-                                         className={selfPublication ? style.iconStyle : ''}/>
-                                }
-                            </div>
-                    }
-
-                    <div className={fullItem ? style.contentFullWrapper : style.mainContent}>
-                        {
-                            fullItem
-                                ? <>
-                                    <h2 className={style.headerNews}>{fullData?.title}</h2>
-
-                                    <p className={style.textNews}>{firsSentence}</p>
-                                    {
-                                        fullData?.image
-                                            ? <>
-                                                <img className={style.imgNewsFull}
-                                                     src={`${baseUrl}/${fullData?.image}`}
-                                                     alt="img news"/>
-                                                <p className={style.textNews}>{restText}</p>
-                                            </>
-                                            : <></>
-                                    }
-
-                                </>
-
-                                : <>
-                                    <h2 className={style.headerNews}>{data?.title}</h2>
-                                    <p className={style.textNews}>{data?.short_desc}</p>
-                                </>
-
-                        }
-
-                        {
-                            fullItem
-                                ? <></>
-                                : <Link to={
-                                    `/post/${data?.id}`
-                                } className={style.linkNews}>Читать дальше&gt;&gt;</Link>}
-                        <div className={style.shareWrap}>
-                            <img onClick={() => {
-
-                                setIsVisibleShare(!isVisibleShare)
-                            }
-                            } className={style.imgShare} src={share} alt="share"/>
-                            {
-                                isVisibleShare
-                                    ? <Share id={fullItem ? fullData?.id : data?.id}
-                                             setIsVisibleShare={setIsVisibleShare}/>
-                                    : <></>
-                            }
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
+        <div className={fullItem ? style.fullContentWrap : style.contentWrap}>
+          {fullItem ? (
+            <></>
+          ) : (
+            <div className={style.headerInfo}>
+              <span className={style.date}>29.11.2022</span>
+              {!selfPublication ? (
+                likeFetch ? (
+                  <img
+                    src={heartGray}
+                    alt="like"
+                    className={selfPublication ? "" : style.iconStyleLoading}
+                  />
+                ) : (
+                  <img
+                    onClick={() => {
+                      postLike(data?.id);
+                      if (!selectedItems) {
+                        setLikeFetch(!likeFetch);
+                        setIsLiked(!isLiked);
+                      }
+                    }}
+                    src={isLiked ? heartRed : heart}
+                    alt="like"
+                    className={selfPublication ? "" : style.iconStyle}
+                  />
+                )
+              ) : (
+                <img
+                  src={trash}
+                  alt="like"
+                  onClick={() => deletePost(data?.id)}
+                  className={selfPublication ? style.iconStyle : ""}
+                />
+              )}
             </div>
+          )}
+
+          <div className={fullItem ? style.contentFullWrapper : style.mainContent}>
+            {fullItem ? (
+              <>
+                <h2 className={style.headerNews}>{data.title}</h2>
+
+                <p className={style.textNews}>{firsSentence}</p>
+                {data.coverImage && (
+                  <>
+                    <img
+                      className={style.imgNewsFull}
+                      src={`data:image/png;base64,${data.coverImage}`}
+                      alt="img news"
+                    />
+                    <p className={style.textNews}>{restText}</p>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <h2 className={style.headerNews}>{data?.title}</h2>
+                <p className={style.textNews}>{data.title}</p>
+              </>
+            )}
+
+            {fullItem ? (
+              <></>
+            ) : (
+              <Link
+                to={`/post/${data?.id}`}
+                className={style.linkNews}
+              >
+                Читать дальше&gt;&gt;
+              </Link>
+            )}
+            <div className={style.shareWrap}>
+              <img
+                onClick={() => {
+                  setIsVisibleShare(!isVisibleShare);
+                }}
+                className={style.imgShare}
+                src={share}
+                alt="share"
+              />
+              {isVisibleShare ? (
+                <Share
+                  id={data.id}
+                  setIsVisibleShare={setIsVisibleShare}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };

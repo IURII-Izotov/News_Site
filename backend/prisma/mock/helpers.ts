@@ -30,9 +30,7 @@ function getRandomSubarray<T>(arr: T[], size = randomInteger(0, arr.length)) {
 export async function createMockUsers(count: number) {
   const data = getArray(count).map<User>(() => ({}));
 
-  await prisma.user.createMany({ data }).then(data => {
-    console.log(data.count);
-  });
+  await prisma.user.createMany({ data });
 }
 
 export async function createMockTags(count: number) {
@@ -43,20 +41,18 @@ export async function createMockTags(count: number) {
     )
     .map<Tag>(string => ({ name: string }));
 
-  await prisma.tag.createMany({ data }).then(data => {
-    console.log(data.count);
-  });
+  await prisma.tag.createMany({ data });
 }
 
 export async function createMockPosts(count: number) {
   const users = await prisma.user.findMany();
-  const images = Array<Buffer>();
+  const images = Array<string>();
   for (let i = 0; i < count / 20; i++) {
     await new Promise(r => setTimeout(r, 100));
     images.push(
       await fetch(faker.image.url())
         .then(data => data.arrayBuffer())
-        .then(arrBuffer => Buffer.from(arrBuffer))
+        .then(arrBuffer => Buffer.from(arrBuffer).toString("base64"))
     );
   }
 

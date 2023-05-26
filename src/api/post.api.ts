@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
-
-export const baseUrl = "https://megalab.pythonanywhere.com/";
+import { baseUrl } from ".";
+import type { PostGetData, PostGetParams, Result, TagGetData } from "../../contract/api";
 
 export interface ReplayType {
   id: number;
@@ -8,6 +8,17 @@ export interface ReplayType {
   text: string;
 }
 
+export interface FullNewsType {
+  id: number;
+  tag: string;
+  title: string;
+  text: string;
+  image?: any;
+  is_liked: boolean;
+  comment?: CommentType[];
+  short_desc?: any;
+  author: string;
+}
 export interface NewsType {
   id: number;
   tag: string;
@@ -35,37 +46,20 @@ export interface CommentType {
   child: any[];
 }
 
-export interface FullNewsType {
-  id: number;
-  tag: string;
-  title: string;
-  text: string;
-  image?: any;
-  is_liked: boolean;
-  comment?: CommentType[];
-  short_desc?: any;
-  author: string;
-}
-
 export const fetchPostApi = createApi({
   reducerPath: "api/post",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://megalab.pythonanywhere.com/",
-    headers: {
-      Authorization: `Token ${localStorage.getItem("token")}`,
-    },
+    baseUrl,
+    // headers: { Authorization: `Token ${localStorage.getItem("token")}` },
   }),
   tagTypes: ["POST", "COMMENT", "LIKE"],
   endpoints: builder => ({
-    getNews: builder.query<NewsType[], any>({
+    getNews: builder.query<Result<PostGetData>, PostGetParams>({
       query: arg => {
-        let url = new URL(
-          `post/?${arg.searchText.search_text ? "search=" + arg.searchText.search_text : ""}${
-            `${arg?.filterValue}` ? "&tag=" + arg?.filterValue : ""
-          }`,
-          baseUrl
-        );
-        return `post/${url.search}`;
+        const params = new URLSearchParams();
+        Object.entries(arg).forEach(([k, v]) => v && params.set(k, v.toString()));
+        const query = params.toString();
+        return `post/${query ? "?" : ""}${query}`;
       },
       providesTags: ["POST", "LIKE"],
     }),
@@ -153,12 +147,13 @@ export const fetchPostApi = createApi({
       },
       invalidatesTags: ["LIKE"],
     }),
-    getTags: builder.query<any, void>({
+    getTags: builder.query<Result<TagGetData>, void>({
       query: () => `tag/`,
       providesTags: ["POST"],
     }),
   }),
 });
+
 export const {
   useGetNewsQuery,
   useGetFullNewsQuery,

@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../../../prisma/prisma";
 
 type Data = string;
 
@@ -9,8 +8,8 @@ export default function (req: NextApiRequest, res: NextApiResponse<Data>) {
       GET(req, res);
       break;
     }
-    case "PUT": {
-      PUT(req, res);
+    case "DELETE": {
+      DELETE(req, res);
       break;
     }
     default: {
@@ -23,6 +22,6 @@ async function GET(req: NextApiRequest, res: NextApiResponse<Data>) {
   res.send(`You send GET - ${req.query.id}`);
 }
 
-function PUT(req: NextApiRequest, res: NextApiResponse<Data>) {
-  res.send(`You send POST - ${req.query.id}`);
+function DELETE(req: NextApiRequest, res: NextApiResponse<Data>) {
+  res.send(`You send DELETE - ${req.query.id}`);
 }
