@@ -2,6 +2,14 @@
   "name": "news_site",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev:full": "concurrently -n \"frontend,backend,prisma\" -c \"blue,red,green\" \"pnpm run dev\" \"cd backend && pnpm run dev\" \"cd backend && pnpm run prisma-studio\"",
+    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -19,6 +27,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/redux-thunk": "^2.1.0",
     "formik": "^2.2.9",
+    "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-auth-kit": "^2.7.1",
@@ -32,18 +41,6 @@
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -55,5 +52,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "concurrently": "^8.0.1"
   }
 }
