@@ -61,6 +61,7 @@ export const NewsItem: FC<NewsItemType> = ({
   let onClickBackArrow = () => {
     navigate(-1);
   };
+  let date = new Date(data?.createdAt);
   return (
     <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
       {fullItem ? (
@@ -76,7 +77,7 @@ export const NewsItem: FC<NewsItemType> = ({
       <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
         {fullItem ? (
           <div className={style.headerInfo}>
-            <span className={style.date}>29.11.2022</span>
+            <span className={style.date}>{date.getDate()}.{date.getMonth()}.{date.getFullYear()}</span>
             <img
               onClick={() => {
                 postLike(data.id);
@@ -104,7 +105,10 @@ export const NewsItem: FC<NewsItemType> = ({
             <></>
           ) : (
             <div className={style.headerInfo}>
-              <span className={style.date}>29.11.2022</span>
+              <span className={style.date}>{date.getDate()}.
+                {date.getMonth()<10?`0${date.getMonth()}`: date.getMonth()}
+                .{date.getFullYear()}</span>
+              <span>{date.getHours()}:{date.getMinutes()}</span>
               {!selfPublication ? (
                 likeFetch ? (
                   <img
