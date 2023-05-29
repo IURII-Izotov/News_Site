@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from ".";
-import type { PostGetData, PostGetParams, Result, TagGetData } from "../../contract/api";
+import type { PostGet, TagGetData } from "../../contract/api";
 
 export interface ReplayType {
   id: number;
@@ -50,17 +50,19 @@ export const fetchPostApi = createApi({
   reducerPath: "api/post",
   baseQuery: fetchBaseQuery({
     baseUrl,
-    headers: {
-    },
+    headers: {},
   }),
   tagTypes: ["POST", "COMMENT", "LIKE"],
   endpoints: builder => ({
-    getNews: builder.query<Result<PostGetData>, PostGetParams>({
-      query: arg => {
+    getNews: builder.query<PostGet["response"], PostGet["request"]>({
+      query: ({ query }) => {
+        const base = "post";
+        if (!query) return base;
         const params = new URLSearchParams();
-        Object.entries(arg).forEach(([k, v]) => v && params.set(k, v.toString()));
-        const query = params.toString();
-        return `post${query ? "/?" : ""}${query}`;
+        Object.entries(query).forEach(([k, v]) => v && params.set(k, v.toString()));
+        const queryString = params.toString();
+        if (!queryString) return base;
+        return `${base}?${queryString}`;
       },
       providesTags: ["POST", "LIKE"],
     }),
@@ -148,7 +150,7 @@ export const fetchPostApi = createApi({
       },
       invalidatesTags: ["LIKE"],
     }),
-    getTags: builder.query<Result<TagGetData>, void>({
+    getTags: builder.query<TagGetData, void>({
       query: () => `tag/`,
       providesTags: ["POST"],
     }),

@@ -1,14 +1,30 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/prisma";
-import type { Result, PostGetData } from "../../../../contract/api";
+import type { PostGet } from "../../../../contract/api";
 
-export default function (req: NextApiRequest, res: NextApiResponse<Result<PostGetData>>) {
+const postsPerPage = 20;
+export default async function (req: NextApiRequest, res: NextApiResponse<PostGet["response"]>) {
+  const query = req.query as PostGet["request"]["query"];
   switch (req.method) {
     case "GET": {
-      prisma.post
-        .findMany({ take: 20, include: { Tag: true } })
-        .then(data => data.map(item => ({ ...item, liked: false, tags: item.Tag })))
-        .then(data => res.json({ status: "succes", data }));
+      await prisma.post
+        .findMany({
+          take: postsPerPage,
+          include: { Tag: true },
+          where: {
+            OR: query?.contains
+              ? [{ title: { contains: query?.contains } }, { text: { contains: query?.contains } }]
+              : undefined,
+            Tag: { some: { name: query?.tag } },
+          },
+          skip: Math.max(((query?.page ?? 1) - 1) * 20, 0),
+        })
+        .then(data => data.map(item => Object.assign(item, { liked: false, tags: item.Tag })))
+        .then(data => res.json({ status: "success", data }))
+        .catch(e => {
+          console.error(e);
+          res.json({ error: "There was an error trying to read the data", status: "error" });
+        });
       break;
     }
     default: {
