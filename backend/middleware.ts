@@ -10,7 +10,21 @@ const corsOrigin =
     ? "https://news-site-rho.vercel.app"
     : "http://localhost:3000";
 export function middleware(request: NextRequest) {
-  const response = NextResponse.next({ request: { headers: request.headers } });
-  response.headers.set("Access-Control-Allow-Origin", corsOrigin);
-  return response;
+  switch (request.method) {
+    case "OPTIONS": {
+      const response = new NextResponse();
+      setHeaders(response.headers);
+      return response;
+    }
+    default: {
+      const response = NextResponse.next({ request: { headers: request.headers } });
+      setHeaders(response.headers);
+      return response;
+    }
+  }
+}
+
+function setHeaders(headers: Headers) {
+  headers.set("Access-Control-Allow-Origin", corsOrigin);
+  headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
 }

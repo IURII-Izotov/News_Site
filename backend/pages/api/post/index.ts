@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from "../../../prisma/prisma";
 import type { PostGet } from "../../../../contract/api";
+import { respondUnsupportedMethod } from "../../../utils";
 
 const postsPerPage = 20;
 export default async function (req: NextApiRequest, res: NextApiResponse<PostGet["response"]>) {
@@ -31,9 +32,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse<PostGet
       break;
     }
     default: {
-      res
-        .status(405)
-        .json({ status: "error", error: `Endpoint does not accept method ${req.method}` });
+      respondUnsupportedMethod(req, res);
     }
   }
 }

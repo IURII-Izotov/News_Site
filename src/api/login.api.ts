@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from ".";
+import { AuthRegistrationPost } from "../../contract/api";
 
 export const fetchLoginApi = createApi({
   reducerPath: "api/login",
   baseQuery: fetchBaseQuery({
-    baseUrl,
+    baseUrl: `${baseUrl}/auth`,
     headers: {},
   }),
   tagTypes: ["Login"],
@@ -22,16 +23,16 @@ export const fetchLoginApi = createApi({
       },
       invalidatesTags: ["Login"],
     }),
-    createRegistration: builder.mutation<any, any>({
-      query: (payload: any) => {
+    createRegistration: builder.mutation<
+      AuthRegistrationPost["response"],
+      AuthRegistrationPost["request"]
+    >({
+      query: ({ body }) => {
         return {
-          url: "registration/",
+          url: "registration",
           method: "POST",
-          body: payload,
+          body,
         };
-      },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
       },
     }),
     createLogOut: builder.query<any, any>({

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from ".";
-import type { PostGet, TagGetData } from "../../contract/api";
+import type { PostGet, TagGet } from "../../contract/api";
 
 export interface ReplayType {
   id: number;
@@ -92,7 +92,6 @@ export const fetchPostApi = createApi({
       },
       invalidatesTags: ["POST"],
     }),
-
     setComment: builder.mutation<any, any>({
       query: (payload: any) => {
         return {
@@ -104,9 +103,7 @@ export const fetchPostApi = createApi({
           },
         };
       },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
-      },
+
       invalidatesTags: ["COMMENT"],
     }),
     setReplay: builder.mutation<any, any>({
@@ -117,9 +114,7 @@ export const fetchPostApi = createApi({
           body: payload,
         };
       },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
-      },
+
       invalidatesTags: ["COMMENT"],
     }),
 
@@ -130,28 +125,24 @@ export const fetchPostApi = createApi({
           method: "DELETE",
         };
       },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
-      },
+
       invalidatesTags: ["POST"],
     }),
     postLike: builder.mutation<any, any>({
       query: (id: any) => {
         return {
-          url: `like/`,
+          url: `like`,
           method: "POST",
           body: {
             post: id,
           },
         };
       },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
-      },
+
       invalidatesTags: ["LIKE"],
     }),
-    getTags: builder.query<TagGetData, void>({
-      query: () => `tag/`,
+    getTags: builder.query<TagGet["response"], TagGet["request"]>({
+      query: () => `tag`,
       providesTags: ["POST"],
     }),
   }),

@@ -1,6 +1,6 @@
 import type { Database } from "../backend/prisma/prisma";
 
-type APIResponse<T> = { status: "success"; data: T } | { status: "error"; error: string };
+export type APIResponse<T> = { status: "success"; data: T } | { status: "error"; error: string };
 type Endpoint<Request, Response> = { request: Request; response: APIResponse<Response> };
 
 export type PostGet = Endpoint<
@@ -17,4 +17,9 @@ export type PostGet = Endpoint<
   })[]
 >;
 
-export type TagGet = Endpoint<never, Database["tag"][]>;
+export type TagGet = Endpoint<undefined, Database["tag"][]>;
+
+export type AuthRegistrationPost = Endpoint<
+  { body: Database["account"] & Database["user"] },
+  "Registration successful"
+>;

@@ -16,6 +16,7 @@ const SignupSchema = Yup.object().shape({
 export const RegistrationForm = () => {
   const [createRegistration, res] = useCreateRegistrationMutation();
   useEffect(() => {
+    // Женя: я не возвращаю юзернейм в ответе, лишь сообщение об успешной реге или нет;
     if (res?.status == QueryStatus.fulfilled) {
       localStorage.setItem("nickname", res.data.nickname);
       if (typeof window !== "undefined") {
@@ -44,7 +45,15 @@ export const RegistrationForm = () => {
       }}
       validationSchema={SignupSchema}
       onSubmit={(values, { setSubmitting }) => {
-        createRegistration(values);
+        createRegistration({
+          body: {
+            firstName: values.name,
+            lastName: values.last_name,
+            avatar: values.profile_image,
+            username: values.nickname,
+            password: values.password,
+          },
+        });
         setSubmitting(false);
       }}
     >
