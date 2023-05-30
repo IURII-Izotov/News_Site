@@ -13,20 +13,20 @@ import { AuthProvider, RequireAuth } from "react-auth-kit";
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 root.render(
-  // <AuthProvider authType={'cookie'}
-  //               authName={'token'}
-  //               cookieDomain={window.location.hostname}
-  //               cookieSecure={window.location.protocol === "https:"}>
+  <AuthProvider authType={'cookie'}
+                authName={'token'}
+                cookieDomain={window.location.hostname}
+                cookieSecure={window.location.protocol === "https:"}>
   <BrowserRouter>
     <Provider store={store}>
       <Routes>
-        {/*<Route path="/login" element={<LoginPage/>}/>*/}
-        {/*<Route path="/*" element={<RequireAuth loginPath={"/login"}><App/></RequireAuth>}/>*/}
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/*" element={<RequireAuth loginPath={"/login"}><App/></RequireAuth>}/>
         <Route
           path="/*"
           element={<App />}
         />
-        {/*<Route path="/registration" element={<RegistrationPage/>}/>*/}
+        <Route path="/registration" element={<RegistrationPage/>}/>
       </Routes>
     </Provider>
   </BrowserRouter>
