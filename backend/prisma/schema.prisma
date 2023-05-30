@@ -8,12 +8,24 @@ datasource db {
   relationMode = "prisma"
 }
 
+model Account {
+  username String @id
+  password String
+  User     User?
+}
+
 model User {
-  id           String         @id @default(uuid())
+  username     String         @id
+  avatar       String?        @db.LongText
+  firstName    String
+  lastName     String
+  Account      Account        @relation(fields: [username], references: [username])
   Post         Post[]
   Like         Like[]
   Comment      Comment[]
   CommentReply CommentReply[]
+
+  @@index([username])
 }
 
 model Post {
@@ -22,13 +34,13 @@ model Post {
   text       String    @db.LongText
   coverImage String?   @db.LongText
   createdAt  DateTime  @default(now())
-  User       User      @relation(fields: [userId], references: [id])
-  userId     String
+  User       User      @relation(fields: [username], references: [username])
+  username   String
   Tag        Tag[]
   Like       Like[]
   Comment    Comment[]
 
-  @@index([userId])
+  @@index([username])
 }
 
 model Tag {
@@ -37,14 +49,14 @@ model Tag {
 }
 
 model Like {
-  id     String @id @default(uuid())
-  Post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
-  postId String
-  User   User   @relation(fields: [userId], references: [id])
-  userId String
+  id       String @id @default(uuid())
+  Post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId   String
+  User     User   @relation(fields: [username], references: [username])
+  username String
 
   @@index([postId])
-  @@index([userId])
+  @@index([username])
 }
 
 model Comment {
@@ -53,12 +65,12 @@ model Comment {
   createdAt    DateTime       @default(now())
   Post         Post           @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId       String
-  User         User           @relation(fields: [userId], references: [id])
-  userId       String
+  User         User           @relation(fields: [username], references: [username])
+  username     String
   CommentReply CommentReply[]
 
   @@index([postId])
-  @@index([userId])
+  @@index([username])
 }
 
 model CommentReply {
@@ -67,9 +79,9 @@ model CommentReply {
   createdAt DateTime @default(now())
   Comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
   commentId String
-  User      User     @relation(fields: [userId], references: [id])
-  userId    String
+  User      User     @relation(fields: [username], references: [username])
+  username  String
 
-  @@index([userId])
+  @@index([username])
   @@index([commentId])
 }

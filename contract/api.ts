@@ -1,20 +1,20 @@
 import type { Database } from "../backend/prisma/prisma";
 
-export type Result<T> =
-  | {
-      status: "succes";
-      data: T;
-    }
-  | { status: "error"; error: string };
+type APIResponse<T> = { status: "success"; data: T } | { status: "error"; error: string };
+type Endpoint<Request, Response> = { request: Request; response: APIResponse<Response> };
 
-export type PostGetParams = {
-  page?: number;
-  tag?: string;
-  contains?: string;
-};
-export type PostGetData = (Database["post"] & {
-  tags: Database["tag"][];
-  liked: boolean;
-})[];
+export type PostGet = Endpoint<
+  {
+    query?: {
+      page?: number;
+      tag?: string;
+      contains?: string;
+    };
+  },
+  (Database["post"] & {
+    tags: Database["tag"][];
+    liked: boolean;
+  })[]
+>;
 
-export type TagGetData = Database["tag"][];
+export type TagGet = Endpoint<never, Database["tag"][]>;
