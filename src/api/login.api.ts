@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
+import { baseUrl } from ".";
 
 export const fetchLoginApi = createApi({
   reducerPath: "api/login",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://megalab.pythonanywhere.com/",
+    baseUrl,
     headers: {},
   }),
   tagTypes: ["Login"],

@@ -17,4 +17,4 @@ export type PostGet = Endpoint<
   })[]
 >;
 
-export type TagGetData = Database["tag"][];
+export type TagGet = Endpoint<never, Database["tag"][]>;

@@ -12,13 +12,13 @@ import { Link } from "react-router-dom";
 import { useDeletePostMutation, usePostLikeMutation } from "../../api/post.api";
 import { Share } from "../Share/Share";
 import { useNavigate } from "react-router-dom";
-import { PostGetData } from "../../../contract/api";
+import { PostGet } from "../../../contract/api";
 
 type NewsItemType = {
   fullItem?: boolean;
   selectedItems?: boolean;
   selfPublication?: boolean;
-  data: PostGetData[number];
+  data: Extract<PostGet["response"], { data: any }>["data"][number];
   isLoading?: boolean;
   isFetching?: boolean;
 };
@@ -32,18 +32,18 @@ export const NewsItem: FC<NewsItemType> = ({
   isFetching,
 }) => {
   let text = data.text;
-  let firsSentence: string | undefined = "";
+  let firstSentence: string | undefined = "";
   let restText: string | undefined = "";
   if (fullItem) {
-    let arr = text?.split(".");
-    firsSentence = arr?.splice(0, 2).join(".");
-    restText = arr?.join(".");
+    let arr = text.split(".");
+    firstSentence = arr.splice(0, 2).join(".");
+    restText = arr.join(".");
   }
   let [likeFetch, setLikeFetch] = useState(false);
   let [deletePost] = useDeletePostMutation();
   let [postLike, resLike] = usePostLikeMutation();
   let [isVisibleShare, setIsVisibleShare] = useState(false);
-  let [isLiked, setIsLiked] = useState(data?.liked);
+  let [isLiked, setIsLiked] = useState(data.liked);
   let [isLikedFull, setIsLikedFull] = useState(data.liked);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export const NewsItem: FC<NewsItemType> = ({
   let onClickBackArrow = () => {
     navigate(-1);
   };
-  let date = new Date(data?.createdAt);
+  let date = new Date(data.createdAt);
   return (
     <div className={fullItem ? style.wrapperFullItem : style.wrapper}>
       {fullItem ? (
@@ -77,7 +77,9 @@ export const NewsItem: FC<NewsItemType> = ({
       <div className={fullItem ? style.contentContainerFull : style.contentContainer}>
         {fullItem ? (
           <div className={style.headerInfo}>
-            <span className={style.date}>{date.getDate()}.{date.getMonth()}.{date.getFullYear()}</span>
+            <span className={style.date}>
+              {date.getDate()}.{date.getMonth()}.{date.getFullYear()}
+            </span>
             <img
               onClick={() => {
                 postLike(data.id);
@@ -105,10 +107,13 @@ export const NewsItem: FC<NewsItemType> = ({
             <></>
           ) : (
             <div className={style.headerInfo}>
-              <span className={style.date}>{date.getDate()}.
-                {date.getMonth()<10?`0${date.getMonth()}`: date.getMonth()}
-                .{date.getFullYear()}</span>
-              <span>{date.getHours()}:{date.getMinutes()}</span>
+              <span className={style.date}>
+                {date.getDate()}.{date.getMonth() < 10 ? `0${date.getMonth()}` : date.getMonth()}.
+                {date.getFullYear()}
+              </span>
+              <span>
+                {date.getHours()}:{date.getMinutes()}
+              </span>
               {!selfPublication ? (
                 likeFetch ? (
                   <img
@@ -146,7 +151,7 @@ export const NewsItem: FC<NewsItemType> = ({
               <>
                 <h2 className={style.headerNews}>{data.title}</h2>
 
-                <p className={style.textNews}>{firsSentence}</p>
+                <p className={style.textNews}>{firstSentence}</p>
                 {data.coverImage && (
                   <>
                     <img

@@ -18,12 +18,15 @@ export default async function (req: NextApiRequest, res: NextApiResponse<PostGet
             Tag: { some: { name: query?.tag } },
           },
           skip: Math.max(((query?.page ?? 1) - 1) * 20, 0),
+          orderBy: { createdAt: "desc" },
         })
         .then(data => data.map(item => Object.assign(item, { liked: false, tags: item.Tag })))
         .then(data => res.json({ status: "success", data }))
         .catch(e => {
           console.error(e);
-          res.json({ error: "There was an error trying to read the data", status: "error" });
+          res
+            .status(500)
+            .json({ error: "There was an error trying to read the data", status: "error" });
         });
       break;
     }

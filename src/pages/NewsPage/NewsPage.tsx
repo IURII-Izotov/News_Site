@@ -20,7 +20,6 @@ export const NewsPage: FC<newsPagePropsType> = () => {
     isLoading,
   } = useGetNewsQuery({ query: { contains: searchText, tag: filterValue } });
   // let { data: tagsData } = useGetTagsQuery();
-  if (newsData?.status === "error") return <div>{newsData.error}</div>;
 
   return (
     <div className={style.wrapperPage}>
@@ -37,16 +36,20 @@ export const NewsPage: FC<newsPagePropsType> = () => {
         </div>
       ) : (
         <div className={style.newsContentWrap}>
-          {newsData?.data.map(item => {
-            return (
-              <NewsItem
-                isFetching={isFetching}
-                isLoading={isLoading}
-                key={item.id}
-                data={item}
-              />
-            );
-          })}
+          {newsData?.status === "success" ? (
+            newsData.data.map(item => {
+              return (
+                <NewsItem
+                  isFetching={isFetching}
+                  isLoading={isLoading}
+                  key={item.id}
+                  data={item}
+                />
+              );
+            })
+          ) : (
+            <div>{newsData?.error}</div>
+          )}
         </div>
       )}
     </div>
