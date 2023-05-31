@@ -6,7 +6,7 @@ export const fetchLoginApi = createApi({
   reducerPath: "api/login",
   baseQuery: fetchBaseQuery({
     baseUrl: `${baseUrl}/auth`,
-    headers: {},
+    credentials: "include",
   }),
   tagTypes: ["Login"],
   endpoints: builder => ({
@@ -35,10 +35,7 @@ export const fetchLoginApi = createApi({
     createLogOut: builder.query<any, any>({
       query: arg => {
         return {
-          url: `logout/`,
-          headers: {
-            Authorization: `Token ${localStorage.getItem("token")}`,
-          },
+          url: `logout`,
         };
       },
     }),

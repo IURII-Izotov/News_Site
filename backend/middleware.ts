@@ -27,4 +27,5 @@ export function middleware(request: NextRequest) {
 function setHeaders(headers: Headers) {
   headers.set("Access-Control-Allow-Origin", corsOrigin);
   headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  headers.set("Access-Control-Allow-Credentials", "true");
 }
