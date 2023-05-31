@@ -8,8 +8,6 @@ export default async function (
   req: NextApiRequest,
   res: NextApiResponse<AuthRegistrationPost["response"]>
 ) {
-  console.log(res.hasHeader("Access-Control-Allow-Origin"));
-  console.log(res.hasHeader("access-control-allow-origin"));
   const body = req.body as AuthRegistrationPost["request"]["body"];
   switch (req.method) {
     case "POST":
@@ -28,7 +26,8 @@ export default async function (
         })
         .then(() => res.json({ status: "success", data: "Registration successful" }))
         .catch(e => {
-          res.json({
+          console.error(e);
+          res.status(406).json({
             status: "error",
             error:
               e instanceof Prisma.PrismaClientKnownRequestError && e.code === "P2002"

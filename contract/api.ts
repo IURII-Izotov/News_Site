@@ -23,3 +23,5 @@ export type AuthRegistrationPost = Endpoint<
   { body: Database["account"] & Database["user"] },
   "Registration successful"
 >;
+
+export type AuthLoginPost = Endpoint<{ body: Database["account"] }, "Login successful">;

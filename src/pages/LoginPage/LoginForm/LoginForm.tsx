@@ -44,7 +44,7 @@ export const LoginForm = () => {
         password: "",
       }}
       onSubmit={(values, { setSubmitting }) => {
-        updatePost(values);
+        updatePost({ body: { password: values.password, username: values.nickname } });
         localStorage.setItem("nickname", values.nickname);
         setSubmitting(false);
       }}

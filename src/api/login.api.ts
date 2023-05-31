@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react";
 import { baseUrl } from ".";
-import { AuthRegistrationPost } from "../../contract/api";
+import { AuthLoginPost, AuthRegistrationPost } from "../../contract/api";
 
 export const fetchLoginApi = createApi({
   reducerPath: "api/login",
@@ -10,16 +10,13 @@ export const fetchLoginApi = createApi({
   }),
   tagTypes: ["Login"],
   endpoints: builder => ({
-    postLogin: builder.mutation<any, any>({
-      query: (payload: any) => {
+    postLogin: builder.mutation<AuthLoginPost["response"], AuthLoginPost["request"]>({
+      query: ({ body }) => {
         return {
-          url: "login/",
+          url: "login",
           method: "POST",
-          body: payload,
+          body,
         };
-      },
-      transformResponse: (response: { data: any }, meta, arg) => {
-        return response;
       },
       invalidatesTags: ["Login"],
     }),
